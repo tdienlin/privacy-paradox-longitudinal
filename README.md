@@ -1,5 +1,4 @@
 # Privacy Paradox Longitudinal
-In this project, we are conducting a longitudinal analysis of the privacy paradox, analyzing the data using RI-CLPM.
 
 Here, you can find all analyses presented in the paper, additional analyses, and a reproducible version of the manuscript.
 
