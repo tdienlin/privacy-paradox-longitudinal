@@ -1,0 +1,14 @@
+# Privacy Paradox Longitudinal
+In this project, we are conducting a longitudinal analysis of the privacy paradox, analyzing the data using RI-CLPM.
+
+Here, you can find all analyses presented in the paper, additional analyses, and a reproducible version of the manuscript.
+
+Please note that this OSM does not contain the actual data, which can be downloaded from http://dx.doi.org/10.7802/1937. 
+
+To reproduce the manuscript:
+- download the file "privacy-longitudinal-study_data_2019-08-27.csv" from http://dx.doi.org/10.7802/1937 and save in folder "data"
+- run the file "data/data_wrangling.R", in order to prepare the dataset for analyses.
+- run the file "analyses/analyses.RmD", in order to rerun all analyses. 
+- run the file "manuscript/manuscript.RmD", in order to get the final manuscript.
+
+Please feel free to provide feedback and comments, to open up issues, or to make pull requests :)
