@@ -22,7 +22,7 @@ knitr::opts_chunk$set(echo = T, error = F, message = F, tidy = T, warning = F, c
 # relevant packages
 devtools::install_github("tdienlin/td@v.0.0.2.5")
 required <- c("GGally", "ggplot2", "lavaan", "lme4", "magrittr", 
-              "MissMech", "papaja", "psych", "pwr", "RVAideMemoire", "semTools", 
+              "MissMech", "papaja", "psych", "pwr", "MVN", "semTools", 
               "sjstats", "tidyverse", "td")
 
 # load required libraries
@@ -1000,7 +1000,7 @@ In what follows, please find all information about our final model we present in
 #### Multivariate Normal Distribution
 
 ```{r multivardis}
-mult_norm_test <- mshapiro.test(d_fs)
+mult_norm_test <- mvn(d_fs)
 print(mult_norm_test)
 ```
 
@@ -1513,6 +1513,11 @@ summary(fit, standardized = TRUE, fit.measures = TRUE, ci = TRUE)
 #### Model 4 (final)
 
 With Factor Scores and control variables. This is the final model we report in the paper.
+
+```{r, fig.cap="Visual representation of the estimated random-intercept cross-lagged panel model (RI-CLPM)."}
+knitr::include_graphics("../figures/model_7.png")
+```
+
 
 ```{r}
 model <- '
