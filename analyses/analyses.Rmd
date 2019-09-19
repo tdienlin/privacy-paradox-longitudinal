@@ -7,6 +7,7 @@ output:
     toc: true
     toc_float: true
     toc_depth: 5
+    df_print: paged
 editor_options: 
   chunk_output_type: inline
 ---
@@ -130,10 +131,15 @@ edu_col_per <- nrow(d_wide[d_wide$edu_num > 5, ]) / n_complete * 100
 
 # Analysis of Missing Values
 
-```{r}
+```{r cache=F}
 d_tmp <- select(d_wide, -contains("_m"), -contains("tim"), -contains("T4"), -contains("T5"), -contains("per"), -contains("use"), -c(id, age, edu, edu_num, male))
-(test_mar <- TestMCARNormality(d_tmp))
-test_mar_p <- test_mar$pnormality
+test_mar <- TestMCARNormality(d_tmp)
+
+# print patterns
+as.data.frame(test_mar$patused)
+
+# non-parametric test
+(test_mar_p <- test_mar$pnormality)
 
 # calculate percentage of missing data
 na_per <- mean(c(d_wide$t1_na_per, d_wide$t2_na_per, d_wide$t3_na_per)) * 100
@@ -231,13 +237,6 @@ t2_pri_con_f ~~ t3_pri_con_f
 no <- no + 1
 assign(paste("fit", name, no, sep = "_"), cfa(model, d_wide, missing = "ML"))
 summary(get(paste("fit", name, no, sep = "_")), standardized = TRUE, fit.measures = TRUE)
-reliability(get(paste("fit", name, no, sep = "_")))
-```
-
-#### Longitudinal Invariance
-
-```{r}
-anova(get(paste("fit", name, no - 1, sep = "_")), get(paste("fit", name, no, sep = "_")))
 ```
 
 #### Second-Order Model Unconstrained
@@ -278,7 +277,6 @@ t2_pri_con_f ~~ t3_pri_con_f
 no <- no + 1
 assign(paste("fit", name, no, sep = "_"), cfa(model, d_wide, missing = "ML"))
 summary(get(paste("fit", name, no, sep = "_")), standardized = TRUE, fit.measures = TRUE)
-reliability(get(paste("fit", name, no, sep = "_")))
 ``` 
 
 #### Second-Order Model Constrained
@@ -317,15 +315,21 @@ t2_pri_con_f ~~ t3_pri_con_f
 no <- no + 1
 assign(paste("fit", name, no, sep = "_"), cfa(model, d_wide, missing = "ML"))
 summary(get(paste("fit", name, no, sep = "_")), standardized = TRUE, fit.measures = TRUE)
-reliability(get(paste("fit", name, no, sep = "_")))
 ```
 
-#### Longitudinal Invariance
+### Reliability
 
 ```{r}
-anova(get(paste("fit", name, no - 1, sep = "_")), get(paste("fit", name, no, sep = "_")))
+reliabilityL2(get(paste("fit", name, no, sep = "_")), paste("t1", name, "f", sep = "_"))
+reliabilityL2(get(paste("fit", name, no, sep = "_")), paste("t2", name, "f", sep = "_"))
+reliabilityL2(get(paste("fit", name, no, sep = "_")), paste("t3", name, "f", sep = "_"))
 ```
 
+### Longitudinal Invariance
+
+```{r}
+(anova(get(paste("fit", name, no - 1, sep = "_")), get(paste("fit", name, no, sep = "_"))))
+```
 
 ## Attitude Toward Online Sharing of Personal Information
 ### EFA
@@ -376,7 +380,6 @@ t2_pri_con_f ~~ t3_pri_con_f
 no <- no + 1
 assign(paste("fit", name, no, sep = "_"), cfa(model, d_wide, missing = "ML"))
 summary(get(paste("fit", name, no, sep = "_")), standardized = TRUE, fit.measures = TRUE)
-reliability(get(paste("fit", name, no, sep = "_")))
 ```
 
 #### First-Order Model Constrained
@@ -415,13 +418,6 @@ t2_pri_con_f ~~ t3_pri_con_f
 no <- no + 1
 assign(paste("fit", name, no, sep = "_"), cfa(model, d_wide, missing = "ML"))
 summary(get(paste("fit", name, no, sep = "_")), standardized = TRUE, fit.measures = TRUE)
-reliability(get(paste("fit", name, no, sep = "_")))
-```
-
-#### Longitudinal Invariance
-
-```{r}
-anova(get(paste("fit", name, no - 1, sep = "_")), get(paste("fit", name, no, sep = "_")))
 ```
 
 #### Second-Order Model Unconstrained
@@ -479,7 +475,6 @@ t2_inf_sha_att_11 ~~ t3_inf_sha_att_11
 no <- no + 1
 assign(paste("fit", name, no, sep = "_"), cfa(model, d_wide, missing = "ML"))
 summary(get(paste("fit", name, no, sep = "_")), standardized = TRUE, fit.measures = TRUE)
-reliability(get(paste("fit", name, no, sep = "_")))
 ```
 
 #### Second-Order Model at All Waves Constrained
@@ -535,13 +530,20 @@ t2_inf_sha_att_11 ~~ t3_inf_sha_att_11
 no <- no + 1
 assign(paste("fit", name, no, sep = "_"), cfa(model, d_wide, missing = "ML"))
 summary(get(paste("fit", name, no, sep = "_")), standardized = TRUE, fit.measures = TRUE)
-reliability(get(paste("fit", name, no, sep = "_")))
 ```
 
-#### Longitudinal Invariance
+### Reliability
 
 ```{r}
-anova(get(paste("fit", name, no - 1, sep = "_")), get(paste("fit", name, no, sep = "_")))
+reliabilityL2(get(paste("fit", name, no, sep = "_")), paste("t1", name, "f", sep = "_"))
+reliabilityL2(get(paste("fit", name, no, sep = "_")), paste("t2", name, "f", sep = "_"))
+reliabilityL2(get(paste("fit", name, no, sep = "_")), paste("t3", name, "f", sep = "_"))
+```
+
+### Longitudinal Invariance
+
+```{r}
+(anova(get(paste("fit", name, no - 1, sep = "_")), get(paste("fit", name, no, sep = "_"))))
 ```
 
 ## Online Sharing of Personal Information
@@ -555,6 +557,7 @@ model <- fa.parallel(d_tmp, fa = "fa", fm = "ml")
 factan <- fa(d_tmp, fm = "ml", nfactors = model$nfact, rotate = "promax")
 print(factan, sort = TRUE, cut = .3)
 ```
+
 ### CFA
 #### First-Order Model Unconstrained
 
@@ -598,7 +601,6 @@ t2_inf_sha_beh_11 ~~ t3_inf_sha_beh_11
 no <- no + 1
 assign(paste("fit", name, no, sep = "_"), cfa(model, d_wide, missing = "ML"))
 summary(get(paste("fit", name, no, sep = "_")), standardized = TRUE, fit.measures = TRUE)
-reliability(get(paste("fit", name, no, sep = "_")))
 ```
 
 #### First-Order Model Constrained
@@ -641,13 +643,6 @@ t2_inf_sha_beh_11 ~~ t3_inf_sha_beh_11
 no <- no + 1
 assign(paste("fit", name, no, sep = "_"), cfa(model, d_wide, missing = "ML"))
 summary(get(paste("fit", name, no, sep = "_")), standardized = TRUE, fit.measures = TRUE)
-reliability(get(paste("fit", name, no, sep = "_")))
-```
-
-#### Longitudinal Invariance
-
-```{r}
-anova(get(paste("fit", name, no - 1, sep = "_")), get(paste("fit", name, no, sep = "_")))
 ```
 
 #### Second-Order Model Unconstrained
@@ -705,7 +700,6 @@ t2_inf_sha_beh_11 ~~ t3_inf_sha_beh_11
 no <- no + 1
 assign(paste("fit", name, no, sep = "_"), cfa(model, d_wide, missing = "ML"))
 summary(get(paste("fit", name, no, sep = "_")), standardized = TRUE, fit.measures = TRUE)
-reliability(get(paste("fit", name, no, sep = "_")))
 ```
 
 #### Second-Order Model Constrained
@@ -761,13 +755,20 @@ t2_inf_sha_beh_11 ~~ t3_inf_sha_beh_11
 no <- no + 1
 assign(paste("fit", name, no, sep = "_"), cfa(model, d_wide, missing = "ML"))
 summary(get(paste("fit", name, no, sep = "_")), standardized = TRUE, fit.measures = TRUE)
-reliability(get(paste("fit", name, no, sep = "_")))
 ```
 
-#### Longitudinal Invariance
+### Reliability
 
 ```{r}
-anova(get(paste("fit", name, no - 1, sep = "_")), get(paste("fit", name, no, sep = "_")))
+reliabilityL2(get(paste("fit", name, no, sep = "_")), paste("t1", name, "f", sep = "_"))
+reliabilityL2(get(paste("fit", name, no, sep = "_")), paste("t2", name, "f", sep = "_"))
+reliabilityL2(get(paste("fit", name, no, sep = "_")), paste("t3", name, "f", sep = "_"))
+```
+
+### Longitudinal Invariance
+
+```{r}
+(anova(get(paste("fit", name, no - 1, sep = "_")), get(paste("fit", name, no, sep = "_"))))
 ```
 
 ## All Measures in one Model 
@@ -936,7 +937,6 @@ t3_inf_sha_beh_11 ~~ t3_inf_sha_att_11
 no <- no + 1
 assign(paste("fit", name, no, sep = "_"), cfa(model, d_wide, missing = "ML"))
 summary(get(paste("fit", name, no, sep = "_")), standardized = TRUE, fit.measures = TRUE)
-reliability(get(paste("fit", name, no, sep = "_")))
 ```
 
 ### Extract Factor Scores
