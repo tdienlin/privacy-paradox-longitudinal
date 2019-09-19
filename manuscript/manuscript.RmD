@@ -8,28 +8,29 @@ author:
     address       : "University of Hohenheim, Department of Media Psychology (540F), 70599 Stuttgart, Germany"
     corresponding : yes
   - name          : "Philipp K. Masur"
-    affiliation   : "1"
+    affiliation   : "2"
   - name          : "Sabine Trepte"
     affiliation   : "1"
 affiliation:
     
   - id            : "1"
     institution   : "University of Hohenheim"
+  - id            : ""
+    institution   : "Johannes Gutenberg University Mainz"
 author_note: |
   All authors contributed extensively to the work presented in this paper. TD, PM, & ST designed the study; PM supervised the data collection; PM administered the data importation; TD & PM wrote the code, ran the models, and analyzed the output data; TD wrote major parts of manuscript, and PM & ST contributed individual sections and comments; ST supervised the project and wrote the grant application (in 2012). 
   The authors declare no competing interests.
   This research was funded by the German Federal Ministry of Education and Research (BMBF) Grant 16KIS0094, awarded to Sabine Trepte.
   
-  This manuscript features online supplementary material that includes the code, additional analyses, and a reproducible version of the manuscript (https://osf.io/4wabh). The data can be downloaded from http://dx.doi.org/10.7802/1937. 
   
+  This manuscript features online supplementary material that includes the code, additional analyses, and a reproducible version of the manuscript (https://osf.io/4wabh). The data can be downloaded from http://dx.doi.org/10.7802/1937. 
 abstract: |
-  The privacy paradox states that people's concerns about online privacy are unrelated to their online sharing of personal information.
-  Using a representative sample of the German population, featuring `r knitr::load_cache(label = "load-data", object = "n_complete")` respondents who were interviewed at three waves that were separated by 6 months, we investigate the privacy paradox from a longitudinal perspective, differentiating between-person relations from within-person effects. 
+  The privacy paradox states that people's concerns about online privacy are unrelated to their online sharing of personal information. 
+  Using a representative sample of the German population, featuring `r knitr::load_cache(label = "load-data", object = "n_complete")` respondents who were interviewed at three waves that were separated by 6 months, we investigate the privacy paradox from a longitudinal perspective, differentiating between-person relations from within-person effects.
   Results of a cross-lagged panel model with random intercepts revealed that people who were more concerned about their online privacy than others also shared slightly less personal information online and had substantially more negative attitudes toward the online  sharing of personal information than others (between-person level). 
   Next, people who were more concerned than usual also shared slightly less information than usual (within-person level). 
   At the same time, we found no long-term effects of privacy concerns on information sharing or attitudes 6 months later.
   Together, the results provide further evidence against the privacy paradox.
-  
 keywords          : "privacy paradox, privacy concerns, information disclosure, longitudinal analysis, structural equation modeling"
 wordcount         : "`r wordcountaddin::word_count('manuscript.Rmd')`"
 figsintext        : yes
@@ -77,7 +78,7 @@ r_citations <- cite_r("../bibliography/r-references.bib",
 load("../data/workspace.RData")
 ```
 
-The privacy paradox states that the information disclosure practices of Internet users are problematic: 
+The privacy paradox states that information disclosure practices of Internet users are problematic: 
 Although many people are concerned about their online privacy, they still tend to disclose plenty of personal information on the web [e.g., @acquistiLossesGainsHyperbolic2003]. 
 This is problematic, because sharing information online allows to accurately predict a person's future behavior [@bagrowInformationFlowReveals2019].
 The privacy paradox and its underlying theoretical conundrum is hence of considerable interest to society---it is discussed in newspapers [@freanFindingSolutionsPrivacy2017], Wikipedia [@wikipediaPrivacyConcernsSocial2018], designated websites [@newyorkpublicradioPrivacyParadox2018], books [@treptePrivacyOnlinePerspectives2011], and top-tier academic journals [@acquistiPrivacyHumanBehavior2015].
@@ -129,7 +130,7 @@ Hence, privacy captures aspects of both volitional _control_ and social _separat
 Several dimensions of privacy have been proposed:
 For example, it is possible to distinguish a vertical and a horizontal level;
 whereas the vertical level captures privacy from authorities, institutions, or companies, horizontal privacy addresses privacy from peers, colleagues, or other people [@masurSituationalPrivacySelfdisclosure2018].
-When it comes to concern, it is interesting that they do not seem to be established as a stand-alone theoretical concept in psychology; 
+When it comes to concerns, it is interesting that they do not seem to be established as a stand-alone theoretical concept in psychology; 
 for example, the Oxford Dictionary of Psychology does not feature a designated entry [@colmanDictionaryPsychology2015].
 In general, however, concern is defined as a "marked interest or regard usually arising through a personal tie or relationship" that also reflects an "uneasy state of blended interest, uncertainty, and apprehension" [@merriam-websterDefinitionConcern2018].
 A concern therefore partially represents a latent _motivation_ (or increased attention) to invest oneself in a specific entity and a negatively valenced _emotion_ (or affective cognition).
@@ -179,7 +180,7 @@ Precisely, in order to be capable of detecting a correlation between privacy con
 The reality, however, looks different: 
 In their meta-analysis, Baruh et al. reported a median sample size of _N_ = 300. 
 
-[^power]: Statistical power describes the probability statistically detecting an effect that exists empirically. 
+[^power]: Statistical power describes the probability of statistically detecting an effect that exists empirically. 
 Only with high statistical power is it possible to make valid claims about an effect's existence @cohenPowerPrimer1992. 
 
 To conclude, in line with prior research [@baruhOnlinePrivacyConcerns2017] and the within-person rationales that we have presented above, we first expected to find a significant relation between privacy concerns and information sharing both on the between-person level and the within-person level. 
@@ -191,16 +192,16 @@ Hypothesis 2: People who are more concerned about their online privacy than they
 
 ## Long-Term Perspective
 
-Although we hypothesized that changes in people's concerns about online privacy will be directly reflected by their behavior, we were not sure about whether there would also be some long-term effects.
+Although we hypothesized that changes in people's concerns about online privacy will be directly reflected by their behavior, we were not sure about whether there would also be long-term effects.
 First, when analyzing potential long-term effects, it is important to choose an interval that is both plausible and relevant.
 For example, it makes a difference whether the effects of alcohol consumption on driving performance are tested 1 min, 1 h, or 1 day after consumption. 
-The main factor that determines an interval's optimal length is stability [@dormannOptimalTimeLags2015].
+One factor that determines an interval's optimal length is the variable's stability [@dormannOptimalTimeLags2015].
 Privacy concerns and privacy attitudes are predominantly trait-like constructs with high stabilities, therefore necessitating longer intervals.
 Other studies with comparable research questions have used an interval of 6 months [e.g., @valkenburgEffectsInstantMessaging2009], which we consider to be plausible also in this case.
 
 In general, we believe that it should be possible to find long-term effects. 
-It has been argued that privacy concerns affect privacy behavior [e.g., @heirmanPredictingAdolescentsDisclosure2013]. 
-The underlying theoretical mechanism could be that the emotional part of privacy concerns causes (a) motivated information selection and (b) motivated information processing, which is likely to change actual behavior [@nabiCognitivefunctionalModelEffects1999]. 
+It has been argued that privacy concerns _affect_ privacy behavior [e.g., @heirmanPredictingAdolescentsDisclosure2013]. 
+The underlying theoretical mechanism could be that the emotional part of privacy concerns causes (a) motivated information selection and (b) motivated information processing, which is likely to _change_ actual behavior [@nabiCognitivefunctionalModelEffects1999]. 
 Specifically, when privacy concerns increase (e.g., because of experienced or witnessed privacy infringements), people might begin reading more media articles on privacy issues and might also consume these articles more carefully, which could prompt information sharing practices that are more cautious.
 Also empirically, a study with 290 participants found small negative longitudinal (between-person) relations between privacy concerns and self-disclosure [@koohikamaliInvestigationDynamicModel2019].
 
@@ -217,10 +218,10 @@ Research Question 1.2: Do changes in the online sharing of personal information 
 
 ## The Role of Attitudes
 
-It has been argued that privacy attitudes could "bridge the gap" between concerns and information sharing [e.g., @dienlinPrivacyParadoxRelic2015]. 
+It has been argued that privacy attitudes could 'bridge the gap' between concerns and information sharing [e.g., @dienlinPrivacyParadoxRelic2015]. 
 In contrast to privacy concerns, privacy attitudes capture a more explicit, fluctuating cognitive appraisal. 
 Although both variables are related to information disclosure, attitudes are likely to be the better predictor. 
-This reasoning thus follows the rational choice paradigm [@simonBehavioralModelRational1955], which maintains that behavior is always, at least in part, influenced by convictions, attitudes, and cost-benefit analyses. 
+This reasoning follows the rational choice paradigm [@simonBehavioralModelRational1955], which maintains that behavior is always, at least in part, influenced by convictions, attitudes, and cost-benefit analyses. 
 Likewise, evolutionary psychology also suggests that although emotions guide behavior in the long run, it is more adaptive if behavior instead reflects a cognitive appraisal; 
 a tenet arguably reflected best by the phylogenetic development of the neocortex or the general dominion of the human race.
 These rationales have also found some empirical support. 
@@ -263,8 +264,8 @@ The six hypotheses were tested with a one-tailed approach and the six research q
 On the basis of the balanced alpha-beta approach with a maximum error probability of `r alpha %>% round(3) * 100`%, a desired power of `r power %>% round(3) * 100`%, and an SESOI of $\beta$ = `r sesoi`, we calculated that we needed a minimum sample size of `r dollar_format(prefix = "")(round(n_apriori, 0))` respondents. 
 Given the final sample size of `r dollar_format(prefix = "")(n)` respondents (see below), alpha and beta errors were balanced for our hypotheses (research questions) when we used a critical alpha of `r alpha_balanced_h  %>% round(3) * 100`% (`r alpha_balanced_rq  %>% round(3) * 100`%), resulting in a power of `r power_balanced_h %>% round(3) * 100`%  (`r power_balanced_rq %>% round(3) * 100`%) to detect small effects. 
 
-The data were analyzed by means of a random-intercepts cross-lagged panel model (RI-CLPM) [@hamakerCritiqueCrosslaggedPanel2015], a method that already has been used for similar research questions [@dietvorstAdolescentPerceptionsParental2018].
-Note that in contrast to regular cross-lagged panel models (CLPMs), RI-CLPMs allows to separate between-person variance from within-person variance. 
+The data were analyzed by means of a random-intercept cross-lagged panel model (RI-CLPM) [@hamakerCritiqueCrosslaggedPanel2015], a method that already has been used for similar research questions [@dietvorstAdolescentPerceptionsParental2018].
+Note that in contrast to regular cross-lagged panel models (CLPMs), RI-CLPMs allow to separate between-person variance from within-person variance. 
 We used factor scores as observed variables to represent the variables' latent structure more closely.
 We tested H1, H3.1, and H3.2 by correlating the random intercepts, which represent the respondents' individual mean scores across all three waves.
 We tested H2, H4.1, and H4.2 by correlating the respondents' within-person variance at T1, which captures their specific deviation at T1 from their overall score.
@@ -291,14 +292,14 @@ First, a sample of 14,714 potential respondents was drawn from a representative 
 In this CATI screening, 5,286 respondents agreed to participate in all following waves. 
 
 Wave 1 was completed by 3,278 respondents (response rate: `r round((1 - (3278 / 5286)) * 100, 0)`%), Wave 2 by 2,448 respondents (attrition rate: `r round((1 - (2448 / 3278)) * 100, 0)`%), and Wave 3 by 2,021 respondents (attrition rate: `r round((1 - (2021 / 2448)) * 100, 0)`%). 
-We filtered respondents who never used the Internet at all waves, answered fewer than 50% of the items for at least one wave, provided inconsistent birth-dates across measurements, or who did not report sociodemographic variables.
+We filtered respondents who never used the Internet at all waves, answered fewer than 50% of the items in each scale for at least one wave, provided inconsistent birth-dates across measurements, or who did not report sociodemographic variables.
 The final sample consisted of *n* = `r dollar_format(prefix = "")(n_complete)` respondents. 
 
 In the final sample, the rate of missing data was `r na_per %>% round(2)`%. 
 Visual inspection of the missing value patterns as well as the non-parametric test by @R-MissMech suggested that all missing values could be considered missing at random (*p* `r test_mar_p %>% my_round("p_txt")`). 
 Therefore, Full Information Maximum Likelihood (FIML) estimation was conducted using all available data.
 
-In the final sample, the average age was `r round(age_m, 0)` years (*SD* = `r round(age_sd, 0)` years), and `r (round(male_per, 2) - 1) * 100`% were male. 
+The average age was `r round(age_m, 0)` years (*SD* = `r round(age_sd, 0)` years), and `r (round(male_per, 2) - 1) * 100`% were male. 
 About `r round(edu_col_per, 0)`% reported that they had graduated from college. 
 
 ## Measures
@@ -368,7 +369,7 @@ Overall, `r icc_inf_sha_att$ICC_adjusted * 100 %>% round(0)`% of the measure's v
 
 In a first descriptive step, we analyzed the variables' bivariate relations. All variables associated with the hypotheses showed correlations that were in line with our theoretical rationales (Figure \@ref(fig:Distributions), above the diagonal).
 
-```{r Distributions, fig.cap="Results of the bivariate relations. above the diagonal: zero-order correlation matrix; diagonal: density plots for each variable; below the diagonal: bivariate scatter plots for zero-order correlations. Solid regression lines represent linear regressions, dashed regression lines represent quadratic regressions. Calculated with the variables’ latent factor scores.", fig.height=8, fig.width=8, out.width=".9\\textwidth", fig.align='center', fig.pos = "!ht", warning=F}
+```{r Distributions, fig.cap="Results of the bivariate relations. Above the diagonal: zero-order correlation matrix; diagonal: density plots for each variable; below the diagonal: bivariate scatter plots for zero-order correlations. Solid regression lines represent linear regressions, dashed regression lines represent quadratic regressions. Calculated with the variables’ latent factor scores.", fig.height=8, fig.width=8, out.width=".9\\textwidth", fig.align='center', fig.pos = "!ht", warning=F}
 suppressWarnings(print(corr_plot))
 ```
 
@@ -455,7 +456,7 @@ tab_results <- rbind(
 
 apa_table(
   tab_results
-  , caption = "Parameter Estimates Obtained in the Random Intercept Cross-Lagged Panel Model"
+  , caption = "Parameter Estimates Obtained in the Random-Intercept Cross-Lagged Panel Model"
   , note = paste0("The between-person correlations represent interpersonal relations. For example, results showed that people who were more concerned than others, averaged across all 3 waves, also shared less information than others. The within-person parameters reflect how intrapersonal changes in one variable are related to intra-personal changes in another. For example, results showed that if a person was more concerned at T1 than he or she usually is, he or she also shared less information than usual.")
   , font_size = "small"
   , stub_indents = list("Between-person correlations across all waves" = c(1:3),
@@ -502,7 +503,7 @@ Finally, it could also be that longterm longitudinal effects simply do not exist
 As a major point of criticism, one can argue that some of the effect sizes reported in this study are only small, too small to refute the privacy paradox.
 On the one had, they could simply be a manifestation of the so-called "crud factor" [@meehlWhySummariesResearch1990, p. 204], which states that all psychosocial measures are related to one another to some extent.
 On the other hand, other factors such as expected benefits might play a more important role [@dienlinExtendedPrivacyCalculus2016].
-In conclusion, although our results suggest that privacy concerns and privacy attitudes are correlated with  information sharing, one should indeed not overestimate the importance of privacy concerns; the impact on the online sharing of personal information could be larger, and other variables also play a role.
+In conclusion, although our results suggest that privacy concerns and privacy attitudes are correlated with information sharing, one should indeed not overestimate the importance of privacy concerns; the impact on the online sharing of personal information could be larger, and other variables also play a role.
 
 The study relied on estimations of information sharing that were based on self-reports. 
 As has been shown before, people are not particularly good at estimating the frequency of behaviors that are part of their daily routines [@scharkowAccuracySelfreportedInternet2016].
@@ -519,7 +520,7 @@ For theoretical reasons (e.g., due to availability heuristics), it would be plau
 for statistical reasons (e.g., because of the high stability of privacy concerns), however, it would even make sense to probe intervals that are longer [@dormannOptimalTimeLags2015].
 
 Linking general personality traits with typical behavior, recent studies have analyzed the privacy paradox by taking an aggregate perspective.
-However, it seems important to analyze privacy behaviors from a situational perspective as well, one that accounts for temporal needs, contexts, or communication channels [@masurSituationalPrivacySelfdisclosure2018].
+However, it seems important to analyze privacy behaviors from a situational perspective as well, one that accounts for temporal needs, interpersonal perceptions, contextual cues, or characteristics of communication channels [@masurSituationalPrivacySelfdisclosure2018].
 For example, it might be the case that whereas general levels of information sharing are best explained by using privacy _concerns_, situational information sharing might be best explained using privacy _heuristics_, which are less energy consuming and more situational [cf., @sundarUnlockingPrivacyParadox2013].
 
 As a final note, the privacy paradox argues that privacy concerns do not reflect whatsoever on the sharing of personal information online, 
@@ -541,7 +542,7 @@ Hence, given the common interest and involvement in the privacy paradox, providi
 Second, being able to show that online behaviors are not paradoxical has another benefit: 
 It suggests that online and offline behaviors are not ontologically different. 
 In offline contexts, as well, we find that concerns are not closely aligned with behaviors.
-For example, although most people are concerned about their health, a considerable number of people are  nonetheless smokers.
+For example, although most people are concerned about their health, a considerable number of people are nonetheless smokers.
 However, despite this discrepancy public agencies are aware that they still need to foster concern about health.
 For example, in May 2016, the European Union mandated that cigarette packages must display graphic warning labels;
 while stable in the years before, sales of cigarettes in Germany in 2016 dropped by 6.3 billion units, equaling 7.7% [@statistischesbundesamt201675Billion2017]. 
