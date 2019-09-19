@@ -958,7 +958,7 @@ d_fs <- lavPredict(get(paste("fit", name, no, sep = "_")), type = "ov") %>%
 d_wide <- cbind(d_fs, d_wide)
 ```
 
-### Latent correlation matrix with plots
+# Correlation matrix and distributions
 
 ```{r Corrplot, fig.height = 8, fig.width = 8, size=5}
 colnames(d_fs) <- c("Concerns\nT1", "Concerns\nT2" , "Concerns\nT3",
@@ -979,20 +979,90 @@ Next, we determine the Intraclass Correlation Coefficients (ICC), to determine h
 ```{r}
 fit <- lmer(pri_con_m ~ 1 + (1 | id), filter(d_long, wave < 4))
 summary(fit)
-icc_pri_con <- icc(fit)
+(icc_pri_con <- icc(fit))
 
 fit <- lmer(inf_sha_att_m ~ 1 + (1 | id), filter(d_long, wave < 4))
 summary(fit)
-icc_inf_sha_att <- icc(fit)
+(icc_inf_sha_att <- icc(fit))
 
 fit <- lmer(inf_sha_beh_m ~ 1 + (1 | id), filter(d_long, wave < 4))
 summary(fit)
-icc_inf_sha_beh <- icc(fit)
+(icc_inf_sha_beh <- icc(fit))
 ```
 
 # Results
 
 In what follows, please find all information about our final model we present in the paper.
+
+## Visualization
+
+```{r, fig.cap="Visual representation of the estimated random-intercept cross-lagged panel model (RI-CLPM)."}
+knitr::include_graphics("../figures/model_7.png")
+```
+
+## Results
+
+```{r}
+model <- '
+# between relations
+pri_con_b =~ 1*t1_pri_con_fs + 1*t2_pri_con_fs + 1*t3_pri_con_fs
+inf_sha_beh_b =~ 1*t1_inf_sha_beh_fs + 1*t2_inf_sha_beh_fs + 1*t3_inf_sha_beh_fs
+inf_sha_att_b =~ 1*t1_inf_sha_att_fs + 1*t2_inf_sha_att_fs + 1*t3_inf_sha_att_fs
+
+# within person changes
+t1_pri_con_w =~ 1*t1_pri_con_fs
+t2_pri_con_w =~ 1*t2_pri_con_fs
+t3_pri_con_w =~ 1*t3_pri_con_fs
+t1_inf_sha_beh_w =~ 1*t1_inf_sha_beh_fs
+t2_inf_sha_beh_w =~ 1*t2_inf_sha_beh_fs
+t3_inf_sha_beh_w =~ 1*t3_inf_sha_beh_fs
+t1_inf_sha_att_w =~ 1*t1_inf_sha_att_fs
+t2_inf_sha_att_w =~ 1*t2_inf_sha_att_fs
+t3_inf_sha_att_w =~ 1*t3_inf_sha_att_fs
+
+# within person effects
+t2_pri_con_w ~ a1*t1_pri_con_w + a2*t1_inf_sha_att_w + a3*t1_inf_sha_beh_w
+t2_inf_sha_att_w ~ b1*t1_pri_con_w + b2*t1_inf_sha_att_w + b3*t1_inf_sha_beh_w
+t2_inf_sha_beh_w ~ c1*t1_pri_con_w + c2*t1_inf_sha_att_w + c3*t1_inf_sha_beh_w
+t3_pri_con_w ~ a1*t2_pri_con_w + a2*t2_inf_sha_att_w + a3*t2_inf_sha_beh_w
+t3_inf_sha_att_w ~ b1*t2_pri_con_w + b2*t2_inf_sha_att_w + b3*t2_inf_sha_beh_w
+t3_inf_sha_beh_w ~ c1*t2_pri_con_w + c2*t2_inf_sha_att_w + c3*t2_inf_sha_beh_w
+
+# covariances
+pri_con_b ~~ cor_b_1*inf_sha_att_b + cor_b_2*inf_sha_beh_b
+inf_sha_att_b ~~ cor_b_3*inf_sha_beh_b
+t1_pri_con_w ~~ cor_w_1*t1_inf_sha_att_w + cor_w_2*t1_inf_sha_beh_w
+t1_inf_sha_att_w ~~ cor_w_3*t1_inf_sha_beh_w
+t2_pri_con_w ~~ a*t2_inf_sha_att_w + b*t2_inf_sha_beh_w
+t2_inf_sha_att_w ~~ c*t2_inf_sha_beh_w
+t3_pri_con_w ~~ a*t3_inf_sha_att_w + b*t3_inf_sha_beh_w
+t3_inf_sha_att_w ~~ c*t3_inf_sha_beh_w
+
+# setting variances of observed variables to zero
+t1_pri_con_fs ~~ 0*t1_pri_con_fs
+t2_pri_con_fs ~~ 0*t2_pri_con_fs
+t3_pri_con_fs ~~ 0*t3_pri_con_fs
+t1_inf_sha_att_fs ~~ 0*t1_inf_sha_att_fs
+t2_inf_sha_att_fs ~~ 0*t2_inf_sha_att_fs
+t3_inf_sha_att_fs ~~ 0*t3_inf_sha_att_fs
+t1_inf_sha_beh_fs ~~ 0*t1_inf_sha_beh_fs
+t2_inf_sha_beh_fs ~~ 0*t2_inf_sha_beh_fs
+t3_inf_sha_beh_fs ~~ 0*t3_inf_sha_beh_fs
+
+# control variables
+t1_pri_con_fs ~ age + edu_num + male
+t2_pri_con_fs ~ age + edu_num + male
+t3_pri_con_fs ~ age + edu_num + male
+t1_inf_sha_beh_fs ~ age + edu_num + male
+t2_inf_sha_beh_fs ~ age + edu_num + male
+t3_inf_sha_beh_fs ~ age + edu_num + male
+t1_inf_sha_att_fs ~ age + edu_num + male
+t2_inf_sha_att_fs ~ age + edu_num + male
+t3_inf_sha_att_fs ~ age + edu_num + male
+'
+fit <- sem(model, data = d_wide, orthogonal = TRUE, missing = "ML")
+summary(fit, standardized = TRUE, fit.measures = TRUE, ci = TRUE)
+```
 
 # Additional Analyses
 ## RI-CLPM
