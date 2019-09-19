@@ -26,7 +26,7 @@ author_note: |
   This manuscript features online supplementary material that includes the code, additional analyses, and a reproducible version of the manuscript (https://osf.io/4wabh). The data can be downloaded from http://dx.doi.org/10.7802/1937. 
 abstract: |
   The privacy paradox states that people's concerns about online privacy are unrelated to their online sharing of personal information. 
-  Using a representative sample of the German population, featuring `r knitr::load_cache(label = "load-data", object = "n_complete")` respondents who were interviewed at three waves that were separated by 6 months, we investigate the privacy paradox from a longitudinal perspective, differentiating between-person relations from within-person effects.
+  Using a representative sample of the German population, which includes `r knitr::load_cache(label = "load-data", object = "n_complete")` respondents who were interviewed at three waves separated by 6 months, we investigate the privacy paradox from a longitudinal perspective, differentiating between-person relations from within-person effects.
   Results of a cross-lagged panel model with random intercepts revealed that people who were more concerned about their online privacy than others also shared slightly less personal information online and had substantially more negative attitudes toward the online  sharing of personal information than others (between-person level). 
   Next, people who were more concerned than usual also shared slightly less information than usual (within-person level). 
   At the same time, we found no long-term effects of privacy concerns on information sharing or attitudes 6 months later.
@@ -79,22 +79,21 @@ load("../data/workspace.RData")
 ```
 
 The privacy paradox states that information disclosure practices of Internet users are problematic: 
-Although many people are concerned about their online privacy, they still tend to disclose plenty of personal information on the web [e.g., @acquistiLossesGainsHyperbolic2003]. 
-This is problematic, because sharing information online allows to accurately predict a person's future behavior [@bagrowInformationFlowReveals2019].
+Although many people are concerned about their online privacy, they still tend to share plenty of personal information on the web [e.g., @acquistiLossesGainsHyperbolic2003]. 
 The privacy paradox and its underlying theoretical conundrum is hence of considerable interest to society---it is discussed in newspapers [@freanFindingSolutionsPrivacy2017], Wikipedia [@wikipediaPrivacyConcernsSocial2018], designated websites [@newyorkpublicradioPrivacyParadox2018], books [@treptePrivacyOnlinePerspectives2011], and top-tier academic journals [@acquistiPrivacyHumanBehavior2015].
 If the privacy paradox really exists, it should inspire worry: 
-It would suggest that online behavior is irrational and that people are revealing too much of their personal lives to unknown third parties, fostering potentially unintended consequences such as commodification, exploitation or inappropriate recontextualization [@boydTakenOutContext2008; @sevignaniPrivacyCapitalismAge2016].
-In conclusion, understanding why people disclose information online and whether this is paradoxical or not represents an important challenge for communication scholars.
+It would suggest that online behavior is irrational and that people are revealing too much of their personal lives to unknown third parties, which can foster potentially unintended consequences such as commodification [@sevignaniPrivacyCapitalismAge2016], inappropriate recontextualization [@boydTakenOutContext2008], or increased predictability of future behavior [@bagrowInformationFlowReveals2019].
+In conclusion, understanding why people disclose information online and whether this is paradoxical or not represents an important challenge for scholars in the social sciences.
 
 However, current research on the privacy paradox has one major limitation: 
 To the best of our knowledge, all empirical studies conducted so far have investigated the privacy paradox from a between-person (i.e., interpersonal) perspective.
 By employing empirical tests of between-person variance (e.g., cross-sectional questionnaires analyzed with multiple regression or Pearson correlations), studies have analyzed whether people who are more concerned than _others_ also share less personal information than _others_.
 Granted, such a between-person perspective is interesting and represents a viable first step in analyzing the relation between these variables.
-At the same time, it is important to emphasize that the privacy paradox actually implies that the research question that should be asked is a within-person (i.e., intrapersonal) relation:
+At the same time, it is important to emphasize that the privacy paradox actually implies a within-person (i.e., intrapersonal) perspective:
 Does a person, if _he or she_ becomes more concerned about online privacy, then also share less personal information?
-This mismatch is problematic because although between-person variance is, except some specific cases, a _necessary_ condition for within-person effects, it is by no means a _sufficient_ condition.
+This mismatch is problematic because although between-person variance is, except for some special cases, a _necessary_ condition for within-person effects, it is by no means a _sufficient_ condition.
 For example, it could be that the between-person relation is determined by another stable third variable. 
-Hence, as the next step in investigating the privacy paradox and to better understand the intrapersonal relation between privacy concerns and information sharing, we now need studies with within-person designs.
+Hence, as the next step in investigating the privacy paradox and to better understand the intrapersonal relation between privacy concerns and information sharing, we need to conduct studies with within-person designs.
 
 As a result, with this study we aim to answer four major questions. 
 First, on a between-person level, how are concerns about online privacy related to the online sharing of personal information? 
@@ -107,16 +106,18 @@ To best answer and contextualize these questions, we first provide an in-depth t
 
 @acquistiLossesGainsHyperbolic2003 were among the first to argue that the online disclosure of personal information is paradoxical. 
 "Experiments reveal that very few individuals actually take any action to protect their personal information, even when doing so involves limited costs" (p.1). 
-Three years later, @barnesPrivacyParadoxSocial2006 discussed the behavior of young people using SNSs and coined the expression the "privacy paradox." 
+Three years later, @barnesPrivacyParadoxSocial2006 discussed the behavior of young people using SNSs and coined the expression of the _privacy paradox_. 
 Barnes listed six notions that she considered to be particularly paradoxical: (a) illusion of privacy, (b) high quantity of information sharing, (c) attitude behavior discrepancy, (d) lack of privacy concerns, (e) lack of privacy literacy, and (f) fabrication of false information.
 
 Subsequent research analyzed the privacy paradox more explicitly, focusing on Barnes's third tenet, the attitude-behavior discrepancy. 
 On the one hand, some studies reported that privacy concerns were not significantly related to the disclosure of personal information [e.g., @grossInformationRevelationPrivacy2005; @taddickenPrivacyParadoxSocial2014; @tufekciCanYouSee2008], lending credence to the privacy paradox. 
-On the other hand, a different set of studies showed relations that were statistically significant [@heirmanPredictingAdolescentsDisclosure2013; @walraveConnectingProtectingComparing2012; e.g., @dienlinPrivacyParadoxRelic2015], thereby refuting the privacy paradox. 
+On the other hand, a different set of studies showed relations that were statistically significant [e.g., @dienlinPrivacyParadoxRelic2015; @heirmanPredictingAdolescentsDisclosure2013; @walraveConnectingProtectingComparing2012], thereby refuting the privacy paradox. 
 
-It is interesting that in a parallel line of research, other studies have also analyzed the relation between privacy concerns and subsequent information sharing; however, the term privacy paradox has often not been mentioned explicitly. 
+It is interesting that in a parallel line of research other studies have also analyzed the relation between privacy concerns and information sharing; 
+however, the term privacy paradox has often not been mentioned explicitly. 
 Instead, studies have referred to the so-called _privacy calculus_. 
-The privacy calculus states that sharing personal information is affected by both the respective costs and the anticipated benefits [@culnanInformationPrivacyConcerns1999] and by now, several studies have found empirical support in various online contexts [e.g., @bolUnderstandingEffectsPersonalization2018; @dienlinExtendedPrivacyCalculus2016; @krasnovaOnlineSocialNetworks2010].
+The privacy calculus states that sharing personal information is affected by both the respective costs and the anticipated benefits [@culnanInformationPrivacyConcerns1999].
+By now, several studies have found empirical support for the privacy calculus in various online contexts [e.g., @bolUnderstandingEffectsPersonalization2018; @dienlinExtendedPrivacyCalculus2016; @krasnovaOnlineSocialNetworks2010].
 
 @baruhOnlinePrivacyConcerns2017 published the first empirical meta-analysis on the relations between privacy concerns and various forms of social media use (e.g., information sharing or SNS usage). 
 On the basis of 37 studies, @baruhOnlinePrivacyConcerns2017 found a small and significant statistical relation between concerns about online privacy and online information sharing (_r_ = -.13). 
@@ -130,26 +131,27 @@ Hence, privacy captures aspects of both volitional _control_ and social _separat
 Several dimensions of privacy have been proposed:
 For example, it is possible to distinguish a vertical and a horizontal level;
 whereas the vertical level captures privacy from authorities, institutions, or companies, horizontal privacy addresses privacy from peers, colleagues, or other people [@masurSituationalPrivacySelfdisclosure2018].
-When it comes to concerns, it is interesting that they do not seem to be established as a stand-alone theoretical concept in psychology; 
-for example, the Oxford Dictionary of Psychology does not feature a designated entry [@colmanDictionaryPsychology2015].
-In general, however, concern is defined as a "marked interest or regard usually arising through a personal tie or relationship" that also reflects an "uneasy state of blended interest, uncertainty, and apprehension" [@merriam-websterDefinitionConcern2018].
-A concern therefore partially represents a latent _motivation_ (or increased attention) to invest oneself in a specific entity and a negatively valenced _emotion_ (or affective cognition).
+When it comes to concerns, it is interesting that they do not seem to be established as a stand-alone theoretical concept in psychology: 
+For example, the Oxford Dictionary of Psychology does not feature a designated entry [@colmanDictionaryPsychology2015].
+In general, however, a concern is defined as a "marked interest or regard usually arising through a personal tie or relationship" that also reflects an "uneasy state of blended interest, uncertainty, and apprehension" [@merriam-websterDefinitionConcern2018].
+A concern therefore partially represents both a latent _motivation_ (or increased attention) to invest oneself in a specific entity and a negatively valenced _emotion_ (or affective condition).
 As such, a concern is not predominantly the result of a deliberate explicit cognition; instead, it primarily reflects an automatic implicit perception.
 Taken together, concerns about online privacy represent how much an individual is motivated to focus on his or her control over a voluntary withdrawal from other people or societal institutions on the Internet, accompanied by an uneasy feeling that his or her privacy might be threatened.
 As a theoretical construct, privacy concerns can hence be categorized as an affective motivational disposition.
-As such, they have similarities with many other concepts such as emotions (e.g., fear, anxiety), moods (e.g., dismay, fatigue), attitudes (approval, dissent), values (e.g., autonomy, freedom), personality traits (e.g., introversion, risk avoidance), and even physiological activation (e.g., attention, arousal).
+As such, there are many similarities with other concepts, which includes emotions (e.g., fear, anxiety), moods (e.g., dismay, fatigue), attitudes (approval, dissent), values (e.g., autonomy, freedom), personality traits (e.g., introversion, risk avoidance), and even physiological activation (e.g., attention, arousal).
 
-The online sharing of personal information, on the other hand, captures how much person-related information people share when they use the Internet, including, for example, information about their age, sex, name, address, health, or finances.
+The online sharing of personal information, on the other hand, captures how much person-related information people share when they use the Internet, which includes, for example, information about their age, sex, name, address, health, or finances.
 Information sharing can be differentiated from communication and self-disclosure:
-Whereas communication is broad because it includes all verbal and nonverbal information that is emitted [e.g., @watzlawickPragmaticsHumanCommunication2011], self-disclosure is narrow because it focuses on deliberate revelations about the true self to others [e.g., @jourardTransparentSelf1964]
+Whereas communication is broad because it comprises all verbal and nonverbal information that is emitted [e.g., @watzlawickPragmaticsHumanCommunication2011], self-disclosure is narrow because it focuses on deliberate revelations about the true self to others [e.g., @jourardTransparentSelf1964]
 
 ## The Relation Between Privacy Concerns and Information Sharing
 
-It is somewhat surprising that the literature seems to lack explicit theoretical treatises on why and how human behavior should be specifically affected by concerns.
+It is somewhat surprising that the literature seems to lack explicit theoretical treatises on why and how human behavior should be affected by concerns specifically.
 More fortunately, however, there are several theoretical insights regarding how the affective motivational concepts presented above can pertain to behavior.
 The results are unanimous: They can all affect behavior profoundly.
 For example, let us consider the concept that is perhaps closest to concerns, emotions.
-By causing fight or flight reactions, emotions are potentially the most primordial trigger of behavior as they are considered an adaptive mechanism that fosters the evolution of a species [@dolanEmotionCognitionBehavior2002].
+By causing fight or flight reactions, emotions are potentially the most primordial trigger of behavior, 
+they are considered an adaptive mechanism that fosters the evolution of a species [@dolanEmotionCognitionBehavior2002].
 With their direct link to the amygdala, emotions can already trigger reactions subcortically [i.e., without activation of the more recently evolved cortical structures; @dolanEmotionCognitionBehavior2002].
 It hence seems plausible to suggest that privacy concerns, with their emotional dependency, also share this function at least partially.
 Moreover, changes in concerns might be correlated with changes in behavior because people usually aim to reduce discrepancies between cognitions and behavior [@festingerTheoryCognitiveDissonance1957].
@@ -157,34 +159,33 @@ There are also several empirical accounts of how concerns affect behavior:
 People who are more concerned about the environment show more environment-related behaviors [@bambergHowDoesEnvironmental2003], 
 people who are more concerned about their appearance consume fewer calories [@hayesConcernAppearanceHealth1987], 
 and people who are more concerned about their bodies engage in more physical exercise [@reelRelationsBodyConcerns2007].
-Hence, it seems reasonable to also expect that if a person's concerns about online privacy change, this change should be reflected in a change in the extent to which this person will share personal information online. 
+Hence, it seems reasonable to expect that also concerns about online privacy should be reflected in the online sharing of personal information. 
 
-At the same time, there are several variables that are likely to diminish the relation.
-Most prominently, there is the so-called "attitude behavior gap", which pertains to the idea that people often act against their own attitudes [e.g., @fishbeinPredictingChangingBehavior2010]. 
-For example, despite endorsing the importance of physical health, a large part of the population does not exercise regularly.
+At the same time, there are some factors that are likely to diminish the relation.
+Most prominently, there is the so-called _attitude behavior gap_, which pertains to the idea that people often act against their own attitudes [e.g., @fishbeinPredictingChangingBehavior2010]. 
+For example, despite endorsing the importance of physical health, a large part of the population still does not exercise regularly.
 Transferred to the privacy paradox, it should not be surprising to encounter this general discrepancy also in the specific context of privacy concerns and information sharing. 
 The explanation is simple: Other factors such as subjective norms and perceived behavioral control can also determine behavior [@ajzenIntentionsActionsTheory1985], and this automatically limits the predictive capacity of attitudes or concerns. 
 Specifically, two of the most influential factors that affect online information sharing are (a) the strong subjective norms to participate online [@heirmanPredictingAdolescentsDisclosure2013] and (b) the manifold benefits that accrue from participation [@krasnovaOnlineSocialNetworks2010]. 
 In other words, instead of considering privacy concerns it is often more important to attain social support, special offers, or tailored services.
 @trepteRiskyBehaviorsHow2014 listed several factors that can additionally attenuate the relation:
-if the concerns miss any actual strength,
+concerns might be missing any actual strength,
 a lack of negative personal experiences, 
-or distortions due to situational constraints such as social desirability.
+and situational constraints due to social desirability.
 
-Finally, there are also some methodological reasons that can explain why some studies did not find statistically significant relations even though they probably exist empirically.
-In general, researchers are always confronted with the so-called Duhem-Quine problem, which holds that it is impossible to test theories in isolation, because empirical tests always rely on auxiliary assumptions [e.g., @dienesUnderstandingPsychologyScience2008]. 
+Finally, there are also some methodological reasons that can explain why some studies did not find statistically significant relations, even when they exist empirically.
+In general, researchers are always confronted with the _Duhem-Quine problem_, which holds that it is impossible to test theories in isolation, because empirical tests always rely on auxiliary assumptions [e.g., @dienesUnderstandingPsychologyScience2008]. 
 In other words, if a psychological experiment fails, we do not know whether the theory is wrong or the questionnaire subpar. 
 This tenet is particularly relevant for the privacy paradox: 
-Detecting statistical significance for small effects---and in this case, we should expect to find effects that are small---is more challenging because it means that large samples are necessary to guarantee sufficient statistical power.[^power]
+Detecting statistical significance for small effects---and in this case, we should expect to find small effects---is more challenging because it means that large samples are necessary to guarantee sufficient statistical power.[^power]
 Precisely, in order to be capable of detecting a correlation between privacy concerns and information sharing in 95% of all cases, which @baruhOnlinePrivacyConcerns2017 estimated to be _r_ = -.13, we need a sample of _N_ = `r pwr.r.test(r = -.13, sig.level = .05, power = .95)$n %>%  round(0)` people. 
 The reality, however, looks different: 
-In their meta-analysis, Baruh et al. reported a median sample size of _N_ = 300. 
+In their meta-analysis, Baruh et al. reported a median sample size of _N_ = 300, which can explain why several studies did not find significant effects.
 
 [^power]: Statistical power describes the probability of statistically detecting an effect that exists empirically. 
-Only with high statistical power is it possible to make valid claims about an effect's existence @cohenPowerPrimer1992. 
+Only with high statistical power is it possible to make valid claims about an effect's existence [@cohenPowerPrimer1992]. 
 
-To conclude, in line with prior research [@baruhOnlinePrivacyConcerns2017] and the within-person rationales that we have presented above, we first expected to find a significant relation between privacy concerns and information sharing both on the between-person level and the within-person level. 
-Second, given the strong premise that concerns should be reflected in contiguous behaviors, alongside the existence of several diminishing factors, we expected to find a small relation between concerns about online privacy and the online sharing of personal information also on the within-person level.
+To conclude, in line with prior research [@baruhOnlinePrivacyConcerns2017] and the within-person rationales that we have presented above, we expect to find a small significant relation between privacy concerns and information sharing, both on the between-person level and the within-person level.
 
 Hypothesis 1: People who are more concerned about their online privacy than others will also be less likely to share personal information online than others.
 
@@ -192,7 +193,7 @@ Hypothesis 2: People who are more concerned about their online privacy than they
 
 ## Long-Term Perspective
 
-Although we hypothesized that changes in people's concerns about online privacy will be directly reflected by their behavior, we were not sure about whether there would also be long-term effects.
+Although we hypothesize that changes in people's concerns about online privacy will be reflected by their behavior directly, we are not sure about whether there will also be long-term effects.
 First, when analyzing potential long-term effects, it is important to choose an interval that is both plausible and relevant.
 For example, it makes a difference whether the effects of alcohol consumption on driving performance are tested 1 min, 1 h, or 1 day after consumption. 
 One factor that determines an interval's optimal length is the variable's stability [@dormannOptimalTimeLags2015].
@@ -200,8 +201,8 @@ Privacy concerns and privacy attitudes are predominantly trait-like constructs w
 Other studies with comparable research questions have used an interval of 6 months [e.g., @valkenburgEffectsInstantMessaging2009], which we consider to be plausible also in this case.
 
 In general, we believe that it should be possible to find long-term effects. 
-It has been argued that privacy concerns _affect_ privacy behavior [e.g., @heirmanPredictingAdolescentsDisclosure2013]. 
-The underlying theoretical mechanism could be that the emotional part of privacy concerns causes (a) motivated information selection and (b) motivated information processing, which is likely to _change_ actual behavior [@nabiCognitivefunctionalModelEffects1999]. 
+It has been argued that privacy concerns affect privacy behavior in the long run [e.g., @heirmanPredictingAdolescentsDisclosure2013]. 
+The underlying theoretical mechanism could be that the emotional part of privacy concerns causes (a) motivated information selection and (b) motivated information processing, which is likely to change actual behavior [@nabiCognitivefunctionalModelEffects1999]. 
 Specifically, when privacy concerns increase (e.g., because of experienced or witnessed privacy infringements), people might begin reading more media articles on privacy issues and might also consume these articles more carefully, which could prompt information sharing practices that are more cautious.
 Also empirically, a study with 290 participants found small negative longitudinal (between-person) relations between privacy concerns and self-disclosure [@koohikamaliInvestigationDynamicModel2019].
 
@@ -210,7 +211,7 @@ On the one hand, the long-term relation could be negative:
 If people start to share more information online, they might become increasingly aware that their privacy is at risk, which might stir concern.
 On the other hand, the long-term relation might also be positive, because when people share more personal information online, they might become accustomed to doing so, which might reduce concern [for example, due to the mere exposure effect; @zajoncAttitudinalEffectsMere1968].
 Finally, there could also be no long-term relation after all. 
-For example, people might have already become used to sharing information online and this might stifle any further cognitive or emotional processing, a rationale central to the observation of so-called _privacy cynicism_ [e.g., @hoffmannPrivacyCynicismNew2016]. 
+For example, people might have already become used to sharing information online, which might stifle any further cognitive or emotional processing -- a rationale central to the observation of so-called _privacy cynicism_ [e.g., @hoffmannPrivacyCynicismNew2016]. 
 
 Research Question 1.1: Do changes in concerns about online privacy affect the online sharing of personal information 6 months later?
 
