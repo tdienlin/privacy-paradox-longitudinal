@@ -2,7 +2,6 @@
 title: "A Longitudinal Analysis of the Privacy Paradox"
 author: "Tobias Dienlin, Philipp K. Masur, Sabine Trepte"
 output: 
-  # pdf_document: 
   html_document:
     toc: true
     toc_float: true
@@ -12,14 +11,14 @@ editor_options:
   chunk_output_type: inline
 ---
 
-```{r, echo = FALSE, include = FALSE}
+```{r, echo=F, include=F}
 # defaults
 set.seed(170819)
-options(digits = 3, width = 120, max.print = 100000)
-knitr::opts_chunk$set(echo = T, error = F, message = F, tidy = T, warning = F, cache = T)
+options(digits=3, width=120, max.print=100000)
+knitr::opts_chunk$set(echo=T, error=F, message=F, tidy=T, warning=F, cache=F)
 ```
 
-```{r Packages, include = FALSE, cache=F}
+```{r Packages, include=F, cache=F}
 # relevant packages
 devtools::install_github("tdienlin/td@v.0.0.2.5")
 required <- c("GGally", "ggplot2", "lavaan", "lme4", "magrittr", 
@@ -40,7 +39,7 @@ d_wide_all <- read_csv("../data/data_wide_all.csv")
 d_long <- read_csv("../data/data_long.csv")
 ```
 
-```{r include=FALSE}
+```{r include=F}
 # Extract descriptives to report in paper
 desc <- d_wide %>% 
   summarize_at(vars(ends_with("_m")), funs(mean(., na.rm = TRUE), sd(., na.rm = TRUE)))
@@ -1583,11 +1582,6 @@ summary(fit, standardized = TRUE, fit.measures = TRUE, ci = TRUE)
 #### Model 4 (final)
 
 With Factor Scores and control variables. This is the final model we report in the paper.
-
-```{r, fig.cap="Visual representation of the estimated random-intercept cross-lagged panel model (RI-CLPM)."}
-knitr::include_graphics("../figures/model_7.png")
-```
-
 
 ```{r}
 model <- '

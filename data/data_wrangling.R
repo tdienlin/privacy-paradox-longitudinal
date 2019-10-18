@@ -3,8 +3,9 @@ library(DataCombine); library(magrittr); library(tidyverse)
 
 # load data
 # note: the actual data can be obtained from http://dx.doi.org/10.7802/1937
-# please download the file "privacy-longitudinal-study_data_2019-08-27.csv" and paste into folder "data"
-d_raw <- read_csv("data/privacy-longitudinal-study_data_2019-08-27.csv")
+# please download the most current file "privacy-longitudinal-study_data_YYYY-MM-DD.csv"
+# paste this file into folder "data"
+d_raw <- read_csv("data/privacy-longitudinal-study_data_2019-10-10.csv")
 
 # select variables
 d_wide <- d_raw %>%
