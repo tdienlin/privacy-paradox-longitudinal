@@ -4,6 +4,7 @@
 .RData
 .Ruserdata
 analyses_cache/
+analyses_additional_cache/
 manuscript.aux
 manuscript.out
 manuscript.tex

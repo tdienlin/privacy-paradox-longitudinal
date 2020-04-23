@@ -1,0 +1,62 @@
+---
+title: "List of Items"
+output: 
+  html_document:
+    toc: TRUE
+    toc_float:
+      collapsed: FALSE
+    toc_depth: 2
+---
+
+# Items
+## Privacy Concern
+
+The following deals with things that can happen on the Internet.
+
+1. In general, how concerned are you about your privacy while using the Internet?
+2. Are you concerned about online organizations not being who they claim they are?
+3. Are you concerned about online identity theft?
+4. Are you concerned about people you do not know obtaining personal information about you from your online activities?
+5. Are you concerned that if you use your credit card to buy something on the Internet your credit card number will be obtained/intercepted by someone else?
+6. Are you concerned that an email you sent may be read by someone else besides the person you sent it to?
+7. Are you concerned that institutions or secret services could collect and analyze the data that you are disclosing on the Internet?
+8. Are you concerned that website providers are tracking your online activities?
+9. Are you concerned that you don’t know what other organizations or website providers are doing with you data?
+
+(NA = "no Internet user / no reply", 1 = "Not concerned at all" : 5 = "very concerned")
+
+## Attitude Toward Online Sharing of Personal Information
+
+Now we will deal with information sharing on the Internet. Do you think that it is sensible to disclose the following pieces of information online, i.e., via the Internet?
+
+1. Financial information (bank data, account balances…)
+2. Medical information (health, medical records…)
+3. Second name
+4. First name
+5. Residence
+6. Street and house number
+7. Email address
+8. Phone number
+9. Photos (of you)
+10. Job (past and present)
+11. Education
+
+(NA = “no Internet user / no reply”, 1 = "not sensible at all", 2 = "somewhat not sensible", 3 = "in part", 4 = "somewhat sensible", 5 = "very sensible")
+
+## Online Sharing of Personal Information
+
+In the following, please indicate how often you disclose the following information on the Internet. How often do you disclose the following pieces of information online, i.e., on the Internet?
+
+1. Financial information (bank data, account balances…)
+2. Medical information (health, medical records…)
+3. Second name
+4. First name
+5. Residence
+6. Street and house number
+7. Email address
+8. Phone number
+9. Photos (of you)
+10. Job (past and present)
+11. Education
+
+(NA = “no Internet user / no reply”, 1 = "every day", 2 = "weekly", 3 = "monthly", 4 = "less than that", 5 = "never")
