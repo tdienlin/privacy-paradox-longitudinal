@@ -9,7 +9,6 @@ manuscript.out
 manuscript.tex
 manuscript.log
 manuscript_cache/
-manuscript_files/
 data/data_imputed.csv
 data/data_long.csv
 data/data_raw.csv
