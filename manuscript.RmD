@@ -23,7 +23,7 @@ author_note: |
   This research was funded by the German Federal Ministry of Education and Research (BMBF) Grant 16KIS0094, awarded to Sabine Trepte.
   
   
-  This manuscript features online supplementary material that includes the code, additional analyses, and a reproducible version of the manuscript (https://osf.io/4wabh). The data can be downloaded from http://dx.doi.org/10.7802/1937. 
+  This manuscript features a companion website that includes detailed summaries of the statistical results, the code, additional analyses, and a reproducible version of the manuscript (https://tdienlin.github.io/privacy-paradox-longitudinal). The data can be downloaded from http://dx.doi.org/10.7802/1937. 
 abstract: |
   The privacy paradox states that people's concerns about online privacy are unrelated to their online sharing of personal information. 
   Using a representative sample of the German population, which includes `r knitr::load_cache(label = "load-data", object = "n_complete")` respondents who were interviewed at three waves separated by 6 months, we investigate the privacy paradox from a longitudinal perspective, differentiating between-person relations from within-person effects.
@@ -286,7 +286,7 @@ Fit was assessed according to the common criteria as described by @klinePrincipl
 The final model fit the data well, `r fit_txt(fit_riclpm)`. 
 
 For the analyses, coding, and typesetting, we used `r r_citations`.
-The code, additional analyses, and a reproducible version of this manuscript can be accessed in the Online Supplementary Material (OSM) at https://osf.io/4wabh.
+The code, additional analyses, and a reproducible version of this manuscript can be found on the manuscript's companion website at https://tdienlin.github.io/privacy-paradox-longitudinal.
 
 ## Procedure and Respondents
 

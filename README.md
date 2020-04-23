@@ -7,7 +7,7 @@ Please note that this OSM does not contain the actual data, which can be downloa
 To reproduce the manuscript:
 - download the file "privacy-longitudinal-study_data_YYYY-MM-DD.csv" from http://dx.doi.org/10.7802/1937 and save in folder "data"
 - run the file "data/data_wrangling.R", in order to prepare the dataset for analyses.
-- run the file "analyses/analyses.RmD", in order to rerun all analyses. 
-- run the file "manuscript/manuscript.RmD", in order to get the final manuscript.
+- knit the file "analyses/analyses.RmD", to rerun all analyses. 
+- knit the file "manuscript/manuscript.RmD", to get the final manuscript.
 
-Please feel free to provide feedback and comments, to open up issues, or to make pull requests :)
+Please feel free to provide feedback and comments, to open up issues, or to make pull requests.

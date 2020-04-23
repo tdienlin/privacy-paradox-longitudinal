@@ -11,7 +11,7 @@
 
 
 
-<title>Longitudinal Analysis of the Privacy Calculus</title>
+<title>List of Items</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +19,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -250,6 +253,75 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
 
 </head>
 
@@ -257,6 +329,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -317,18 +399,71 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Longitudinal Analysis of the Privacy Calculus</h1>
+<h1 class="title toc-ignore">List of Items</h1>
 
 </div>
 
 
-<p>On this website, you can find the companion material for the paper <em>A Longitudinal Analysis of the Privacy Paradox</em>.</p>
-<p>You can either read the paper <a href="manuscript.html">online</a> or download it as <a href="manuscript.pdf">pdf</a>. You can also find the detailed code and summaries of the <a href="analyses.html">analyses</a> that were reported in the paper.</p>
-<p>Please note that this OSM does not contain the actual data, which can be downloaded from <a href="http://dx.doi.org/10.7802/1937" class="uri">http://dx.doi.org/10.7802/1937</a>.</p>
-<p>This website is produced directly from the project’s <a href="https://github.com/tdienlin/privacy_calc_exp">github repository</a>. You can download the material, file an issue, or submit a pull request.</p>
+<div id="items" class="section level1">
+<h1>Items</h1>
+<div id="privacy-concern" class="section level2">
+<h2>Privacy Concern</h2>
+<p>The following deals with things that can happen on the Internet.</p>
+<ol style="list-style-type: decimal">
+<li>In general, how concerned are you about your privacy while using the Internet?</li>
+<li>Are you concerned about online organizations not being who they claim they are?</li>
+<li>Are you concerned about online identity theft?</li>
+<li>Are you concerned about people you do not know obtaining personal information about you from your online activities?</li>
+<li>Are you concerned that if you use your credit card to buy something on the Internet your credit card number will be obtained/intercepted by someone else?</li>
+<li>Are you concerned that an email you sent may be read by someone else besides the person you sent it to?</li>
+<li>Are you concerned that institutions or secret services could collect and analyze the data that you are disclosing on the Internet?</li>
+<li>Are you concerned that website providers are tracking your online activities?</li>
+<li>Are you concerned that you don’t know what other organizations or website providers are doing with you data?</li>
+</ol>
+<p>(NA = “no Internet user / no reply”, 1 = “Not concerned at all” : 5 = “very concerned”)</p>
+</div>
+<div id="attitude-toward-online-sharing-of-personal-information" class="section level2">
+<h2>Attitude Toward Online Sharing of Personal Information</h2>
+<p>Now we will deal with information sharing on the Internet. Do you think that it is sensible to disclose the following pieces of information online, i.e., via the Internet?</p>
+<ol style="list-style-type: decimal">
+<li>Financial information (bank data, account balances…)</li>
+<li>Medical information (health, medical records…)</li>
+<li>Second name</li>
+<li>First name</li>
+<li>Residence</li>
+<li>Street and house number</li>
+<li>Email address</li>
+<li>Phone number</li>
+<li>Photos (of you)</li>
+<li>Job (past and present)</li>
+<li>Education</li>
+</ol>
+<p>(NA = “no Internet user / no reply”, 1 = “not sensible at all”, 2 = “somewhat not sensible”, 3 = “in part”, 4 = “somewhat sensible”, 5 = “very sensible”)</p>
+</div>
+<div id="online-sharing-of-personal-information" class="section level2">
+<h2>Online Sharing of Personal Information</h2>
+<p>In the following, please indicate how often you disclose the following information on the Internet. How often do you disclose the following pieces of information online, i.e., on the Internet?</p>
+<ol style="list-style-type: decimal">
+<li>Financial information (bank data, account balances…)</li>
+<li>Medical information (health, medical records…)</li>
+<li>Second name</li>
+<li>First name</li>
+<li>Residence</li>
+<li>Street and house number</li>
+<li>Email address</li>
+<li>Phone number</li>
+<li>Photos (of you)</li>
+<li>Job (past and present)</li>
+<li>Education</li>
+</ol>
+<p>(NA = “no Internet user / no reply”, 1 = “every day”, 2 = “weekly”, 3 = “monthly”, 4 = “less than that”, 5 = “never”)</p>
+</div>
+</div>
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -361,6 +496,32 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
