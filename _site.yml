@@ -1,0 +1,23 @@
+name: "privacy-paradox-longitudinal"
+output_dir: "."
+navbar:
+  title: "Home"
+  type: inverse
+  left:
+    - text: "Manuscript"
+      href: manuscript.html
+    - text: "Analyses"
+      href: analyses.html
+  right:
+    - text: "PDF"
+      icon: fa-file
+      href: manuscript.pdf
+    - text: "Data"
+      icon: fa-file
+      href: http://dx.doi.org/10.7802/1937
+    - text: "Source Code"
+      icon: fa-lg fa-github
+      href: https://github.com/tdienlin/privacy-paradox-longitudinal
+output:
+  html_document:
+    theme: cosmo

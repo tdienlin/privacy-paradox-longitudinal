@@ -1,0 +1,11 @@
+---
+title: "Longitudinal Analysis of the Privacy Calculus"
+---
+
+On this website, you can find the companion material for the paper _A Longitudinal Analysis of the Privacy Paradox_. 
+
+You can either read the paper [online](manuscript.html) or download it as [pdf](manuscript.pdf). You can also find the detailed code and summaries of the [analyses](analyses.html) that were reported in the paper.
+
+Please note that this OSM does not contain the actual data, which can be downloaded from http://dx.doi.org/10.7802/1937.
+
+This website is produced directly from the project's [github repository](https://github.com/tdienlin/privacy_calc_exp). You can download the material, file an issue, or submit a pull request.
