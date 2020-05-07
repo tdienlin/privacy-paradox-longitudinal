@@ -553,9 +553,9 @@ In what follows, please find all information about our final model we present in
 ## Correlation matrix and distributions
 
 ```{r Corrplot, fig.height = 8, fig.width = 8, size=5}
-colnames(d_fs) <- c("Concerns\nT1", "Concerns\nT2" , "Concerns\nT3",
-                    "Pos. Attitude\nT1", "Pos. Attitude\nT2" , "Pos. Attitude\nT3",
-                    "Inf. Sharing\nT1", "Inf. Sharing\nT2" , "Inf. Sharing\nT3")
+colnames(d_fs) <- c("Privacy\nconcerns\nT1", "Privacy\nconcerns\nT2" , "Privacy\nconcerns\nT3",
+                    "Positive\nattitude\nT1", "Positive\nattitude\nT2" , "Positive\nattitude\nT3",
+                    "Information\nsharing\nT1", "Information\nsharing\nT2" , "Information\nsharing\nT3")
 
 corr_plot <- ggpairs(d_fs,
                      lower = list(continuous = wrap(td::scat_plot, coords = c(1, 5, 1, 5)))) + 

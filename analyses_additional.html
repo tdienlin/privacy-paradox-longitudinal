@@ -7150,7 +7150,312 @@ effect_std_ci &lt;- standardizedsolution(fit) %&gt;%
 </div>
 <div id="model-5-1" class="section level4">
 <h4>Model 5</h4>
-<p>With Factor Scores, control variables, and 4 waves / 1 year intervals</p>
+<p>Same model, but with unconstrained effects. That way, we can empirically test the assumption whether effects have changed over time. With Factor Scores, control variables, and 4 waves / 1 year intervals</p>
+<pre class="r"><code>model_free &lt;- &#39;
+# between relations
+pri_con_b =~ 1*t1_pri_con_fs + 1*t2_pri_con_fs + 1*t3_pri_con_fs
+inf_sha_beh_b =~ 1*t1_inf_sha_beh_fs + 1*t2_inf_sha_beh_fs + 1*t3_inf_sha_beh_fs
+inf_sha_att_b =~ 1*t1_inf_sha_att_fs + 1*t2_inf_sha_att_fs + 1*t3_inf_sha_att_fs
+
+# within person changes
+t1_pri_con_w =~ 1*t1_pri_con_fs
+t2_pri_con_w =~ 1*t2_pri_con_fs
+t3_pri_con_w =~ 1*t3_pri_con_fs
+t1_inf_sha_beh_w =~ 1*t1_inf_sha_beh_fs
+t2_inf_sha_beh_w =~ 1*t2_inf_sha_beh_fs
+t3_inf_sha_beh_w =~ 1*t3_inf_sha_beh_fs
+t1_inf_sha_att_w =~ 1*t1_inf_sha_att_fs
+t2_inf_sha_att_w =~ 1*t2_inf_sha_att_fs
+t3_inf_sha_att_w =~ 1*t3_inf_sha_att_fs
+
+# within person effects
+t2_pri_con_w ~ a1*t1_pri_con_w + t1_inf_sha_att_w + t1_inf_sha_beh_w
+t2_inf_sha_att_w ~ t1_pri_con_w + b2*t1_inf_sha_att_w + t1_inf_sha_beh_w
+t2_inf_sha_beh_w ~ t1_pri_con_w + t1_inf_sha_att_w + c3*t1_inf_sha_beh_w
+t3_pri_con_w ~ a1*t2_pri_con_w + t2_inf_sha_att_w + t2_inf_sha_beh_w
+t3_inf_sha_att_w ~ t2_pri_con_w + b2*t2_inf_sha_att_w + t2_inf_sha_beh_w
+t3_inf_sha_beh_w ~ t2_pri_con_w + t2_inf_sha_att_w + c3*t2_inf_sha_beh_w
+
+# covariances
+pri_con_b ~~ cor_b_1*inf_sha_att_b + cor_b_2*inf_sha_beh_b
+inf_sha_att_b ~~ cor_b_3*inf_sha_beh_b
+t1_pri_con_w ~~ cor_w_1*t1_inf_sha_att_w + cor_w_2*t1_inf_sha_beh_w
+t1_inf_sha_att_w ~~ cor_w_3*t1_inf_sha_beh_w
+t2_pri_con_w ~~ t2_inf_sha_att_w + t2_inf_sha_beh_w
+t2_inf_sha_att_w ~~ t2_inf_sha_beh_w
+t3_pri_con_w ~~ t3_inf_sha_att_w + t3_inf_sha_beh_w
+t3_inf_sha_att_w ~~ t3_inf_sha_beh_w
+
+# setting variances of observed variables to zero
+t1_pri_con_fs ~~ 0*t1_pri_con_fs
+t2_pri_con_fs ~~ 0*t2_pri_con_fs
+t3_pri_con_fs ~~ 0*t3_pri_con_fs
+t1_inf_sha_att_fs ~~ 0*t1_inf_sha_att_fs
+t2_inf_sha_att_fs ~~ 0*t2_inf_sha_att_fs
+t3_inf_sha_att_fs ~~ 0*t3_inf_sha_att_fs
+t1_inf_sha_beh_fs ~~ 0*t1_inf_sha_beh_fs
+t2_inf_sha_beh_fs ~~ 0*t2_inf_sha_beh_fs
+t3_inf_sha_beh_fs ~~ 0*t3_inf_sha_beh_fs
+
+# control variables
+t1_pri_con_fs ~ age + edu_num + male
+t2_pri_con_fs ~ age + edu_num + male
+t3_pri_con_fs ~ age + edu_num + male
+t1_inf_sha_beh_fs ~ age + edu_num + male
+t2_inf_sha_beh_fs ~ age + edu_num + male
+t3_inf_sha_beh_fs ~ age + edu_num + male
+t1_inf_sha_att_fs ~ age + edu_num + male
+t2_inf_sha_att_fs ~ age + edu_num + male
+t3_inf_sha_att_fs ~ age + edu_num + male
+&#39;
+fit_free &lt;- sem(model_free, data = d_wide, orthogonal = TRUE, missing = &quot;ML&quot;)
+summary(fit_free, standardized = TRUE, fit.measures = TRUE, ci = TRUE)</code></pre>
+<pre><code>## lavaan 0.6-5 ended normally after 178 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of free parameters                         78
+##   Number of equality constraints                     3
+##   Row rank of the constraints matrix                 3
+##                                                       
+##   Number of observations                          1403
+##   Number of missing patterns                         1
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                10.935
+##   Degrees of freedom                                 6
+##   P-value (Chi-square)                           0.090
+## 
+## Model Test Baseline Model:
+## 
+##   Test statistic                              7133.872
+##   Degrees of freedom                                63
+##   P-value                                        0.000
+## 
+## User Model versus Baseline Model:
+## 
+##   Comparative Fit Index (CFI)                    0.999
+##   Tucker-Lewis Index (TLI)                       0.993
+## 
+## Loglikelihood and Information Criteria:
+## 
+##   Loglikelihood user model (H0)             -10239.882
+##   Loglikelihood unrestricted model (H1)     -10234.415
+##                                                       
+##   Akaike (AIC)                               20629.764
+##   Bayesian (BIC)                             21023.241
+##   Sample-size adjusted Bayesian (BIC)        20784.994
+## 
+## Root Mean Square Error of Approximation:
+## 
+##   RMSEA                                          0.024
+##   90 Percent confidence interval - lower         0.000
+##   90 Percent confidence interval - upper         0.047
+##   P-value RMSEA &lt;= 0.05                          0.973
+## 
+## Standardized Root Mean Square Residual:
+## 
+##   SRMR                                           0.007
+## 
+## Parameter Estimates:
+## 
+##   Information                                 Observed
+##   Observed information based on                Hessian
+##   Standard errors                             Standard
+## 
+## Latent Variables:
+##                       Estimate  Std.Err  z-value  P(&gt;|z|) ci.lower ci.upper   Std.lv  Std.all
+##   pri_con_b =~                                                                               
+##     t1_pri_con_fs        1.000                               1.000    1.000    0.734    0.860
+##     t2_pri_con_fs        1.000                               1.000    1.000    0.734    0.838
+##     t3_pri_con_fs        1.000                               1.000    1.000    0.734    0.846
+##   inf_sha_beh_b =~                                                                           
+##     t1_nf_sh_bh_fs       1.000                               1.000    1.000    0.469    0.719
+##     t2_nf_sh_bh_fs       1.000                               1.000    1.000    0.469    0.734
+##     t3_nf_sh_bh_fs       1.000                               1.000    1.000    0.469    0.756
+##   inf_sha_att_b =~                                                                           
+##     t1_nf_sh_tt_fs       1.000                               1.000    1.000    0.485    0.706
+##     t2_nf_sh_tt_fs       1.000                               1.000    1.000    0.485    0.706
+##     t3_nf_sh_tt_fs       1.000                               1.000    1.000    0.485    0.722
+##   t1_pri_con_w =~                                                                            
+##     t1_pri_con_fs        1.000                               1.000    1.000    0.406    0.475
+##   t2_pri_con_w =~                                                                            
+##     t2_pri_con_fs        1.000                               1.000    1.000    0.453    0.517
+##   t3_pri_con_w =~                                                                            
+##     t3_pri_con_fs        1.000                               1.000    1.000    0.429    0.495
+##   t1_inf_sha_beh_w =~                                                                        
+##     t1_nf_sh_bh_fs       1.000                               1.000    1.000    0.422    0.646
+##   t2_inf_sha_beh_w =~                                                                        
+##     t2_nf_sh_bh_fs       1.000                               1.000    1.000    0.394    0.617
+##   t3_inf_sha_beh_w =~                                                                        
+##     t3_nf_sh_bh_fs       1.000                               1.000    1.000    0.362    0.583
+##   t1_inf_sha_att_w =~                                                                        
+##     t1_nf_sh_tt_fs       1.000                               1.000    1.000    0.464    0.675
+##   t2_inf_sha_att_w =~                                                                        
+##     t2_nf_sh_tt_fs       1.000                               1.000    1.000    0.454    0.661
+##   t3_inf_sha_att_w =~                                                                        
+##     t3_nf_sh_tt_fs       1.000                               1.000    1.000    0.431    0.641
+## 
+## Regressions:
+##                       Estimate  Std.Err  z-value  P(&gt;|z|) ci.lower ci.upper   Std.lv  Std.all
+##   t2_pri_con_w ~                                                                             
+##     t1_pr_cn_ (a1)       0.148    0.066    2.253    0.024    0.019    0.277    0.133    0.133
+##     t1_nf_s__           -0.050    0.048   -1.032    0.302   -0.144    0.045   -0.051   -0.051
+##     t1_nf_s__           -0.043    0.051   -0.845    0.398   -0.144    0.057   -0.040   -0.040
+##   t2_inf_sha_att_w ~                                                                         
+##     t1_pr_cn_           -0.191    0.080   -2.403    0.016   -0.347   -0.035   -0.171   -0.171
+##     t1_nf_s__ (b2)       0.105    0.050    2.084    0.037    0.006    0.203    0.107    0.107
+##     t1_nf_s__           -0.035    0.050   -0.702    0.483   -0.133    0.063   -0.033   -0.033
+##   t2_inf_sha_beh_w ~                                                                         
+##     t1_pr_cn_           -0.016    0.074   -0.211    0.833   -0.160    0.129   -0.016   -0.016
+##     t1_nf_s__           -0.055    0.041   -1.336    0.181   -0.135    0.026   -0.065   -0.065
+##     t1_nf_s__ (c3)       0.026    0.043    0.596    0.551   -0.059    0.110    0.028    0.028
+##   t3_pri_con_w ~                                                                             
+##     t2_pr_cn_ (a1)       0.148    0.066    2.253    0.024    0.019    0.277    0.156    0.156
+##     t2_nf_s__           -0.073    0.060   -1.219    0.223   -0.189    0.044   -0.077   -0.077
+##     t2_nf_s__           -0.014    0.067   -0.216    0.829   -0.146    0.117   -0.013   -0.013
+##   t3_inf_sha_att_w ~                                                                         
+##     t2_pr_cn_           -0.014    0.049   -0.296    0.767   -0.110    0.081   -0.015   -0.015
+##     t2_nf_s__ (b2)       0.105    0.050    2.084    0.037    0.006    0.203    0.111    0.111
+##     t2_nf_s__            0.077    0.053    1.432    0.152   -0.028    0.181    0.070    0.070
+##   t3_inf_sha_beh_w ~                                                                         
+##     t2_pr_cn_            0.005    0.044    0.110    0.913   -0.082    0.092    0.006    0.006
+##     t2_nf_s__            0.021    0.045    0.463    0.643   -0.067    0.109    0.026    0.026
+##     t2_nf_s__ (c3)       0.026    0.043    0.596    0.551   -0.059    0.110    0.028    0.028
+##   t1_pri_con_fs ~                                                                            
+##     age                  0.010    0.001    6.850    0.000    0.007    0.013    0.010    0.184
+##     edu_num             -0.023    0.013   -1.760    0.078   -0.049    0.003   -0.023   -0.047
+##     male                -0.002    0.046   -0.043    0.966   -0.092    0.088   -0.002   -0.001
+##   t2_pri_con_fs ~                                                                            
+##     age                  0.010    0.002    6.509    0.000    0.007    0.013    0.010    0.175
+##     edu_num             -0.023    0.013   -1.676    0.094   -0.049    0.004   -0.023   -0.045
+##     male                 0.012    0.047    0.251    0.802   -0.081    0.105    0.012    0.007
+##   t3_pri_con_fs ~                                                                            
+##     age                  0.011    0.002    7.468    0.000    0.008    0.014    0.011    0.200
+##     edu_num             -0.017    0.013   -1.310    0.190   -0.043    0.009   -0.017   -0.035
+##     male                 0.010    0.047    0.220    0.826   -0.081    0.102    0.010    0.006
+##   t1_inf_sha_beh_fs ~                                                                        
+##     age                 -0.009    0.001   -7.926    0.000   -0.011   -0.007   -0.009   -0.209
+##     edu_num              0.057    0.010    5.840    0.000    0.038    0.077    0.057    0.153
+##     male                -0.132    0.035   -3.825    0.000   -0.200   -0.065   -0.132   -0.101
+##   t2_inf_sha_beh_fs ~                                                                        
+##     age                 -0.010    0.001   -9.064    0.000   -0.012   -0.008   -0.010   -0.238
+##     edu_num              0.065    0.010    6.763    0.000    0.046    0.083    0.065    0.175
+##     male                -0.083    0.034   -2.465    0.014   -0.149   -0.017   -0.083   -0.065
+##   t3_inf_sha_beh_fs ~                                                                        
+##     age                 -0.009    0.001   -8.808    0.000   -0.011   -0.007   -0.009   -0.230
+##     edu_num              0.070    0.009    7.617    0.000    0.052    0.088    0.070    0.197
+##     male                -0.121    0.032   -3.738    0.000   -0.185   -0.058   -0.121   -0.098
+##   t1_inf_sha_att_fs ~                                                                        
+##     age                 -0.004    0.001   -3.612    0.000   -0.007   -0.002   -0.004   -0.096
+##     edu_num              0.031    0.010    2.999    0.003    0.011    0.052    0.031    0.079
+##     male                -0.262    0.037   -7.107    0.000   -0.334   -0.190   -0.262   -0.190
+##   t2_inf_sha_att_fs ~                                                                        
+##     age                 -0.006    0.001   -5.361    0.000   -0.009   -0.004   -0.006   -0.142
+##     edu_num              0.050    0.010    4.824    0.000    0.030    0.070    0.050    0.126
+##     male                -0.263    0.036   -7.217    0.000   -0.335   -0.192   -0.263   -0.191
+##   t3_inf_sha_att_fs ~                                                                        
+##     age                 -0.007    0.001   -6.171    0.000   -0.009   -0.005   -0.007   -0.163
+##     edu_num              0.051    0.010    5.085    0.000    0.032    0.071    0.051    0.133
+##     male                -0.248    0.036   -6.963    0.000   -0.318   -0.178   -0.248   -0.184
+## 
+## Covariances:
+##                       Estimate  Std.Err  z-value  P(&gt;|z|) ci.lower ci.upper   Std.lv  Std.all
+##   pri_con_b ~~                                                                               
+##     in___ (cr_b_1)      -0.100    0.014   -7.257    0.000   -0.128   -0.073   -0.282   -0.282
+##     in___ (cr_b_2)      -0.028    0.012   -2.322    0.020   -0.052   -0.004   -0.081   -0.081
+##   inf_sha_beh_b ~~                                                                           
+##     in___ (cr_b_3)       0.150    0.010   14.757    0.000    0.130    0.170    0.661    0.661
+##   t1_pri_con_w ~~                                                                            
+##     t1___ (cr_w_1)      -0.020    0.009   -2.106    0.035   -0.038   -0.001   -0.106   -0.106
+##     t1___ (cr_w_2)      -0.020    0.009   -2.205    0.027   -0.038   -0.002   -0.117   -0.117
+##   t1_inf_sha_beh_w ~~                                                                        
+##     t1___ (cr_w_3)       0.023    0.008    2.769    0.006    0.007    0.038    0.115    0.115
+##  .t2_pri_con_w ~~                                                                            
+##    .t2___               -0.028    0.014   -2.073    0.038   -0.055   -0.002   -0.142   -0.142
+##    .t2___                0.001    0.012    0.085    0.932   -0.022    0.024    0.006    0.006
+##  .t2_inf_sha_beh_w ~~                                                                        
+##    .t2___                0.019    0.011    1.797    0.072   -0.002    0.041    0.111    0.111
+##  .t3_pri_con_w ~~                                                                            
+##    .t3___                0.003    0.008    0.378    0.706   -0.013    0.018    0.017    0.017
+##    .t3___                0.009    0.007    1.169    0.242   -0.006    0.023    0.057    0.057
+##  .t3_inf_sha_beh_w ~~                                                                        
+##    .t3___                0.036    0.007    5.168    0.000    0.022    0.050    0.235    0.235
+##   pri_con_b ~~                                                                               
+##     t1___                0.000                               0.000    0.000    0.000    0.000
+##     t1___                0.000                               0.000    0.000    0.000    0.000
+##     t1___                0.000                               0.000    0.000    0.000    0.000
+##   inf_sha_beh_b ~~                                                                           
+##     t1___                0.000                               0.000    0.000    0.000    0.000
+##     t1___                0.000                               0.000    0.000    0.000    0.000
+##     t1___                0.000                               0.000    0.000    0.000    0.000
+##   inf_sha_att_b ~~                                                                           
+##     t1___                0.000                               0.000    0.000    0.000    0.000
+##     t1___                0.000                               0.000    0.000    0.000    0.000
+##     t1___                0.000                               0.000    0.000    0.000    0.000
+## 
+## Intercepts:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|) ci.lower ci.upper   Std.lv  Std.all
+##    .t1_pri_con_fs     3.270    0.136   24.049    0.000    3.004    3.537    3.270    3.830
+##    .t2_pri_con_fs     3.189    0.140   22.796    0.000    2.914    3.463    3.189    3.638
+##    .t3_pri_con_fs     3.064    0.138   22.221    0.000    2.793    3.334    3.064    3.530
+##    .t1_nf_sh_bh_fs    2.583    0.102   25.272    0.000    2.382    2.783    2.583    3.958
+##    .t2_nf_sh_bh_fs    2.539    0.099   25.575    0.000    2.345    2.734    2.539    3.977
+##    .t3_nf_sh_bh_fs    2.497    0.096   26.019    0.000    2.309    2.685    2.497    4.028
+##    .t1_nf_sh_tt_fs    2.883    0.109   26.494    0.000    2.669    3.096    2.883    4.192
+##    .t2_nf_sh_tt_fs    2.964    0.108   27.531    0.000    2.753    3.175    2.964    4.316
+##    .t3_nf_sh_tt_fs    2.996    0.105   28.506    0.000    2.790    3.202    2.996    4.460
+##     pri_con_b         0.000                               0.000    0.000    0.000    0.000
+##     inf_sha_beh_b     0.000                               0.000    0.000    0.000    0.000
+##     inf_sha_att_b     0.000                               0.000    0.000    0.000    0.000
+##     t1_pri_con_w      0.000                               0.000    0.000    0.000    0.000
+##    .t2_pri_con_w      0.000                               0.000    0.000    0.000    0.000
+##    .t3_pri_con_w      0.000                               0.000    0.000    0.000    0.000
+##     t1_inf_sh_bh_w    0.000                               0.000    0.000    0.000    0.000
+##    .t2_inf_sh_bh_w    0.000                               0.000    0.000    0.000    0.000
+##    .t3_inf_sh_bh_w    0.000                               0.000    0.000    0.000    0.000
+##     t1_inf_sh_tt_w    0.000                               0.000    0.000    0.000    0.000
+##    .t2_inf_sh_tt_w    0.000                               0.000    0.000    0.000    0.000
+##    .t3_inf_sh_tt_w    0.000                               0.000    0.000    0.000    0.000
+## 
+## Variances:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|) ci.lower ci.upper   Std.lv  Std.all
+##    .t1_pri_con_fs     0.000                               0.000    0.000    0.000    0.000
+##    .t2_pri_con_fs     0.000                               0.000    0.000    0.000    0.000
+##    .t3_pri_con_fs     0.000                               0.000    0.000    0.000    0.000
+##    .t1_nf_sh_tt_fs    0.000                               0.000    0.000    0.000    0.000
+##    .t2_nf_sh_tt_fs    0.000                               0.000    0.000    0.000    0.000
+##    .t3_nf_sh_tt_fs    0.000                               0.000    0.000    0.000    0.000
+##    .t1_nf_sh_bh_fs    0.000                               0.000    0.000    0.000    0.000
+##    .t2_nf_sh_bh_fs    0.000                               0.000    0.000    0.000    0.000
+##    .t3_nf_sh_bh_fs    0.000                               0.000    0.000    0.000    0.000
+##     pri_con_b         0.539    0.025   21.832    0.000    0.491    0.588    1.000    1.000
+##     inf_sha_beh_b     0.220    0.011   19.154    0.000    0.197    0.242    1.000    1.000
+##     inf_sha_att_b     0.235    0.015   15.941    0.000    0.206    0.264    1.000    1.000
+##     t1_pri_con_w      0.164    0.011   15.252    0.000    0.143    0.186    1.000    1.000
+##    .t2_pri_con_w      0.200    0.020    9.980    0.000    0.161    0.240    0.975    0.975
+##    .t3_pri_con_w      0.178    0.011   16.735    0.000    0.157    0.199    0.965    0.965
+##     t1_inf_sh_bh_w    0.178    0.010   18.456    0.000    0.159    0.197    1.000    1.000
+##    .t2_inf_sh_bh_w    0.155    0.013   12.059    0.000    0.130    0.180    0.995    0.995
+##    .t3_inf_sh_bh_w    0.131    0.008   17.383    0.000    0.116    0.145    0.998    0.998
+##     t1_inf_sh_tt_w    0.215    0.012   17.811    0.000    0.192    0.239    1.000    1.000
+##    .t2_inf_sh_tt_w    0.197    0.017   11.660    0.000    0.164    0.230    0.957    0.957
+##    .t3_inf_sh_tt_w    0.182    0.010   18.035    0.000    0.162    0.201    0.980    0.980</code></pre>
+<pre class="r"><code>effect_std_ci_free &lt;- standardizedsolution(fit) %&gt;% 
+  filter(lhs == &quot;pri_con_b&quot;, rhs == &quot;inf_sha_beh_b&quot;)
+
+# model comparison
+(model_comp &lt;- anova(fit_riclpm, fit_free))</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Df"],"name":[1],"type":["int"],"align":["right"]},{"label":["AIC"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["BIC"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Chisq"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Chisq diff"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Df diff"],"name":[6],"type":["int"],"align":["right"]},{"label":["Pr(>Chisq)"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"6","2":"20630","3":"21023","4":"10.9","5":"NA","6":"NA","7":"NA","_rn_":"fit_free"},{"1":"15","2":"20626","3":"20972","4":"25.2","5":"14.2","6":"9","7":"0.114","_rn_":"fit_riclpm"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Shows that model with freely estimated parameters does not show significantly improved fit.</p>
+</div>
+<div id="model-6-1" class="section level4">
+<h4>Model 6</h4>
 <pre class="r"><code>model &lt;- &#39;
 # between relations
 pri_con_b =~ 1*t1_pri_con_m + 1*t3_pri_con_m + 1*t4_pri_con_m + 1*t5_pri_con_m

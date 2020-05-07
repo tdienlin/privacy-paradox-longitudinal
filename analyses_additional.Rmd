@@ -1331,7 +1331,6 @@ fit <- sem(model, data = d_wide, orthogonal = TRUE, missing = "ML")
 summary(fit, standardized = TRUE, fit.measures = TRUE, ci = TRUE)
 ```
 
-
 #### Model 4 (final)
 
 With Factor Scores and control variables. This is the final model we report in the paper.
@@ -1403,7 +1402,78 @@ effect_std_ci <- standardizedsolution(fit) %>%
 
 #### Model 5
 
+Same model, but with unconstrained effects. That way, we can empirically test the assumption whether effects have changed over time.
 With Factor Scores, control variables, and 4 waves / 1 year intervals
+
+```{r}
+model_free <- '
+# between relations
+pri_con_b =~ 1*t1_pri_con_fs + 1*t2_pri_con_fs + 1*t3_pri_con_fs
+inf_sha_beh_b =~ 1*t1_inf_sha_beh_fs + 1*t2_inf_sha_beh_fs + 1*t3_inf_sha_beh_fs
+inf_sha_att_b =~ 1*t1_inf_sha_att_fs + 1*t2_inf_sha_att_fs + 1*t3_inf_sha_att_fs
+
+# within person changes
+t1_pri_con_w =~ 1*t1_pri_con_fs
+t2_pri_con_w =~ 1*t2_pri_con_fs
+t3_pri_con_w =~ 1*t3_pri_con_fs
+t1_inf_sha_beh_w =~ 1*t1_inf_sha_beh_fs
+t2_inf_sha_beh_w =~ 1*t2_inf_sha_beh_fs
+t3_inf_sha_beh_w =~ 1*t3_inf_sha_beh_fs
+t1_inf_sha_att_w =~ 1*t1_inf_sha_att_fs
+t2_inf_sha_att_w =~ 1*t2_inf_sha_att_fs
+t3_inf_sha_att_w =~ 1*t3_inf_sha_att_fs
+
+# within person effects
+t2_pri_con_w ~ a1*t1_pri_con_w + t1_inf_sha_att_w + t1_inf_sha_beh_w
+t2_inf_sha_att_w ~ t1_pri_con_w + b2*t1_inf_sha_att_w + t1_inf_sha_beh_w
+t2_inf_sha_beh_w ~ t1_pri_con_w + t1_inf_sha_att_w + c3*t1_inf_sha_beh_w
+t3_pri_con_w ~ a1*t2_pri_con_w + t2_inf_sha_att_w + t2_inf_sha_beh_w
+t3_inf_sha_att_w ~ t2_pri_con_w + b2*t2_inf_sha_att_w + t2_inf_sha_beh_w
+t3_inf_sha_beh_w ~ t2_pri_con_w + t2_inf_sha_att_w + c3*t2_inf_sha_beh_w
+
+# covariances
+pri_con_b ~~ cor_b_1*inf_sha_att_b + cor_b_2*inf_sha_beh_b
+inf_sha_att_b ~~ cor_b_3*inf_sha_beh_b
+t1_pri_con_w ~~ cor_w_1*t1_inf_sha_att_w + cor_w_2*t1_inf_sha_beh_w
+t1_inf_sha_att_w ~~ cor_w_3*t1_inf_sha_beh_w
+t2_pri_con_w ~~ t2_inf_sha_att_w + t2_inf_sha_beh_w
+t2_inf_sha_att_w ~~ t2_inf_sha_beh_w
+t3_pri_con_w ~~ t3_inf_sha_att_w + t3_inf_sha_beh_w
+t3_inf_sha_att_w ~~ t3_inf_sha_beh_w
+
+# setting variances of observed variables to zero
+t1_pri_con_fs ~~ 0*t1_pri_con_fs
+t2_pri_con_fs ~~ 0*t2_pri_con_fs
+t3_pri_con_fs ~~ 0*t3_pri_con_fs
+t1_inf_sha_att_fs ~~ 0*t1_inf_sha_att_fs
+t2_inf_sha_att_fs ~~ 0*t2_inf_sha_att_fs
+t3_inf_sha_att_fs ~~ 0*t3_inf_sha_att_fs
+t1_inf_sha_beh_fs ~~ 0*t1_inf_sha_beh_fs
+t2_inf_sha_beh_fs ~~ 0*t2_inf_sha_beh_fs
+t3_inf_sha_beh_fs ~~ 0*t3_inf_sha_beh_fs
+
+# control variables
+t1_pri_con_fs ~ age + edu_num + male
+t2_pri_con_fs ~ age + edu_num + male
+t3_pri_con_fs ~ age + edu_num + male
+t1_inf_sha_beh_fs ~ age + edu_num + male
+t2_inf_sha_beh_fs ~ age + edu_num + male
+t3_inf_sha_beh_fs ~ age + edu_num + male
+t1_inf_sha_att_fs ~ age + edu_num + male
+t2_inf_sha_att_fs ~ age + edu_num + male
+t3_inf_sha_att_fs ~ age + edu_num + male
+'
+fit_free <- sem(model_free, data = d_wide, orthogonal = TRUE, missing = "ML")
+summary(fit_free, standardized = TRUE, fit.measures = TRUE, ci = TRUE)
+effect_std_ci_free <- standardizedsolution(fit) %>% 
+  filter(lhs == "pri_con_b", rhs == "inf_sha_beh_b")
+
+# model comparison
+(model_comp <- anova(fit_riclpm, fit_free))
+```
+Shows that model with freely estimated parameters does not show significantly improved fit.
+
+#### Model 6
 
 ```{r}
 model <- '
@@ -1578,3 +1648,8 @@ fit <- lmer(inf_sha_beh_m ~ 1 + pri_con_m_b + pri_con_m_w + inf_sha_att_m_b + in
 summary(fit)
 std_beta(fit)
 ```
+
+```{r include=F}
+save.image("data/workspace.RData")
+```
+
