@@ -49,16 +49,16 @@ mask              : no
 # to compile as pdf
 # (a) move file "_site.yml" to folder "tmp"
 # (b) uncomment the following lines; comment lines after "output: html_document ..."
-output            : papaja::apa6_pdf
-header-includes:
-  - \setlength{\parskip}{0em}
-  - \raggedbottom
-# output:
-#   html_document:
-#     toc: TRUE
-#     toc_float:
-#       collapsed: FALSE
-#     toc_depth: 2
+# output            : papaja::apa6_pdf
+# header-includes:
+#   - \setlength{\parskip}{0em}
+#   - \raggedbottom
+output:
+  html_document:
+    toc: TRUE
+    toc_float:
+      collapsed: FALSE
+    toc_depth: 2
 ---
 
 ```{r knitr-set-up, include=F}
