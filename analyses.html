@@ -2496,8 +2496,8 @@ power_balanced_rq &lt;- 1 - alpha_balanced_rq</code></pre>
 <p>In what follows, please find all information about our final model we present in the paper.</p>
 <div id="correlation-matrix-and-distributions" class="section level2">
 <h2>Correlation matrix and distributions</h2>
-<pre class="r"><code>colnames(d_fs) &lt;- c(&quot;Concerns\nT1&quot;, &quot;Concerns\nT2&quot;, &quot;Concerns\nT3&quot;, &quot;Pos. Attitude\nT1&quot;, &quot;Pos. Attitude\nT2&quot;, &quot;Pos. Attitude\nT3&quot;, 
-    &quot;Inf. Sharing\nT1&quot;, &quot;Inf. Sharing\nT2&quot;, &quot;Inf. Sharing\nT3&quot;)
+<pre class="r"><code>colnames(d_fs) &lt;- c(&quot;Privacy\nconcerns\nT1&quot;, &quot;Privacy\nconcerns\nT2&quot;, &quot;Privacy\nconcerns\nT3&quot;, &quot;Positive\nattitude\nT1&quot;, 
+    &quot;Positive\nattitude\nT2&quot;, &quot;Positive\nattitude\nT3&quot;, &quot;Information\nsharing\nT1&quot;, &quot;Information\nsharing\nT2&quot;, &quot;Information\nsharing\nT3&quot;)
 
 corr_plot &lt;- ggpairs(d_fs, lower = list(continuous = wrap(td::scat_plot, coords = c(1, 5, 1, 5)))) + theme_bw()
 print(corr_plot)</code></pre>
