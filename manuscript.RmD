@@ -8,8 +8,10 @@ author:
     address       : "University of Hohenheim, Department of Media Psychology (540F), 70599 Stuttgart, Germany"
     corresponding : yes
   - name          : "Philipp K. Masur"
+    email         : "philipp.masur@uni-mainz.de"
     affiliation   : "2"
   - name          : "Sabine Trepte"
+    email         : "sabine.trepte@uni-hohenheim.de"
     affiliation   : "1"
 affiliation:
     
