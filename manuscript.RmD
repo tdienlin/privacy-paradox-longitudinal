@@ -48,7 +48,8 @@ class             : "man"
 mask              : no
 # to compile as pdf
 # (a) move file "_site.yml" to folder "tmp"
-# (b) uncomment the following lines; comment lines after "output: html_document ..."
+# (b) uncomment the following lines until incl. "\raggedbottom"
+# (c) comment lines after "output: html_document ..."
 # output            : papaja::apa6_pdf
 # header-includes:
 #   - \setlength{\parskip}{0em}
@@ -90,9 +91,9 @@ load("data/workspace.RData")
 
 The privacy paradox states that the information disclosure of Internet users is problematic: 
 Although many people are concerned about their privacy online, they still share plenty of personal information on the web [e.g., @acquistiLossesGainsHyperbolic2003]. 
-The privacy paradox and its underlying theoretical conundrum is of considerable interest to society---it is discussed in newspapers [@freanFindingSolutionsPrivacy2017], Wikipedia entries  [@wikipediaPrivacyConcernsSocial2018], designated websites [@newyorkpublicradioPrivacyParadox2018], books [@treptePrivacyOnlinePerspectives2011], and top-tier academic journals [@acquistiPrivacyHumanBehavior2015].
+The privacy paradox is of considerable interest to society---it is discussed in newspapers [@freanFindingSolutionsPrivacy2017], Wikipedia entries  [@wikipediaPrivacyConcernsSocial2018], designated websites [@newyorkpublicradioPrivacyParadox2018], books [@treptePrivacyOnlinePerspectives2011], and top-tier academic journals [@acquistiPrivacyHumanBehavior2015].
 If the privacy paradox really exists, it should inspire worry: 
-It would suggest that online behavior is irrational and that people are revealing too much of their personal lives to unknown third parties, which can cause various problems [e.g., @sevignaniPrivacyCapitalismAge2016].
+It would suggest that online behavior is irrational and that people are revealing too much of their personal information, which can cause various problems [e.g., @sevignaniPrivacyCapitalismAge2016].
 Understanding why people disclose information online and whether or not this is paradoxical therefore represents an important challenge. 
 
 However, current research on the privacy paradox has one major limitation. 
