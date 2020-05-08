@@ -49,7 +49,7 @@ In what follows, we report the models that were run to obtain the results report
 n_complete <- nrow(d_wide)
 age_m <- mean(d_wide$age)
 age_sd <- sd(d_wide$age)
-male_per <- 1 - mean(d_wide$male)
+male_per <- mean(d_wide$male) - 1
 edu_col_per <- nrow(d_wide[d_wide$edu_num > 5, ]) / n_complete * 100
 tibble(
   "N" = n_complete,

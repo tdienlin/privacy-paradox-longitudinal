@@ -29,6 +29,7 @@ lapply(required, function(x) library(x, character.only = T))
 
 load("data/workspace.RData") 
 ```
+
 In what follows, we report the results of additional analyses that were also calculated. For example, for each measure we also report exploratory factor analyses, first order model solutions, and unconstrained solutions to estimate longitudinal  invariance.
 
 # Measures
@@ -1649,7 +1650,6 @@ summary(fit)
 std_beta(fit)
 ```
 
-```{r include=F}
+```{r include=F, cache=F}
 save.image("data/workspace.RData")
 ```
-

@@ -439,7 +439,7 @@ desc &lt;- d_wide %&gt;% summarize_at(vars(ends_with(&quot;_m&quot;)), funs(mean
 <pre class="r"><code>n_complete &lt;- nrow(d_wide)
 age_m &lt;- mean(d_wide$age)
 age_sd &lt;- sd(d_wide$age)
-male_per &lt;- 1 - mean(d_wide$male)
+male_per &lt;- mean(d_wide$male) - 1
 edu_col_per &lt;- nrow(d_wide[d_wide$edu_num &gt; 5, ])/n_complete * 100
 tibble(N = n_complete, Age = age_m, `Age SD` = age_sd, `Male perc.` = male_per, `College perc.` = edu_col_per) %&gt;% kable() %&gt;% 
     kable_styling(&quot;striped&quot;)</code></pre>
@@ -475,7 +475,7 @@ College perc.
 15.4
 </td>
 <td style="text-align:right;">
--0.486
+0.486
 </td>
 <td style="text-align:right;">
 39.3
