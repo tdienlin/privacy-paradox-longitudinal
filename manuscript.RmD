@@ -146,10 +146,10 @@ However, the authors also note that the privacy paradox is a "complex phenomenon
 ## Defining Privacy Concerns and Information Sharing
 
 Privacy is defined as the "[...] voluntary and temporary withdrawal of a person from the general society through physical or psychological means [...]" [@westinPrivacyFreedom1967, 7]. 
-Hence, privacy captures aspects of both volitional _control_ and social _separateness_.
+Privacy captures aspects of both volitional _control_ and social _separateness_ [@braunlichLinkingLooseEnds2020; @marwickNetworkedPrivacyHow2014].
 Several dimensions of privacy have been proposed.
-For example, it is possible to distinguish a vertical and a horizontal level.
-Whereas the vertical level captures privacy from authorities, institutions, or companies, horizontal privacy addresses privacy from peers, colleagues, or other people [@masurSituationalPrivacySelfdisclosure2018].
+For example, it is possible to distinguish a vertical and a horizontal level [@masurSituationalPrivacySelfdisclosure2018].
+Whereas the vertical level captures privacy from authorities, institutions, or companies, horizontal privacy addresses privacy from peers, colleagues, or other people.
 When it comes to concerns in general, interestingly they do not seem to be established as a stand-alone theoretical concept in psychology [@colmanDictionaryPsychology2015].
 Lexically, concerns are defined as a "marked interest or regard usually arising through a personal tie or relationship" that also reflect an "uneasy state of blended interest, uncertainty, and apprehension" [@merriam-websterDefinitionConcern2018].
 Concerns therefore represent both a latent _motivation_ (or increased attention), a negatively valenced _emotion_ (or affective condition), and are mostly implicit.
@@ -225,9 +225,9 @@ Specifically, when privacy concerns increase (e.g., because of experienced or wi
 Also empirically, a study with 290 participants found small negative longitudinal (between-person) relations between privacy concerns and self-disclosure [@koohikamaliInvestigationDynamicModel2019].
 
 At the same time, the adverse effect seems plausible as well, with two potential outcomes. 
-On the one hand, the long-term relation could be negative: 
-If people start to share more information online, they might become increasingly aware that their privacy is at risk, thereby stirring concern.
-On the other hand, the long-term relation might also be positive:
+On the one hand, the long-term relation could be positive: 
+If people start to share more information online, they might become increasingly aware that their privacy is at risk, thereby stirring concern [@tsay-vogelSocialMediaCultivating2018].
+On the other hand, the long-term relation might also be negative:
 When people share more personal information online they might become accustomed to doing so, which potentially reduces concern [for example, due to the mere exposure effect; @zajoncAttitudinalEffectsMere1968].
 Finally, there could also be no long-term relation at all: 
 People might have already become used to sharing information online, which stifles further cognitive or emotional processing.
@@ -240,11 +240,9 @@ Research Question 1.2: Do changes in the online sharing of personal information 
 ## The Role of Attitudes
 
 It has been argued that privacy attitudes could bridge the gap between concerns and information sharing [e.g., @dienlinPrivacyParadoxRelic2015]. 
-In contrast to privacy concerns, privacy attitudes capture a more explicit, fluctuating cognitive appraisal. 
+In contrast to privacy concerns, privacy attitudes capture a more explicit, fluctuating cognitive appraisal [@tsay-vogelSocialMediaCultivating2018].
 Although both variables are related to information disclosure, attitudes are likely the better predictor. 
 This reasoning follows the rational choice paradigm [@simonBehavioralModelRational1955], which maintains that behavior is always at least partially influenced by convictions, attitudes, and cost-benefit analyses. 
-<!-- Likewise, also evolutionary psychology suggests that although emotions guide behavior in the long run, it is more adaptive if behavior instead reflects a cognitive appraisal;  -->
-<!-- a tenet arguably reflected best by the phylogenetic development of the neocortex or, if you want, the general dominion of the human race. -->
 Also empirically, a study of 1,042 youths from Belgium found that the relation between privacy attitudes and disclosure of personal information was strong (_r_ = .56), whereas the relation between privacy concerns and disclosure was only moderate [_r_ = -.29; @heirmanPredictingAdolescentsDisclosure2013]. 
 
 Hypothesis 3.1: People who are more concerned about their online privacy than others will also hold a less positive attitude toward the online sharing of personal information than others.
