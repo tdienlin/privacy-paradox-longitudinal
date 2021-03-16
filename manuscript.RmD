@@ -39,7 +39,7 @@ lineno            : yes
 class             : "man"
 mask              : no
 # to compile as pdf
-# (a) move file "_site.yml" to folder "tmp"
+# (a) move file "_site.yml" to folder "archive"
 # (b) uncomment the following lines until incl. "\raggedbottom"
 # (c) comment lines after "output: html_document ..."
 output            : papaja::apa6_pdf
@@ -394,7 +394,7 @@ Fit was assessed according to the common criteria as described by @klinePrincipl
 The final model fit the data well, `r fit_txt(fit_riclpm)`. 
 
 For the analyses, we used `r r_citations`.
-The code, additional analyses (e.g., ICCs or analyses of invariance), and a reproducible version of this manuscript can be found on the manuscript's companion website at https://xmtra.github.io/privacy-paradox.
+The code, additional analyses (e.g., ICCs or analyses of invariance), and a reproducible version of this manuscript can be found on the manuscript's companion website at https://tdienlin.github.io/privacy-paradox-longitudinal/.
 
 # Results
 

@@ -13,13 +13,25 @@
 
 <title>A longitudinal analysis of the privacy paradox</title>
 
-<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -36,11 +48,6 @@
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -63,32 +70,6 @@ if (window.hljs) {
   }
 </style>
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
 
 <style type="text/css">
 /* for pandoc --citeproc since 2.11 */
@@ -122,10 +103,6 @@ div.csl-indent {
   margin-left: auto;
   margin-right: auto;
 }
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
 img {
   max-width:100%;
 }
@@ -141,40 +118,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -202,7 +152,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -214,7 +164,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -225,10 +175,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -240,7 +203,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -293,6 +255,75 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
 
 </head>
 
@@ -300,6 +331,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-sm-12 col-md-4 col-lg-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-sm-12 col-md-8 col-lg-9">
 
 
 
@@ -349,7 +390,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -374,7 +415,8 @@ $(document).ready(function () {
 </div>
 
 
-<!-- # Introduction -->
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
 <p>The privacy paradox states that the information disclosure of Internet users is problematic: Although many people are concerned about their privacy online, they still share plenty of personal information on the web <span class="citation">(e.g., Acquisti and Grossklags, 2003)</span>. The privacy paradox is of considerable interest to society—it is discussed in newspapers <span class="citation">(Frean, 2017)</span>, Wikipedia entries <span class="citation">(Wikipedia, 2018)</span>, designated websites <span class="citation">(New York Public Radio, 2018)</span>, books <span class="citation">(Trepte and Reinecke, 2011)</span>, and top-tier academic journals <span class="citation">(Acquisti et al., 2015)</span>. If the privacy paradox really exists, it should inspire worry: It would suggest that online behavior is irrational and that people are revealing too much of their personal information, which can cause various problems <span class="citation">(e.g., Sevignani, 2016)</span>. Understanding why people disclose information online and whether or not this is paradoxical therefore represents an important challenge.</p>
 <p>However, current research on the privacy paradox has one major limitation. To the best of our knowledge, most empirical studies conducted so far have investigated the privacy paradox from a between-person perspective. By employing empirical tests of relations between people (e.g., cross-sectional questionnaires analyzed with multiple regression or Pearson correlations), studies have analyzed whether people who are more concerned than <em>others</em> also share less personal information than <em>others</em>. Although such a perspective is interesting and represents a viable first step, it cannot make informed claims regarding causality. The privacy paradox, however, implies a causal perspective: Does a person, if <em>he or she</em> becomes more concerned about online privacy, then also share less personal information? This mismatch is problematic because although between-person relations are, except for some special cases, a <em>necessary</em> condition for causal within-person effects, they are by no means a <em>sufficient</em> one. For example, it could be that the between-person relation is determined by other third variables. Hence, as the next step in investigating the privacy paradox and to better understand the causal relation between privacy concerns and information sharing, it is necessary to conduct studies with within-person designs.</p>
 <p>With this study we aim to answer four major questions. First, on a between-person level, how are concerns about online privacy related to the online sharing of personal information? Second, on a within-person level, is information sharing lower than usual when concerns are higher than usual? Third, what are the potential long-term effects? Are changes in concerns related to changes in information sharing 6 months later and/or vice versa? Fourth, what is the role of privacy attitudes, do they mediate the relation between privacy concerns and information sharing? To best answer and contextualize these questions, we first provide an in-depth theoretical analysis of the privacy paradox, after which we present the empirical results of a longitudinal panel study, which is representative of the German population.</p>
@@ -424,6 +466,7 @@ $(document).ready(function () {
 <p>Research Question 3.1: Do changes in attitudes toward the online sharing of personal information affect the online sharing of personal information 6 months later?</p>
 <p>Research Question 3.2: Do changes in the online sharing of personal information affect attitudes toward the online sharing of personal information 6 months later?</p>
 </div>
+</div>
 <div id="method" class="section level1">
 <h1>Method</h1>
 <div id="procedure-and-respondents" class="section level2">
@@ -458,7 +501,7 @@ Visual representation of the estimated random-intercept cross-lagged panel model
 </p>
 </div>
 <p>The data were analyzed using of a random-intercept cross-lagged panel model <span class="citation">(RI-CLPM, Hamaker et al., 2015)</span>. For a visualization, see Figure @ref(fig:RICLPM). Note that in contrast to regular cross-lagged panel models (CLPMs), RI-CLPMs can separate between-person variance from within-person variance. We used factor scores as observed variables to represent the variables’ latent structure more closely. We tested H1, H3.1, and H3.2 by correlating the random intercepts, which represent the respondents’ individual mean scores across all three waves. We tested H2, H4.1, and H4.2 by correlating the respondents’ within-person variance at T1, which captures their specific deviation at T1 from their overall score. We tested all research questions by regressing variables on all other measures obtained 6 months earlier. Given that we had three points of measurement, this resulted in two estimates for each research question. As we did not assume longitudinal effects to differ across time, they were constrained to be equal across all waves, which produces one single general measure of each effect instead of two time-specific ones. (We later tested this assumption empirically. As expected, the model with constrained effects did not show significantly reduced model fit, <span class="math inline">\(\chi\)</span><sup>2</sup>(9) = .114, <em>p</em> = 14.25, which supports that effects did not change over time.) Fit was assessed according to the common criteria as described by <span class="citation">Kline (2016)</span>. The final model fit the data well, <span class="math inline">\(\chi^2\)</span>(15) = 25.18,  = .048, cfi = 1.00, rmsea = .02, 90% CI [&lt; .01, .04], srmr = .01.</p>
-<p>For the analyses, we used R [Version 4.0.3; <span class="citation">R Core Team (2018)</span>] and the R-packages <em>GGally</em> [Version 2.1.0; <span class="citation">Schloerke et al. (2018)</span>], <em>ggplot2</em> [Version 3.3.3; <span class="citation">Wickham (2016)</span>], <em>lavaan</em> [Version 0.6.7; <span class="citation">Rosseel (2012)</span>], <em>MissMech</em> [Version 1.0.2; <span class="citation">Jamshidian et al. (2014)</span>], <em>MVN</em> [Version 5.8; <span class="citation">Korkmaz et al. (2014)</span>], <em>psych</em> [Version 2.0.12; <span class="citation">Revelle (2018)</span>], <em>pwr</em> [Version 1.3.0; <span class="citation">Champely (2018)</span>], <em>semTools</em> [Version 0.5.4; <span class="citation">Jorgensen et al. (2018)</span>], and <em>sjstats</em> [Version 0.18.1; <span class="citation">Lüdecke (2019)</span>]. The code, additional analyses (e.g., ICCs or analyses of invariance), and a reproducible version of this manuscript can be found on the manuscript’s companion website at <a href="https://xmtra.github.io/privacy-paradox" class="uri">https://xmtra.github.io/privacy-paradox</a>.</p>
+<p>For the analyses, we used R [Version 4.0.3; <span class="citation">R Core Team (2018)</span>] and the R-packages <em>GGally</em> [Version 2.1.1; <span class="citation">Schloerke et al. (2018)</span>], <em>ggplot2</em> [Version 3.3.3; <span class="citation">Wickham (2016)</span>], <em>lavaan</em> [Version 0.6.8; <span class="citation">Rosseel (2012)</span>], <em>MissMech</em> [Version 1.0.2; <span class="citation">Jamshidian et al. (2014)</span>], <em>MVN</em> [Version 5.8; <span class="citation">Korkmaz et al. (2014)</span>], <em>psych</em> [Version 2.0.12; <span class="citation">Revelle (2018)</span>], <em>pwr</em> [Version 1.3.0; <span class="citation">Champely (2018)</span>], <em>semTools</em> [Version 0.5.4; <span class="citation">Jorgensen et al. (2018)</span>], and <em>sjstats</em> [Version 0.18.1; <span class="citation">Lüdecke (2019)</span>]. The code, additional analyses (e.g., ICCs or analyses of invariance), and a reproducible version of this manuscript can be found on the manuscript’s companion website at <a href="https://tdienlin.github.io/privacy-paradox-longitudinal/" class="uri">https://tdienlin.github.io/privacy-paradox-longitudinal/</a>.</p>
 </div>
 </div>
 <div id="results" class="section level1">
@@ -823,13 +866,13 @@ Masur PK (2018) <em>Situational Privacy and Self-Disclosure: <span>Communication
 Meehl PE (1990) Why summaries of research on psychological theories are often uninterpretable. <em>Psychological Reports</em> 66(1): 195–244. DOI: <a href="https://doi.org/10.2466/pr0.1990.66.1.195">10.2466/pr0.1990.66.1.195</a>.
 </div>
 <div id="ref-merriam-websterDefinitionConcern2018" class="csl-entry">
-Merriam-Webster (2018) Definition of concern. {{InternetDocument}}. https://www.merriam-webster.com/dictionary/concern.
+Merriam-Webster (2018) Definition of concern. InternetDocument. https://www.merriam-webster.com/dictionary/concern.
 </div>
 <div id="ref-nabiCognitivefunctionalModelEffects1999" class="csl-entry">
 Nabi RL (1999) A cognitive-functional model for the effects of discrete negative emotions on information processing, attitude change, and recall. <em>Communication Theory</em> 9(3): 292–320. DOI: <a href="https://doi.org/10.1111/j.1468-2885.1999.tb00172.x">10.1111/j.1468-2885.1999.tb00172.x</a>.
 </div>
 <div id="ref-newyorkpublicradioPrivacyParadox2018" class="csl-entry">
-New York Public Radio (2018) The privacy paradox. {{InternetDocument}}. https://project.wnyc.org/privacy-paradox/.
+New York Public Radio (2018) The privacy paradox. InternetDocument. https://project.wnyc.org/privacy-paradox/.
 </div>
 <div id="ref-nissenbaumPrivacyContextTechnology2010" class="csl-entry">
 Nissenbaum H (2010) <em>Privacy in Context: <span>Technology</span>, Policy, and the Integrity of Social Life</em>. <span>Stanford, CA</span>: <span>Stanford University Press</span>.
@@ -910,7 +953,7 @@ Westin AF (1967) <em>Privacy and Freedom</em>. <span>New York, NY</span>: <span>
 Wickham H (2016) <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. Available at: <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
 </div>
 <div id="ref-wikipediaPrivacyConcernsSocial2018" class="csl-entry">
-Wikipedia (2018) Privacy concerns with social networking services. {{InternetDocument}}. https://en.wikipedia.org/wiki/Privacy_concerns_with_social_networking_services.
+Wikipedia (2018) Privacy concerns with social networking services. InternetDocument. https://en.wikipedia.org/wiki/Privacy_concerns_with_social_networking_services.
 </div>
 <div id="ref-witteMetaanalysisFearAppeals2000" class="csl-entry">
 Witte K and Allen M (2000) A meta-analysis of fear appeals: <span>Implications</span> for effective public health campaigns. <em>Health Education &amp; Behavior</em> 27(5): 591–615. DOI: <a href="https://doi.org/10.1177/109019810002700506">10.1177/109019810002700506</a>.
@@ -933,6 +976,8 @@ Zajonc RB (1968) Attitudinal effects of mere exposure. <em>Journal of Personalit
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -958,13 +1003,39 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
