@@ -9,11 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Tobias Dienlin, Philipp K. Masur, Sabine Trepte" />
 
 
-<title>A Longitudinal Analysis of the Privacy Paradox</title>
+<title>A longitudinal analysis of the privacy paradox</title>
 
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -30,8 +30,18 @@
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -77,6 +87,7 @@ h6 {
   text-align: left;
 }
 </style>
+
 
 
 
@@ -373,21 +384,14 @@ div.tocify {
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="manuscript.pdf">
-    <span class="fa fa-file"></span>
+    <span class="fas fa-file"></span>
      
     PDF
   </a>
 </li>
 <li>
-  <a href="http://dx.doi.org/10.7802/1937">
-    <span class="fa fa-file"></span>
-     
-    Data
-  </a>
-</li>
-<li>
   <a href="https://github.com/tdienlin/privacy-paradox-longitudinal">
-    <span class="fa fa-lg fa-github"></span>
+    <span class="fas fa-lg fa-github"></span>
      
     Source Code
   </a>
@@ -409,14 +413,13 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">A Longitudinal Analysis of the Privacy Paradox</h1>
-<h4 class="author">Tobias Dienlin, Philipp K. Masur, Sabine Trepte</h4>
+<h1 class="title toc-ignore">A longitudinal analysis of the privacy paradox</h1>
 
 </div>
 
 
 <pre class="r"><code># relevant packages
-devtools::install_github(&quot;tdienlin/td@v.0.0.2.5&quot;)
+devtools::install_github(&quot;tdienlin/td@v0.0.2.6&quot;)
 required &lt;- c(&quot;GGally&quot;, &quot;ggplot2&quot;, &quot;kableExtra&quot;, &quot;knitr&quot;, &quot;lavaan&quot;, &quot;lme4&quot;, &quot;magrittr&quot;, &quot;MissMech&quot;, &quot;papaja&quot;, &quot;psych&quot;, &quot;pwr&quot;, 
     &quot;MVN&quot;, &quot;semTools&quot;, &quot;sjstats&quot;, &quot;tidyverse&quot;, &quot;td&quot;)
 
@@ -506,16 +509,15 @@ na_per &lt;- mean(c(d_wide$t1_na_per, d_wide$t2_na_per, d_wide$t3_na_per)) * 100
 </div>
 <div id="measures" class="section level1">
 <h1>Measures</h1>
-<p>In what follows, we report the measures we collected, including their items, factorial validity, reliability, and ICC. For the measures’ longitudinal invariance, see <a href="analyses_additional.Rmd">additional analyses</a>.</p>
+<p>In what follows, we report the measures we used for our analyses, including their items, factorial validity, reliability, and ICC.</p>
+<p>We conducted confirmatory factor analyses to determine the underlying factor structure and to remove items that showed poor measurement properties (see <a href="analyses_additional.Rmd">additional analyses</a>).</p>
+<p>For the measures’ longitudinal invariance, see <a href="analyses_additional.Rmd">additional analyses</a>.</p>
 <div id="concerns-about-online-privacy" class="section level2">
 <h2>Concerns about online privacy</h2>
 <div id="items" class="section level3">
 <h3>Items</h3>
 <p>The following deals with things that can happen on the Internet.</p>
-<ol style="list-style-type: decimal">
-<li>In general, how concerned are you about your privacy while using the Internet?</li>
-<li>Are you concerned about online organizations not being who they claim they are?</li>
-<li>Are you concerned about online identity theft?</li>
+<ol start="4" style="list-style-type: decimal">
 <li>Are you concerned about people you do not know obtaining personal information about you from your online activities?</li>
 <li>Are you concerned that if you use your credit card to buy something on the Internet your credit card number will be obtained/intercepted by someone else?</li>
 <li>Are you concerned that an email you sent may be read by someone else besides the person you sent it to?</li>
@@ -562,13 +564,12 @@ t2_pri_con_f ~~ t3_pri_con_f
 &#39;
 assign(paste(&quot;fit&quot;, name, sep = &quot;_&quot;), cfa(model, d_wide, missing = &quot;ML&quot;))
 summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = TRUE, fit.measures = TRUE)</code></pre>
-<pre><code>## lavaan 0.6-5 ended normally after 86 iterations
+<pre><code>## lavaan 0.6-7 ended normally after 86 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
 ##   Number of free parameters                         81
 ##   Number of equality constraints                    10
-##   Row rank of the constraints matrix                10
 ##                                                       
 ##   Number of observations                          1403
 ##   Number of missing patterns                        26
@@ -612,9 +613,9 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ## 
 ## Parameter Estimates:
 ## 
+##   Standard errors                             Standard
 ##   Information                                 Observed
 ##   Observed information based on                Hessian
-##   Standard errors                             Standard
 ## 
 ## Latent Variables:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
@@ -803,19 +804,16 @@ summary(fit)</code></pre>
 <div id="items-1" class="section level3">
 <h3>Items</h3>
 <p>Now we will deal with information sharing on the Internet. Do you think that it is sensible to disclose the following pieces of information online, i.e., via the Internet?</p>
-<ol style="list-style-type: decimal">
-<li>Financial information (bank data, account balances…)</li>
-<li>Medical information (health, medical records…)</li>
-<li>Second name</li>
-<li>First name</li>
-<li>Residence</li>
-<li>Street and house number</li>
-<li>Email address</li>
-<li>Phone number</li>
-<li>Photos (of you)</li>
-<li>Job (past and present)</li>
-<li>Education</li>
-</ol>
+<p>  1. Financial information (bank data, account balances…)<br />
+  2. Medical information (health, medical records…)<br />
+  3. Second name<br />
+  4. First name<br />
+  5. Residence<br />
+  6. Street and house number<br />
+  7. Email address<br />
+  8. Phone number<br />
+  10. Job (past and present)<br />
+  11. Education</p>
 <p>(NA = “no Internet user / no reply”, 1 = “not sensible at all”, 2 = “somewhat not sensible”, 3 = “in part”, 4 = “somewhat sensible”, 5 = “very sensible”)</p>
 </div>
 <div id="cfa-1" class="section level3">
@@ -871,13 +869,12 @@ t2_inf_sha_att_11 ~~ t3_inf_sha_att_11
 &#39;
 assign(paste(&quot;fit&quot;, name, sep = &quot;_&quot;), cfa(model, d_wide, missing = &quot;ML&quot;))
 summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = TRUE, fit.measures = TRUE)</code></pre>
-<pre><code>## lavaan 0.6-5 ended normally after 146 iterations
+<pre><code>## lavaan 0.6-7 ended normally after 146 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
 ##   Number of free parameters                        138
 ##   Number of equality constraints                    18
-##   Row rank of the constraints matrix                18
 ##                                                       
 ##   Number of observations                          1403
 ##   Number of missing patterns                        43
@@ -921,30 +918,30 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ## 
 ## Parameter Estimates:
 ## 
+##   Standard errors                             Standard
 ##   Information                                 Observed
 ##   Observed information based on                Hessian
-##   Standard errors                             Standard
 ## 
 ## Latent Variables:
 ##                        Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
 ##   t1_inf_sha_att_f =~                                                       
 ##     t1_nf___1             1.000                               0.417    0.417
-##     t1_nf___2 (o2)        2.954    0.179   16.541    0.000    0.950    0.950
+##     t1_nf___2 (o2)        2.954    0.179   16.540    0.000    0.950    0.950
 ##     t1_nf___3 (o3)        2.902    0.175   16.543    0.000    0.934    0.934
 ##     t1_nf___4 (o4)        2.201    0.138   15.934    0.000    0.875    0.875
-##     t1_nf___5 (o5)        1.483    0.101   14.750    0.000    0.484    0.484
+##     t1_nf___5 (o5)        1.483    0.101   14.749    0.000    0.484    0.484
 ##   t2_inf_sha_att_f =~                                                       
 ##     t2_nf___1             1.000                               0.439    0.439
-##     t2_nf___2 (o2)        2.954    0.179   16.541    0.000    0.960    0.960
+##     t2_nf___2 (o2)        2.954    0.179   16.540    0.000    0.960    0.960
 ##     t2_nf___3 (o3)        2.902    0.175   16.543    0.000    0.946    0.946
 ##     t2_nf___4 (o4)        2.201    0.138   15.934    0.000    0.907    0.907
-##     t2_nf___5 (o5)        1.483    0.101   14.750    0.000    0.487    0.487
+##     t2_nf___5 (o5)        1.483    0.101   14.749    0.000    0.487    0.487
 ##   t3_inf_sha_att_f =~                                                       
 ##     t3_nf___1             1.000                               0.425    0.425
-##     t3_nf___2 (o2)        2.954    0.179   16.541    0.000    0.931    0.931
+##     t3_nf___2 (o2)        2.954    0.179   16.540    0.000    0.931    0.931
 ##     t3_nf___3 (o3)        2.902    0.175   16.543    0.000    0.924    0.924
 ##     t3_nf___4 (o4)        2.201    0.138   15.934    0.000    0.891    0.891
-##     t3_nf___5 (o5)        1.483    0.101   14.750    0.000    0.481    0.481
+##     t3_nf___5 (o5)        1.483    0.101   14.749    0.000    0.481    0.481
 ##   t1_inf_sha_att_f1 =~                                                      
 ##     t1_n___01             1.000                               0.780    0.698
 ##     t1_n___02 (j2)        0.881    0.062   14.292    0.000    0.687    0.624
@@ -1010,7 +1007,7 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##    .t3_nf_sh_tt_02        0.393    0.029   13.745    0.000    0.393    0.540
 ##  .t1_inf_sha_att_03 ~~                                                      
 ##    .t2_nf_sh_tt_03        0.071    0.009    7.984    0.000    0.071    0.384
-##    .t3_nf_sh_tt_03        0.065    0.009    7.654    0.000    0.065    0.395
+##    .t3_nf_sh_tt_03        0.065    0.009    7.655    0.000    0.065    0.395
 ##  .t2_inf_sha_att_03 ~~                                                      
 ##    .t3_nf_sh_tt_03        0.067    0.009    7.854    0.000    0.067    0.404
 ##  .t1_inf_sha_att_04 ~~                                                      
@@ -1022,7 +1019,7 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##    .t2_nf_sh_tt_05        0.033    0.008    4.332    0.000    0.033    0.264
 ##    .t3_nf_sh_tt_05        0.037    0.008    4.697    0.000    0.037    0.278
 ##  .t2_inf_sha_att_05 ~~                                                      
-##    .t3_nf_sh_tt_05        0.027    0.008    3.518    0.000    0.027    0.207
+##    .t3_nf_sh_tt_05        0.027    0.008    3.517    0.000    0.027    0.207
 ##  .t1_inf_sha_att_06 ~~                                                      
 ##    .t2_nf_sh_tt_06        0.152    0.011   13.980    0.000    0.152    0.537
 ##    .t3_nf_sh_tt_06        0.129    0.010   12.344    0.000    0.129    0.476
@@ -1106,7 +1103,7 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##    .t1_nf_sh_tt_02    0.740    0.047   15.886    0.000    0.740    0.611
 ##    .t1_nf_sh_tt_03    0.183    0.013   14.444    0.000    0.183    0.151
 ##    .t1_nf_sh_tt_04    0.223    0.013   17.744    0.000    0.223    0.198
-##    .t1_nf_sh_tt_05    0.125    0.011   11.154    0.000    0.125    0.109
+##    .t1_nf_sh_tt_05    0.125    0.011   11.153    0.000    0.125    0.109
 ##    .t1_nf_sh_tt_06    0.269    0.014   19.433    0.000    0.269    0.228
 ##    .t1_nf_sh_tt_07    0.532    0.029   18.583    0.000    0.532    0.443
 ##    .t1_nf_sh_tt_08    0.591    0.028   21.016    0.000    0.591    0.521
@@ -1116,7 +1113,7 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##    .t2_nf_sh_tt_02    0.753    0.045   16.555    0.000    0.753    0.638
 ##    .t2_nf_sh_tt_03    0.185    0.012   14.846    0.000    0.185    0.155
 ##    .t2_nf_sh_tt_04    0.245    0.013   18.747    0.000    0.245    0.216
-##    .t2_nf_sh_tt_05    0.121    0.011   11.119    0.000    0.121    0.108
+##    .t2_nf_sh_tt_05    0.121    0.011   11.118    0.000    0.121    0.108
 ##    .t2_nf_sh_tt_06    0.299    0.015   20.526    0.000    0.299    0.251
 ##    .t2_nf_sh_tt_07    0.562    0.029   19.212    0.000    0.562    0.473
 ##    .t2_nf_sh_tt_08    0.632    0.029   21.753    0.000    0.632    0.554
@@ -1132,7 +1129,7 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##    .t3_nf_sh_tt_08    0.577    0.027   21.748    0.000    0.577    0.541
 ##    .t3_nf_sh_tt_10    0.119    0.021    5.768    0.000    0.119    0.113
 ##    .t3_nf_sh_tt_11    0.165    0.020    8.276    0.000    0.165    0.156
-##     t1_inf_sh_tt_f    0.106    0.013    7.965    0.000    1.000    1.000
+##     t1_inf_sh_tt_f    0.106    0.013    7.964    0.000    1.000    1.000
 ##     t2_inf_sh_tt_f    0.106    0.013    7.966    0.000    1.000    1.000
 ##     t3_inf_sh_tt_f    0.099    0.012    7.950    0.000    1.000    1.000
 ##    .t1_nf_sh_tt_f1    0.502    0.050   10.036    0.000    0.826    0.826
@@ -1198,19 +1195,16 @@ summary(fit)</code></pre>
 <div id="items-2" class="section level3">
 <h3>Items</h3>
 <p>In the following, please indicate how often you disclose the following information on the Internet. How often do you disclose the following pieces of information online, i.e., on the Internet?</p>
-<ol style="list-style-type: decimal">
-<li>Financial information (bank data, account balances…)</li>
-<li>Medical information (health, medical records…)</li>
-<li>Second name</li>
-<li>First name</li>
-<li>Residence</li>
-<li>Street and house number</li>
-<li>Email address</li>
-<li>Phone number</li>
-<li>Photos (of you)</li>
-<li>Job (past and present)</li>
-<li>Education</li>
-</ol>
+<p>  1. Financial information (bank data, account balances…)<br />
+  2. Medical information (health, medical records…)<br />
+  3. Second name<br />
+  4. First name<br />
+  5. Residence<br />
+  6. Street and house number<br />
+  7. Email address<br />
+  8. Phone number<br />
+  10. Job (past and present)<br />
+  11. Education</p>
 <p>(NA = “no Internet user / no reply”, 1 = “every day”, 2 = “weekly”, 3 = “monthly”, 4 = “less than that”, 5 = “never”)</p>
 </div>
 <div id="cfa-2" class="section level3">
@@ -1266,13 +1260,12 @@ t2_inf_sha_beh_11 ~~ t3_inf_sha_beh_11
 &#39;
 assign(paste(&quot;fit&quot;, name, sep = &quot;_&quot;), cfa(model, d_wide, missing = &quot;ML&quot;))
 summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = TRUE, fit.measures = TRUE)</code></pre>
-<pre><code>## lavaan 0.6-5 ended normally after 182 iterations
+<pre><code>## lavaan 0.6-7 ended normally after 184 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
 ##   Number of free parameters                        138
 ##   Number of equality constraints                    18
-##   Row rank of the constraints matrix                18
 ##                                                       
 ##   Number of observations                          1403
 ##   Number of missing patterns                        38
@@ -1316,9 +1309,9 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ## 
 ## Parameter Estimates:
 ## 
+##   Standard errors                             Standard
 ##   Information                                 Observed
 ##   Observed information based on                Hessian
-##   Standard errors                             Standard
 ## 
 ## Latent Variables:
 ##                        Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
@@ -1451,7 +1444,7 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##    .t1_nf_sh_bh_03    2.672    0.028   94.456    0.000    2.672    2.522
 ##    .t1_nf_sh_bh_04    2.725    0.028   96.494    0.000    2.725    2.576
 ##    .t1_nf_sh_bh_05    2.545    0.026   96.751    0.000    2.545    2.584
-##    .t1_nf_sh_bh_06    2.431    0.026   93.827    0.000    2.431    2.506
+##    .t1_nf_sh_bh_06    2.431    0.026   93.828    0.000    2.431    2.506
 ##    .t1_nf_sh_bh_07    2.878    0.028  101.995    0.000    2.878    2.723
 ##    .t1_nf_sh_bh_08    2.194    0.026   85.417    0.000    2.194    2.283
 ##    .t1_nf_sh_bh_10    1.794    0.024   75.745    0.000    1.794    2.024
@@ -1751,13 +1744,12 @@ t3_inf_sha_beh_11 ~~ t3_inf_sha_att_11
 &#39;
 assign(paste(&quot;fit&quot;, name, sep = &quot;_&quot;), cfa(model, d_wide, missing = &quot;ML&quot;))
 summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = TRUE, fit.measures = TRUE)</code></pre>
-<pre><code>## lavaan 0.6-5 ended normally after 354 iterations
+<pre><code>## lavaan 0.6-7 ended normally after 339 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
 ##   Number of free parameters                        414
 ##   Number of equality constraints                    46
-##   Row rank of the constraints matrix                46
 ##                                                       
 ##   Number of observations                          1403
 ##   Number of missing patterns                       109
@@ -1801,9 +1793,9 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ## 
 ## Parameter Estimates:
 ## 
+##   Standard errors                             Standard
 ##   Information                                 Observed
 ##   Observed information based on                Hessian
-##   Standard errors                             Standard
 ## 
 ## Latent Variables:
 ##                        Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
@@ -1822,7 +1814,7 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##     t1_pr__06 (b3)        1.086    0.024   44.576    0.000    0.919    0.779
 ##   t1_pri_con_f2 =~                                                          
 ##     t1_pr__07             1.000                               1.013    0.816
-##     t1_pr__08 (c2)        0.972    0.018   55.067    0.000    0.984    0.841
+##     t1_pr__08 (c2)        0.972    0.018   55.068    0.000    0.984    0.841
 ##     t1_pr__09 (c3)        0.859    0.016   52.493    0.000    0.871    0.827
 ##   t2_pri_con_f1 =~                                                          
 ##     t2_pr__04             1.000                               0.847    0.798
@@ -1830,7 +1822,7 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##     t2_pr__06 (b3)        1.086    0.024   44.576    0.000    0.921    0.791
 ##   t2_pri_con_f2 =~                                                          
 ##     t2_pr__07             1.000                               1.039    0.839
-##     t2_pr__08 (c2)        0.972    0.018   55.067    0.000    1.009    0.855
+##     t2_pr__08 (c2)        0.972    0.018   55.068    0.000    1.009    0.855
 ##     t2_pr__09 (c3)        0.859    0.016   52.493    0.000    0.892    0.834
 ##   t3_pri_con_f1 =~                                                          
 ##     t3_pr__04             1.000                               0.835    0.791
@@ -1838,7 +1830,7 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##     t3_pr__06 (b3)        1.086    0.024   44.576    0.000    0.907    0.791
 ##   t3_pri_con_f2 =~                                                          
 ##     t3_pr__07             1.000                               1.042    0.843
-##     t3_pr__08 (c2)        0.972    0.018   55.067    0.000    1.012    0.869
+##     t3_pr__08 (c2)        0.972    0.018   55.068    0.000    1.012    0.869
 ##     t3_pr__09 (c3)        0.859    0.016   52.493    0.000    0.895    0.831
 ##   t1_inf_sha_att_f =~                                                       
 ##     t1_nf___1             1.000                               0.427    0.427
@@ -1872,7 +1864,7 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##     t1_n___08  (h)        0.883    0.024   36.334    0.000    0.724    0.687
 ##   t1_inf_sha_att_f5 =~                                                      
 ##     t1_n___10             1.000                               0.993    0.930
-##     t1_n___11  (i)        0.976    0.020   49.883    0.000    0.969    0.920
+##     t1_n___11  (i)        0.976    0.020   49.884    0.000    0.969    0.920
 ##   t2_inf_sha_att_f1 =~                                                      
 ##     t2_n___01             1.000                               0.734    0.656
 ##     t2_n___02  (e)        0.870    0.059   14.673    0.000    0.639    0.594
@@ -1887,7 +1879,7 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##     t2_n___08  (h)        0.883    0.024   36.334    0.000    0.699    0.664
 ##   t2_inf_sha_att_f5 =~                                                      
 ##     t2_n___10             1.000                               0.990    0.948
-##     t2_n___11  (i)        0.976    0.020   49.883    0.000    0.967    0.921
+##     t2_n___11  (i)        0.976    0.020   49.884    0.000    0.967    0.921
 ##   t3_inf_sha_att_f1 =~                                                      
 ##     t3_n___01             1.000                               0.718    0.647
 ##     t3_n___02  (e)        0.870    0.059   14.673    0.000    0.625    0.598
@@ -1902,23 +1894,23 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##     t3_n___08  (h)        0.883    0.024   36.334    0.000    0.686    0.675
 ##   t3_inf_sha_att_f5 =~                                                      
 ##     t3_n___10             1.000                               0.967    0.944
-##     t3_n___11  (i)        0.976    0.020   49.883    0.000    0.944    0.917
+##     t3_n___11  (i)        0.976    0.020   49.884    0.000    0.944    0.917
 ##   t1_inf_sha_beh_f =~                                                       
 ##     t1_nf___1             1.000                               0.476    0.476
 ##     t1_nf___2 (o2)        2.866    0.153   18.734    0.000    0.961    0.961
-##     t1_nf___3 (o3)        2.651    0.141   18.754    0.000    0.943    0.943
+##     t1_nf___3 (o3)        2.651    0.141   18.753    0.000    0.943    0.943
 ##     t1_nf___4 (o4)        2.555    0.138   18.482    0.000    0.969    0.969
 ##     t1_nf___5 (o5)        1.280    0.077   16.568    0.000    0.532    0.532
 ##   t2_inf_sha_beh_f =~                                                       
 ##     t2_nf___1             1.000                               0.586    0.586
 ##     t2_nf___2 (o2)        2.866    0.153   18.734    0.000    0.961    0.961
-##     t2_nf___3 (o3)        2.651    0.141   18.754    0.000    0.925    0.925
+##     t2_nf___3 (o3)        2.651    0.141   18.753    0.000    0.925    0.925
 ##     t2_nf___4 (o4)        2.555    0.138   18.482    0.000    0.956    0.956
 ##     t2_nf___5 (o5)        1.280    0.077   16.568    0.000    0.533    0.533
 ##   t3_inf_sha_beh_f =~                                                       
 ##     t3_nf___1             1.000                               0.498    0.498
 ##     t3_nf___2 (o2)        2.866    0.153   18.734    0.000    0.954    0.954
-##     t3_nf___3 (o3)        2.651    0.141   18.754    0.000    0.942    0.942
+##     t3_nf___3 (o3)        2.651    0.141   18.753    0.000    0.942    0.942
 ##     t3_nf___4 (o4)        2.555    0.138   18.482    0.000    0.944    0.944
 ##     t3_nf___5 (o5)        1.280    0.077   16.568    0.000    0.507    0.507
 ##   t1_inf_sha_beh_f1 =~                                                      
@@ -1926,7 +1918,7 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##     t1_n___02 (j2)        0.305    0.028   10.729    0.000    0.219    0.378
 ##   t1_inf_sha_beh_f2 =~                                                      
 ##     t1_n___03             1.000                               1.019    0.964
-##     t1_n___04 (k2)        0.999    0.008  129.855    0.000    1.017    0.965
+##     t1_n___04 (k2)        0.999    0.008  129.856    0.000    1.017    0.965
 ##   t1_inf_sha_beh_f3 =~                                                      
 ##     t1_n___05             1.000                               0.960    0.974
 ##     t1_n___06 (l2)        0.919    0.009   98.441    0.000    0.883    0.910
@@ -1935,13 +1927,13 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##     t1_n___08 (m2)        0.738    0.016   44.897    0.000    0.664    0.697
 ##   t1_inf_sha_beh_f5 =~                                                      
 ##     t1_n___10             1.000                               0.822    0.926
-##     t1_n___11 (n2)        0.828    0.021   38.715    0.000    0.680    0.825
+##     t1_n___11 (n2)        0.828    0.021   38.714    0.000    0.680    0.825
 ##   t2_inf_sha_beh_f1 =~                                                      
 ##     t2_n___01             1.000                               0.564    0.539
 ##     t2_n___02 (j2)        0.305    0.028   10.729    0.000    0.172    0.358
 ##   t2_inf_sha_beh_f2 =~                                                      
 ##     t2_n___03             1.000                               0.986    0.961
-##     t2_n___04 (k2)        0.999    0.008  129.855    0.000    0.985    0.949
+##     t2_n___04 (k2)        0.999    0.008  129.856    0.000    0.985    0.949
 ##   t2_inf_sha_beh_f3 =~                                                      
 ##     t2_n___05             1.000                               0.947    0.966
 ##     t2_n___06 (l2)        0.919    0.009   98.441    0.000    0.871    0.908
@@ -1950,13 +1942,13 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##     t2_n___08 (m2)        0.738    0.016   44.897    0.000    0.652    0.689
 ##   t2_inf_sha_beh_f5 =~                                                      
 ##     t2_n___10             1.000                               0.794    0.938
-##     t2_n___11 (n2)        0.828    0.021   38.715    0.000    0.657    0.817
+##     t2_n___11 (n2)        0.828    0.021   38.714    0.000    0.657    0.817
 ##   t3_inf_sha_beh_f1 =~                                                      
 ##     t3_n___01             1.000                               0.638    0.615
 ##     t3_n___02 (j2)        0.305    0.028   10.729    0.000    0.195    0.387
 ##   t3_inf_sha_beh_f2 =~                                                      
 ##     t3_n___03             1.000                               0.956    0.968
-##     t3_n___04 (k2)        0.999    0.008  129.855    0.000    0.955    0.951
+##     t3_n___04 (k2)        0.999    0.008  129.856    0.000    0.955    0.951
 ##   t3_inf_sha_beh_f3 =~                                                      
 ##     t3_n___05             1.000                               0.895    0.969
 ##     t3_n___06 (l2)        0.919    0.009   98.441    0.000    0.823    0.903
@@ -1965,7 +1957,7 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##     t3_n___08 (m2)        0.738    0.016   44.897    0.000    0.635    0.697
 ##   t3_inf_sha_beh_f5 =~                                                      
 ##     t3_n___10             1.000                               0.803    0.946
-##     t3_n___11 (n2)        0.828    0.021   38.715    0.000    0.665    0.846
+##     t3_n___11 (n2)        0.828    0.021   38.714    0.000    0.665    0.846
 ## 
 ## Covariances:
 ##                        Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
@@ -2069,7 +2061,7 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##     t2_inf_sh_bh_f        0.072    0.008    8.496    0.000    0.635    0.635
 ##     t3_inf_sh_bh_f        0.068    0.008    8.474    0.000    0.625    0.625
 ##   t2_inf_sha_beh_f ~~                                                       
-##     t3_inf_sh_bh_f        0.068    0.008    8.502    0.000    0.645    0.645
+##     t3_inf_sh_bh_f        0.068    0.008    8.501    0.000    0.645    0.645
 ##  .t1_inf_sha_beh_01 ~~                                                      
 ##    .t2_nf_sh_bh_01        0.335    0.028   12.002    0.000    0.335    0.482
 ##    .t3_nf_sh_bh_01        0.301    0.027   11.039    0.000    0.301    0.465
@@ -2106,7 +2098,7 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##  .t2_inf_sha_beh_07 ~~                                                      
 ##    .t3_nf_sh_bh_07        0.097    0.012    8.235    0.000    0.097    0.312
 ##  .t1_inf_sha_beh_08 ~~                                                      
-##    .t2_nf_sh_bh_08        0.165    0.015   11.269    0.000    0.165    0.351
+##    .t2_nf_sh_bh_08        0.165    0.015   11.268    0.000    0.165    0.351
 ##    .t3_nf_sh_bh_08        0.129    0.014    9.277    0.000    0.129    0.290
 ##  .t2_inf_sha_beh_08 ~~                                                      
 ##    .t3_nf_sh_bh_08        0.151    0.014   10.575    0.000    0.151    0.338
@@ -2225,7 +2217,7 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##    .t2_pri_con_04     3.675    0.028  129.336    0.000    3.675    3.458
 ##    .t2_pri_con_05     3.784    0.035  109.357    0.000    3.784    2.931
 ##    .t2_pri_con_06     3.258    0.031  104.665    0.000    3.258    2.799
-##    .t2_pri_con_07     3.556    0.033  107.463    0.000    3.556    2.873
+##    .t2_pri_con_07     3.556    0.033  107.462    0.000    3.556    2.873
 ##    .t2_pri_con_08     3.551    0.032  112.597    0.000    3.551    3.010
 ##    .t2_pri_con_09     3.994    0.029  139.686    0.000    3.994    3.733
 ##    .t3_pri_con_04     3.664    0.028  129.793    0.000    3.664    3.471
@@ -2234,7 +2226,7 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##    .t3_pri_con_07     3.492    0.033  105.643    0.000    3.492    2.825
 ##    .t3_pri_con_08     3.560    0.031  114.265    0.000    3.560    3.056
 ##    .t3_pri_con_09     3.959    0.029  137.482    0.000    3.959    3.677
-##    .t1_nf_sh_tt_01    1.704    0.029   57.765    0.000    1.704    1.543
+##    .t1_nf_sh_tt_01    1.704    0.029   57.766    0.000    1.704    1.543
 ##    .t1_nf_sh_tt_02    1.900    0.029   65.212    0.000    1.900    1.744
 ##    .t1_nf_sh_tt_03    2.788    0.029   95.482    0.000    2.788    2.551
 ##    .t1_nf_sh_tt_04    2.940    0.028  103.429    0.000    2.940    2.763
@@ -2260,7 +2252,7 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##    .t3_nf_sh_tt_04    3.057    0.028  107.956    0.000    3.057    2.882
 ##    .t3_nf_sh_tt_05    2.737    0.028   97.466    0.000    2.737    2.603
 ##    .t3_nf_sh_tt_06    2.473    0.028   87.188    0.000    2.473    2.328
-##    .t3_nf_sh_tt_07    3.103    0.028  112.659    0.000    3.103    3.010
+##    .t3_nf_sh_tt_07    3.103    0.028  112.660    0.000    3.103    3.010
 ##    .t3_nf_sh_tt_08    2.368    0.027   87.262    0.000    2.368    2.331
 ##    .t3_nf_sh_tt_10    2.297    0.027   83.925    0.000    2.297    2.242
 ##    .t3_nf_sh_tt_11    2.366    0.028   85.992    0.000    2.366    2.296
@@ -2268,9 +2260,9 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##    .t1_nf_sh_bh_02    1.244    0.015   80.287    0.000    1.244    2.145
 ##    .t1_nf_sh_bh_03    2.672    0.028   94.720    0.000    2.672    2.529
 ##    .t1_nf_sh_bh_04    2.725    0.028   96.795    0.000    2.725    2.584
-##    .t1_nf_sh_bh_05    2.545    0.026   96.689    0.000    2.545    2.582
+##    .t1_nf_sh_bh_05    2.545    0.026   96.688    0.000    2.545    2.582
 ##    .t1_nf_sh_bh_06    2.431    0.026   93.869    0.000    2.431    2.507
-##    .t1_nf_sh_bh_07    2.878    0.028  102.194    0.000    2.878    2.729
+##    .t1_nf_sh_bh_07    2.878    0.028  102.195    0.000    2.878    2.729
 ##    .t1_nf_sh_bh_08    2.194    0.025   86.140    0.000    2.194    2.302
 ##    .t1_nf_sh_bh_10    1.793    0.024   75.653    0.000    1.793    2.022
 ##    .t1_nf_sh_bh_11    1.739    0.022   78.954    0.000    1.739    2.110
@@ -2278,9 +2270,9 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##    .t2_nf_sh_bh_02    1.214    0.013   94.409    0.000    1.214    2.522
 ##    .t2_nf_sh_bh_03    2.681    0.027   97.837    0.000    2.681    2.613
 ##    .t2_nf_sh_bh_04    2.764    0.028   99.692    0.000    2.764    2.663
-##    .t2_nf_sh_bh_05    2.558    0.026   97.673    0.000    2.558    2.609
+##    .t2_nf_sh_bh_05    2.558    0.026   97.672    0.000    2.558    2.609
 ##    .t2_nf_sh_bh_06    2.434    0.026   94.964    0.000    2.434    2.537
-##    .t2_nf_sh_bh_07    2.923    0.028  105.144    0.000    2.923    2.808
+##    .t2_nf_sh_bh_07    2.923    0.028  105.145    0.000    2.923    2.808
 ##    .t2_nf_sh_bh_08    2.239    0.025   88.523    0.000    2.239    2.365
 ##    .t2_nf_sh_bh_10    1.805    0.023   79.856    0.000    1.805    2.134
 ##    .t2_nf_sh_bh_11    1.734    0.021   80.702    0.000    1.734    2.156
@@ -2289,7 +2281,7 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##    .t3_nf_sh_bh_03    2.627    0.026   99.684    0.000    2.627    2.661
 ##    .t3_nf_sh_bh_04    2.692    0.027  100.443    0.000    2.692    2.682
 ##    .t3_nf_sh_bh_05    2.509    0.025  101.643    0.000    2.509    2.714
-##    .t3_nf_sh_bh_06    2.395    0.024   98.410    0.000    2.395    2.628
+##    .t3_nf_sh_bh_06    2.395    0.024   98.409    0.000    2.395    2.628
 ##    .t3_nf_sh_bh_07    2.865    0.027  104.202    0.000    2.865    2.783
 ##    .t3_nf_sh_bh_08    2.178    0.024   89.471    0.000    2.178    2.392
 ##    .t3_nf_sh_bh_10    1.776    0.023   78.319    0.000    1.776    2.092
@@ -2360,8 +2352,8 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##    .t3_pri_con_07     0.443    0.022   20.068    0.000    0.443    0.290
 ##    .t3_pri_con_08     0.333    0.018   18.495    0.000    0.333    0.245
 ##    .t3_pri_con_09     0.358    0.017   20.651    0.000    0.358    0.309
-##    .t1_nf_sh_tt_01    0.624    0.051   12.212    0.000    0.624    0.512
-##    .t1_nf_sh_tt_02    0.738    0.044   16.631    0.000    0.738    0.621
+##    .t1_nf_sh_tt_01    0.624    0.051   12.213    0.000    0.624    0.512
+##    .t1_nf_sh_tt_02    0.738    0.044   16.630    0.000    0.738    0.621
 ##    .t1_nf_sh_tt_03    0.182    0.012   15.173    0.000    0.182    0.153
 ##    .t1_nf_sh_tt_04    0.213    0.012   17.894    0.000    0.213    0.188
 ##    .t1_nf_sh_tt_05    0.125    0.011   11.317    0.000    0.125    0.109
@@ -2370,8 +2362,8 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##    .t1_nf_sh_tt_08    0.586    0.027   21.919    0.000    0.586    0.528
 ##    .t1_nf_sh_tt_10    0.153    0.021    7.153    0.000    0.153    0.135
 ##    .t1_nf_sh_tt_11    0.170    0.020    8.287    0.000    0.170    0.153
-##    .t2_nf_sh_tt_01    0.714    0.050   14.151    0.000    0.714    0.570
-##    .t2_nf_sh_tt_02    0.747    0.043   17.372    0.000    0.747    0.647
+##    .t2_nf_sh_tt_01    0.714    0.050   14.152    0.000    0.714    0.570
+##    .t2_nf_sh_tt_02    0.747    0.043   17.371    0.000    0.747    0.647
 ##    .t2_nf_sh_tt_03    0.182    0.012   15.418    0.000    0.182    0.153
 ##    .t2_nf_sh_tt_04    0.233    0.012   18.968    0.000    0.233    0.203
 ##    .t2_nf_sh_tt_05    0.118    0.011   11.088    0.000    0.118    0.105
@@ -2381,7 +2373,7 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##    .t2_nf_sh_tt_10    0.110    0.020    5.380    0.000    0.110    0.101
 ##    .t2_nf_sh_tt_11    0.168    0.020    8.371    0.000    0.168    0.152
 ##    .t3_nf_sh_tt_01    0.718    0.050   14.480    0.000    0.718    0.582
-##    .t3_nf_sh_tt_02    0.701    0.041   16.921    0.000    0.701    0.642
+##    .t3_nf_sh_tt_02    0.701    0.041   16.920    0.000    0.701    0.642
 ##    .t3_nf_sh_tt_03    0.147    0.011   13.033    0.000    0.147    0.129
 ##    .t3_nf_sh_tt_04    0.224    0.012   18.648    0.000    0.224    0.199
 ##    .t3_nf_sh_tt_05    0.138    0.012   11.909    0.000    0.138    0.125
@@ -2410,7 +2402,7 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##    .t2_nf_sh_bh_08    0.471    0.019   24.494    0.000    0.471    0.525
 ##    .t2_nf_sh_bh_10    0.085    0.017    4.887    0.000    0.085    0.119
 ##    .t2_nf_sh_bh_11    0.216    0.014   15.481    0.000    0.216    0.333
-##    .t3_nf_sh_bh_01    0.670    0.056   12.050    0.000    0.670    0.622
+##    .t3_nf_sh_bh_01    0.670    0.056   12.049    0.000    0.670    0.622
 ##    .t3_nf_sh_bh_02    0.215    0.009   23.437    0.000    0.215    0.850
 ##    .t3_nf_sh_bh_03    0.061    0.005   11.810    0.000    0.061    0.062
 ##    .t3_nf_sh_bh_04    0.097    0.006   16.841    0.000    0.097    0.096
@@ -2440,7 +2432,7 @@ summary(get(paste(&quot;fit&quot;, name, sep = &quot;_&quot;)), standardized = T
 ##    .t2_nf_sh_tt_f1    0.430    0.045    9.571    0.000    0.797    0.797
 ##    .t2_nf_sh_tt_f2    0.074    0.012    6.068    0.000    0.074    0.074
 ##    .t2_nf_sh_tt_f3    0.112    0.013    8.607    0.000    0.112    0.112
-##    .t2_nf_sh_tt_f4    0.100    0.018    5.475    0.000    0.160    0.160
+##    .t2_nf_sh_tt_f4    0.100    0.018    5.476    0.000    0.160    0.160
 ##    .t2_nf_sh_tt_f5    0.743    0.036   20.918    0.000    0.758    0.758
 ##    .t3_nf_sh_tt_f1    0.415    0.043    9.535    0.000    0.803    0.803
 ##    .t3_nf_sh_tt_f2    0.125    0.014    9.091    0.000    0.126    0.126
@@ -2499,7 +2491,8 @@ power_balanced_rq &lt;- 1 - alpha_balanced_rq</code></pre>
 <pre class="r"><code>colnames(d_fs) &lt;- c(&quot;Privacy\nconcerns\nT1&quot;, &quot;Privacy\nconcerns\nT2&quot;, &quot;Privacy\nconcerns\nT3&quot;, &quot;Positive\nattitude\nT1&quot;, 
     &quot;Positive\nattitude\nT2&quot;, &quot;Positive\nattitude\nT3&quot;, &quot;Information\nsharing\nT1&quot;, &quot;Information\nsharing\nT2&quot;, &quot;Information\nsharing\nT3&quot;)
 
-corr_plot &lt;- ggpairs(d_fs, lower = list(continuous = wrap(td::scat_plot, coords = c(1, 5, 1, 5)))) + theme_bw()
+corr_plot &lt;- ggpairs(d_fs, upper = list(continuous = cor_plot), lower = list(continuous = wrap(td::scat_plot, coords = c(1, 
+    5, 1, 5)))) + theme_bw()
 print(corr_plot)</code></pre>
 <p><img src="analyses_files/figure-html/Corrplot-1.png" width="768" /></p>
 </div>
@@ -2520,33 +2513,33 @@ Visual representation of the estimated random-intercept cross-lagged panel model
 print(mult_norm_test)</code></pre>
 <pre><code>## $multivariateNormality
 ##              Test        Statistic               p value Result
-## 1 Mardia Skewness 990.267353659167 8.80036401559507e-118     NO
-## 2 Mardia Kurtosis 33.7173011274092                     0     NO
+## 1 Mardia Skewness 990.266674843043 8.80286081370987e-118     NO
+## 2 Mardia Kurtosis 33.7172617096637                     0     NO
 ## 3             MVN             &lt;NA&gt;                  &lt;NA&gt;     NO
 ## 
 ## $univariateNormality
-##           Test          Variable Statistic   p value Normality
-## 1 Shapiro-Wilk   Concerns\nT1        0.962  &lt;0.001      NO    
-## 2 Shapiro-Wilk   Concerns\nT2        0.965  &lt;0.001      NO    
-## 3 Shapiro-Wilk   Concerns\nT3        0.968  &lt;0.001      NO    
-## 4 Shapiro-Wilk Pos. Attitude\nT1     0.984  &lt;0.001      NO    
-## 5 Shapiro-Wilk Pos. Attitude\nT2     0.986  &lt;0.001      NO    
-## 6 Shapiro-Wilk Pos. Attitude\nT3     0.983  &lt;0.001      NO    
-## 7 Shapiro-Wilk Inf. Sharing\nT1      0.968  &lt;0.001      NO    
-## 8 Shapiro-Wilk Inf. Sharing\nT2      0.975  &lt;0.001      NO    
-## 9 Shapiro-Wilk Inf. Sharing\nT3      0.974  &lt;0.001      NO    
+##           Test                 Variable Statistic   p value Normality
+## 1 Shapiro-Wilk  Privacy\nconcerns\nT1       0.962  &lt;0.001      NO    
+## 2 Shapiro-Wilk  Privacy\nconcerns\nT2       0.965  &lt;0.001      NO    
+## 3 Shapiro-Wilk  Privacy\nconcerns\nT3       0.968  &lt;0.001      NO    
+## 4 Shapiro-Wilk  Positive\nattitude\nT1      0.984  &lt;0.001      NO    
+## 5 Shapiro-Wilk  Positive\nattitude\nT2      0.986  &lt;0.001      NO    
+## 6 Shapiro-Wilk  Positive\nattitude\nT3      0.983  &lt;0.001      NO    
+## 7 Shapiro-Wilk Information\nsharing\nT1     0.968  &lt;0.001      NO    
+## 8 Shapiro-Wilk Information\nsharing\nT2     0.975  &lt;0.001      NO    
+## 9 Shapiro-Wilk Information\nsharing\nT3     0.974  &lt;0.001      NO    
 ## 
 ## $Descriptives
-##                      n Mean Std.Dev Median   Min  Max 25th 75th    Skew Kurtosis
-## Concerns\nT1      1403 3.71   0.853   3.79 1.172 4.98 3.15 4.41 -0.5089  -0.3576
-## Concerns\nT2      1403 3.64   0.874   3.70 1.160 4.95 3.07 4.34 -0.4840  -0.3586
-## Concerns\nT3      1403 3.61   0.874   3.65 1.140 4.94 3.05 4.32 -0.4454  -0.3978
-## Pos. Attitude\nT1 1403 2.42   0.685   2.47 0.965 4.62 2.00 2.82 -0.0347  -0.1182
-## Pos. Attitude\nT2 1403 2.48   0.686   2.52 1.039 4.57 2.06 2.90 -0.0431  -0.1094
-## Pos. Attitude\nT3 1403 2.50   0.675   2.57 0.994 4.48 2.12 2.89 -0.1501  -0.0706
-## Inf. Sharing\nT1  1403 2.19   0.661   2.11 0.964 4.46 1.74 2.57  0.5425   0.1268
-## Inf. Sharing\nT2  1403 2.21   0.638   2.17 1.030 4.46 1.74 2.57  0.4240  -0.1104
-## Inf. Sharing\nT3  1403 2.17   0.614   2.11 0.983 4.23 1.73 2.53  0.4674  -0.0260</code></pre>
+##                             n Mean Std.Dev Median   Min  Max 25th 75th    Skew Kurtosis
+## Privacy\nconcerns\nT1    1403 3.71   0.853   3.79 1.172 4.98 3.15 4.41 -0.5089  -0.3576
+## Privacy\nconcerns\nT2    1403 3.64   0.874   3.70 1.160 4.95 3.07 4.34 -0.4840  -0.3586
+## Privacy\nconcerns\nT3    1403 3.61   0.874   3.65 1.140 4.94 3.05 4.32 -0.4454  -0.3978
+## Positive\nattitude\nT1   1403 2.42   0.685   2.47 0.965 4.62 2.00 2.82 -0.0347  -0.1182
+## Positive\nattitude\nT2   1403 2.48   0.686   2.52 1.039 4.57 2.06 2.90 -0.0431  -0.1094
+## Positive\nattitude\nT3   1403 2.50   0.675   2.57 0.994 4.48 2.12 2.89 -0.1501  -0.0706
+## Information\nsharing\nT1 1403 2.19   0.661   2.11 0.964 4.46 1.74 2.57  0.5425   0.1268
+## Information\nsharing\nT2 1403 2.21   0.638   2.17 1.030 4.46 1.74 2.57  0.4240  -0.1104
+## Information\nsharing\nT3 1403 2.17   0.614   2.11 0.983 4.23 1.73 2.53  0.4674  -0.0260</code></pre>
 <p>Results show that the assumption of multivariate normal distribution was violated. Hence, it’d be preferable to conduct robust Maximum Likelihood Estimation. However, using robust estimation it is not possible to run SEM on all data using Full Information Maximum Likehoood (FIML). Given that we consider it more important to include as much information as possible and that estimators often produce similar results, we decided to estimate the following models using regular maximum likehood.</p>
 </div>
 <div id="ri-clpm" class="section level2">
@@ -2611,13 +2604,12 @@ t3_inf_sha_att_fs ~ age + edu_num + male
 &#39;
 fit &lt;- sem(model, data = d_wide, orthogonal = TRUE, missing = &quot;ML&quot;)
 summary(fit, standardized = TRUE, fit.measures = TRUE, ci = TRUE)</code></pre>
-<pre><code>## lavaan 0.6-5 ended normally after 172 iterations
+<pre><code>## lavaan 0.6-7 ended normally after 162 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
 ##   Number of free parameters                         78
 ##   Number of equality constraints                    12
-##   Row rank of the constraints matrix                12
 ##                                                       
 ##   Number of observations                          1403
 ##   Number of missing patterns                         1
@@ -2641,12 +2633,12 @@ summary(fit, standardized = TRUE, fit.measures = TRUE, ci = TRUE)</code></pre>
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)             -10247.006
-##   Loglikelihood unrestricted model (H1)     -10234.415
+##   Loglikelihood user model (H0)             -10247.004
+##   Loglikelihood unrestricted model (H1)     -10234.413
 ##                                                       
-##   Akaike (AIC)                               20626.013
-##   Bayesian (BIC)                             20972.273
-##   Sample-size adjusted Bayesian (BIC)        20762.616
+##   Akaike (AIC)                               20626.009
+##   Bayesian (BIC)                             20972.269
+##   Sample-size adjusted Bayesian (BIC)        20762.612
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
@@ -2661,9 +2653,9 @@ summary(fit, standardized = TRUE, fit.measures = TRUE, ci = TRUE)</code></pre>
 ## 
 ## Parameter Estimates:
 ## 
+##   Standard errors                             Standard
 ##   Information                                 Observed
 ##   Observed information based on                Hessian
-##   Standard errors                             Standard
 ## 
 ## Latent Variables:
 ##                       Estimate  Std.Err  z-value  P(&gt;|z|) ci.lower ci.upper   Std.lv  Std.all
@@ -2833,7 +2825,7 @@ summary(fit, standardized = TRUE, fit.measures = TRUE, ci = TRUE)</code></pre>
 ##    .t3_nf_sh_bh_fs    0.000                               0.000    0.000    0.000    0.000
 ##     pri_con_b         0.542    0.025   21.853    0.000    0.494    0.591    1.000    1.000
 ##     inf_sha_beh_b     0.217    0.011   19.186    0.000    0.195    0.239    1.000    1.000
-##     inf_sha_att_b     0.236    0.014   16.521    0.000    0.208    0.264    1.000    1.000
+##     inf_sha_att_b     0.236    0.014   16.522    0.000    0.208    0.264    1.000    1.000
 ##     t1_pri_con_w      0.162    0.010   15.492    0.000    0.141    0.182    1.000    1.000
 ##    .t2_pri_con_w      0.199    0.021    9.670    0.000    0.158    0.239    0.982    0.982
 ##    .t3_pri_con_w      0.177    0.011   16.686    0.000    0.156    0.198    0.976    0.976
@@ -2858,7 +2850,7 @@ summary(fit, standardized = TRUE, fit.measures = TRUE, ci = TRUE)</code></pre>
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -2902,7 +2894,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0

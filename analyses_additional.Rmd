@@ -1,6 +1,5 @@
 ---
-title: "A Longitudinal Analysis of the Privacy Paradox"
-author: "Tobias Dienlin, Philipp K. Masur, Sabine Trepte"
+title: "A longitudinal analysis of the privacy paradox"
 output: 
   html_document:
     toc: true
@@ -8,6 +7,7 @@ output:
     toc_depth: 5
     df_print: paged
     code_folding: hide
+    number_sections: true
 ---
 
 ```{r, echo=F, include=F}
@@ -19,9 +19,10 @@ knitr::opts_chunk$set(echo=T, error=F, message=F, tidy=T, warning=F, cache=T)
 
 ```{r Packages, cache=F, results='hide'}
 # relevant packages
-devtools::install_github("tdienlin/td@v.0.0.2.5")
+devtools::install_github("tdienlin/td@v0.0.2.6")
 required <- c("GGally", "ggplot2", "lavaan", "lme4", "magrittr", 
-              "MissMech", "papaja", "psych", "pwr", "MVN", "semTools", 
+              "MissMech", # attention: pkg is obsolete, needs to be installed manually
+              "papaja", "psych", "pwr", "MVN", "semTools", 
               "sjstats", "tidyverse", "td")
 
 # load required libraries
@@ -40,7 +41,7 @@ In what follows, we report the results of additional analyses that were also cal
 # set-up
 no <- 0
 name <- "pri_con"
-d_tmp <- select(d_wide, contains(paste0("t1_", name)), -contains("_m"))
+d_tmp <- select(d_wide, contains(paste0("t1_", name)), -contains("_m"), -contains("_fs"))
 model <- fa.parallel(d_tmp, fa = "fa", fm = "ml")
 factan <- fa(d_tmp, fm = "ml", nfactors = model$nfact, rotate = "promax")
 print(factan, sort = TRUE, cut = .3)
@@ -659,7 +660,7 @@ reliabilityL2(get(paste("fit", name, no, sep = "_")), paste("t3", name, "f", sep
 ## Baseline Model
 ### Second Order
 
-```{r CFA_All}
+```{r CFA_All_ALL}
 name <- "all_vars"
 no <- 0
 model <- '
@@ -1551,6 +1552,335 @@ t5_inf_sha_att_m ~ age + edu_num + male
 fit <- sem(model, data = d_wide_all, orthogonal = TRUE, missing = "ML")
 summary(fit, standardized = TRUE, fit.measures = TRUE, ci = TRUE)
 ```
+
+#### Model 7 (longer intervals)
+
+This is like the final model reported in the paper, but with other, that is longer, intervals. Now, waves are separated by 1 year and span until 2018.
+
+We first need to redo the factor scores, because we now have a different sample.
+
+Specifically, we first estimate a model containing all measures, which is then used to extract factor scores. 
+
+```{r CFA_All}
+name <- "all_vars"
+model <- '
+# Privacy Concerns
+# create factors
+t1_pri_con_f =~ 1*t1_pri_con_f1 + a2*t1_pri_con_f2
+t3_pri_con_f =~ 1*t3_pri_con_f1 + a2*t3_pri_con_f2
+t4_pri_con_f =~ 1*t4_pri_con_f1 + a2*t4_pri_con_f2
+t5_pri_con_f =~ 1*t5_pri_con_f1 + a2*t5_pri_con_f2
+t1_pri_con_f1 =~ 1*t1_pri_con_04 + b2*t1_pri_con_05 + b3*t1_pri_con_06
+t1_pri_con_f2 =~ 1*t1_pri_con_07 + c2*t1_pri_con_08 + c3*t1_pri_con_09
+t3_pri_con_f1 =~ 1*t3_pri_con_04 + b2*t3_pri_con_05 + b3*t3_pri_con_06
+t3_pri_con_f2 =~ 1*t3_pri_con_07 + c2*t3_pri_con_08 + c3*t3_pri_con_09
+t4_pri_con_f1 =~ 1*t4_pri_con_04 + b2*t4_pri_con_05 + b3*t4_pri_con_06
+t4_pri_con_f2 =~ 1*t4_pri_con_07 + c2*t4_pri_con_08 + c3*t4_pri_con_09
+t5_pri_con_f1 =~ 1*t5_pri_con_04 + b2*t5_pri_con_05 + b3*t5_pri_con_06
+t5_pri_con_f2 =~ 1*t5_pri_con_07 + c2*t5_pri_con_08 + c3*t5_pri_con_09
+
+# error covariances
+t5_pri_con_04 ~~ t4_pri_con_04 + t3_pri_con_04 + t1_pri_con_04
+t5_pri_con_05 ~~ t4_pri_con_05 + t3_pri_con_05 + t1_pri_con_05
+t5_pri_con_06 ~~ t4_pri_con_06 + t3_pri_con_06 + t1_pri_con_06
+t5_pri_con_07 ~~ t4_pri_con_07 + t3_pri_con_07 + t1_pri_con_07
+t5_pri_con_08 ~~ t4_pri_con_08 + t3_pri_con_08 + t1_pri_con_08
+t5_pri_con_09 ~~ t4_pri_con_09 + t3_pri_con_09 + t1_pri_con_09
+t4_pri_con_04 ~~ t3_pri_con_04 + t1_pri_con_04
+t4_pri_con_05 ~~ t3_pri_con_05 + t1_pri_con_05
+t4_pri_con_06 ~~ t3_pri_con_06 + t1_pri_con_06
+t4_pri_con_07 ~~ t3_pri_con_07 + t1_pri_con_07
+t4_pri_con_08 ~~ t3_pri_con_08 + t1_pri_con_08
+t4_pri_con_09 ~~ t3_pri_con_09 + t1_pri_con_09
+t3_pri_con_04 ~~ t1_pri_con_04
+t3_pri_con_05 ~~ t1_pri_con_05 
+t3_pri_con_06 ~~ t1_pri_con_06
+t3_pri_con_07 ~~ t1_pri_con_07
+t3_pri_con_08 ~~ t1_pri_con_08
+t3_pri_con_09 ~~ t1_pri_con_09
+
+# factor covariances
+t5_pri_con_f ~~ t1_pri_con_f + t3_pri_con_f + t4_pri_con_f
+t1_pri_con_f ~~ t3_pri_con_f + t4_pri_con_f
+t3_pri_con_f ~~ t4_pri_con_f
+
+# Information Sharing Attitude
+# create factors
+t1_inf_sha_att_f =~ 1*t1_inf_sha_att_f1 + d2*t1_inf_sha_att_f2 + d3*t1_inf_sha_att_f3 + d4*t1_inf_sha_att_f4 + d5*t1_inf_sha_att_f5
+t3_inf_sha_att_f =~ 1*t3_inf_sha_att_f1 + d2*t3_inf_sha_att_f2 + d3*t3_inf_sha_att_f3 + d4*t3_inf_sha_att_f4 + d5*t3_inf_sha_att_f5
+t4_inf_sha_att_f =~ 1*t4_inf_sha_att_f1 + d2*t4_inf_sha_att_f2 + d3*t4_inf_sha_att_f3 + d4*t4_inf_sha_att_f4 + d5*t4_inf_sha_att_f5
+t5_inf_sha_att_f =~ 1*t5_inf_sha_att_f1 + d2*t5_inf_sha_att_f2 + d3*t5_inf_sha_att_f3 + d4*t5_inf_sha_att_f4 + d5*t5_inf_sha_att_f5
+
+t1_inf_sha_att_f1 =~ 1*t1_inf_sha_att_01 + e*t1_inf_sha_att_02
+t1_inf_sha_att_f2 =~ 1*t1_inf_sha_att_03 + f*t1_inf_sha_att_04
+t1_inf_sha_att_f3 =~ 1*t1_inf_sha_att_05 + g*t1_inf_sha_att_06
+t1_inf_sha_att_f4 =~ 1*t1_inf_sha_att_07 + h*t1_inf_sha_att_08
+t1_inf_sha_att_f5 =~ 1*t1_inf_sha_att_10 + i*t1_inf_sha_att_11
+t3_inf_sha_att_f1 =~ 1*t3_inf_sha_att_01 + e*t3_inf_sha_att_02
+t3_inf_sha_att_f2 =~ 1*t3_inf_sha_att_03 + f*t3_inf_sha_att_04
+t3_inf_sha_att_f3 =~ 1*t3_inf_sha_att_05 + g*t3_inf_sha_att_06
+t3_inf_sha_att_f4 =~ 1*t3_inf_sha_att_07 + h*t3_inf_sha_att_08
+t3_inf_sha_att_f5 =~ 1*t3_inf_sha_att_10 + i*t3_inf_sha_att_11
+t4_inf_sha_att_f1 =~ 1*t4_inf_sha_att_01 + e*t4_inf_sha_att_02
+t4_inf_sha_att_f2 =~ 1*t4_inf_sha_att_03 + f*t4_inf_sha_att_04
+t4_inf_sha_att_f3 =~ 1*t4_inf_sha_att_05 + g*t4_inf_sha_att_06
+t4_inf_sha_att_f4 =~ 1*t4_inf_sha_att_07 + h*t4_inf_sha_att_08
+t4_inf_sha_att_f5 =~ 1*t4_inf_sha_att_10 + i*t4_inf_sha_att_11
+t5_inf_sha_att_f1 =~ 1*t5_inf_sha_att_01 + e*t5_inf_sha_att_02
+t5_inf_sha_att_f2 =~ 1*t5_inf_sha_att_03 + f*t5_inf_sha_att_04
+t5_inf_sha_att_f3 =~ 1*t5_inf_sha_att_05 + g*t5_inf_sha_att_06
+t5_inf_sha_att_f4 =~ 1*t5_inf_sha_att_07 + h*t5_inf_sha_att_08
+t5_inf_sha_att_f5 =~ 1*t5_inf_sha_att_10 + i*t5_inf_sha_att_11
+
+# factor covariance
+t5_inf_sha_att_f ~~ t1_inf_sha_att_f + t3_inf_sha_att_f + t4_inf_sha_att_f
+t1_inf_sha_att_f ~~ t3_inf_sha_att_f + t4_inf_sha_att_f
+t3_inf_sha_att_f ~~ t4_inf_sha_att_f
+
+# item error covariance
+t5_inf_sha_att_01 ~~ t1_inf_sha_att_01 + t3_inf_sha_att_01 + t4_inf_sha_att_01
+t1_inf_sha_att_01 ~~ t3_inf_sha_att_01 + t4_inf_sha_att_01
+t3_inf_sha_att_01 ~~ t4_inf_sha_att_01
+t5_inf_sha_att_02 ~~ t1_inf_sha_att_02 + t3_inf_sha_att_02 + t4_inf_sha_att_02
+t1_inf_sha_att_02 ~~ t3_inf_sha_att_02 + t4_inf_sha_att_02
+t3_inf_sha_att_02 ~~ t4_inf_sha_att_02
+t5_inf_sha_att_03 ~~ t1_inf_sha_att_03 + t3_inf_sha_att_03 + t4_inf_sha_att_03
+t1_inf_sha_att_03 ~~ t3_inf_sha_att_03 + t4_inf_sha_att_03
+t3_inf_sha_att_03 ~~ t4_inf_sha_att_03
+t5_inf_sha_att_04 ~~ t1_inf_sha_att_04 + t3_inf_sha_att_04 + t4_inf_sha_att_04
+t1_inf_sha_att_04 ~~ t3_inf_sha_att_04 + t4_inf_sha_att_04
+t3_inf_sha_att_04 ~~ t4_inf_sha_att_04
+t5_inf_sha_att_05 ~~ t1_inf_sha_att_05 + t3_inf_sha_att_05 + t4_inf_sha_att_05
+t1_inf_sha_att_05 ~~ t3_inf_sha_att_05 + t4_inf_sha_att_05
+t3_inf_sha_att_05 ~~ t4_inf_sha_att_05
+t5_inf_sha_att_06 ~~ t1_inf_sha_att_06 + t3_inf_sha_att_06 + t4_inf_sha_att_06
+t1_inf_sha_att_06 ~~ t3_inf_sha_att_06 + t4_inf_sha_att_06
+t3_inf_sha_att_06 ~~ t4_inf_sha_att_06
+t5_inf_sha_att_07 ~~ t1_inf_sha_att_07 + t3_inf_sha_att_07 + t4_inf_sha_att_07
+t1_inf_sha_att_07 ~~ t3_inf_sha_att_07 + t4_inf_sha_att_07
+t3_inf_sha_att_07 ~~ t4_inf_sha_att_07
+t5_inf_sha_att_08 ~~ t1_inf_sha_att_08 + t3_inf_sha_att_08 + t4_inf_sha_att_08
+t1_inf_sha_att_08 ~~ t3_inf_sha_att_08 + t4_inf_sha_att_08
+t3_inf_sha_att_08 ~~ t4_inf_sha_att_08
+t5_inf_sha_att_10 ~~ t1_inf_sha_att_10 + t3_inf_sha_att_10 + t4_inf_sha_att_10
+t1_inf_sha_att_10 ~~ t3_inf_sha_att_10 + t4_inf_sha_att_10
+t3_inf_sha_att_10 ~~ t4_inf_sha_att_10
+t5_inf_sha_att_11 ~~ t1_inf_sha_att_11 + t3_inf_sha_att_11 + t4_inf_sha_att_11
+t1_inf_sha_att_11 ~~ t3_inf_sha_att_11 + t4_inf_sha_att_11
+t3_inf_sha_att_11 ~~ t4_inf_sha_att_11
+
+# information sharing behavior
+# create factors
+t1_inf_sha_beh_f =~ 1*t1_inf_sha_beh_f1 + o2*t1_inf_sha_beh_f2 + o3*t1_inf_sha_beh_f3 + o4*t1_inf_sha_beh_f4 + o5*t1_inf_sha_beh_f5
+t3_inf_sha_beh_f =~ 1*t3_inf_sha_beh_f1 + o2*t3_inf_sha_beh_f2 + o3*t3_inf_sha_beh_f3 + o4*t3_inf_sha_beh_f4 + o5*t3_inf_sha_beh_f5
+t4_inf_sha_beh_f =~ 1*t4_inf_sha_beh_f1 + o2*t4_inf_sha_beh_f2 + o3*t4_inf_sha_beh_f3 + o4*t4_inf_sha_beh_f4 + o5*t4_inf_sha_beh_f5
+t5_inf_sha_beh_f =~ 1*t5_inf_sha_beh_f1 + o2*t5_inf_sha_beh_f2 + o3*t5_inf_sha_beh_f3 + o4*t5_inf_sha_beh_f4 + o5*t5_inf_sha_beh_f5
+t1_inf_sha_beh_f1 =~ 1*t1_inf_sha_beh_01 + j2*t1_inf_sha_beh_02
+t1_inf_sha_beh_f2 =~ 1*t1_inf_sha_beh_03 + k2*t1_inf_sha_beh_04
+t1_inf_sha_beh_f3 =~ 1*t1_inf_sha_beh_05 + l2*t1_inf_sha_beh_06
+t1_inf_sha_beh_f4 =~ 1*t1_inf_sha_beh_07 + m2*t1_inf_sha_beh_08
+t1_inf_sha_beh_f5 =~ 1*t1_inf_sha_beh_10 + n2*t1_inf_sha_beh_11
+t3_inf_sha_beh_f1 =~ 1*t3_inf_sha_beh_01 + j2*t3_inf_sha_beh_02
+t3_inf_sha_beh_f2 =~ 1*t3_inf_sha_beh_03 + k2*t3_inf_sha_beh_04
+t3_inf_sha_beh_f3 =~ 1*t3_inf_sha_beh_05 + l2*t3_inf_sha_beh_06
+t3_inf_sha_beh_f4 =~ 1*t3_inf_sha_beh_07 + m2*t3_inf_sha_beh_08
+t3_inf_sha_beh_f5 =~ 1*t3_inf_sha_beh_10 + n2*t3_inf_sha_beh_11
+t4_inf_sha_beh_f1 =~ 1*t4_inf_sha_beh_01 + j2*t4_inf_sha_beh_02
+t4_inf_sha_beh_f2 =~ 1*t4_inf_sha_beh_03 + k2*t4_inf_sha_beh_04
+t4_inf_sha_beh_f3 =~ 1*t4_inf_sha_beh_05 + l2*t4_inf_sha_beh_06
+t4_inf_sha_beh_f4 =~ 1*t4_inf_sha_beh_07 + m2*t4_inf_sha_beh_08
+t4_inf_sha_beh_f5 =~ 1*t4_inf_sha_beh_10 + n2*t4_inf_sha_beh_11
+t5_inf_sha_beh_f1 =~ 1*t5_inf_sha_beh_01 + j2*t5_inf_sha_beh_02
+t5_inf_sha_beh_f2 =~ 1*t5_inf_sha_beh_03 + k2*t5_inf_sha_beh_04
+t5_inf_sha_beh_f3 =~ 1*t5_inf_sha_beh_05 + l2*t5_inf_sha_beh_06
+t5_inf_sha_beh_f4 =~ 1*t5_inf_sha_beh_07 + m2*t5_inf_sha_beh_08
+t5_inf_sha_beh_f5 =~ 1*t5_inf_sha_beh_10 + n2*t5_inf_sha_beh_11
+
+# factor covariance
+t5_inf_sha_beh_f ~~ t1_inf_sha_beh_f + t3_inf_sha_beh_f + t4_inf_sha_beh_f
+t1_inf_sha_beh_f ~~ t3_inf_sha_beh_f + t4_inf_sha_beh_f
+t3_inf_sha_beh_f ~~ t4_inf_sha_beh_f
+
+# item error covariance
+t5_inf_sha_beh_01 ~~ t1_inf_sha_beh_01 + t3_inf_sha_beh_01 + t4_inf_sha_beh_01
+t1_inf_sha_beh_01 ~~ t3_inf_sha_beh_01 + t4_inf_sha_beh_01
+t3_inf_sha_beh_01 ~~ t4_inf_sha_beh_01
+t5_inf_sha_beh_02 ~~ t1_inf_sha_beh_02 + t3_inf_sha_beh_02 + t4_inf_sha_beh_02
+t1_inf_sha_beh_02 ~~ t3_inf_sha_beh_02 + t4_inf_sha_beh_02
+t3_inf_sha_beh_02 ~~ t4_inf_sha_beh_02
+t5_inf_sha_beh_03 ~~ t1_inf_sha_beh_03 + t3_inf_sha_beh_03 + t4_inf_sha_beh_03
+t1_inf_sha_beh_03 ~~ t3_inf_sha_beh_03 + t4_inf_sha_beh_03
+t3_inf_sha_beh_03 ~~ t4_inf_sha_beh_03
+t5_inf_sha_beh_04 ~~ t1_inf_sha_beh_04 + t3_inf_sha_beh_04 + t4_inf_sha_beh_04
+t1_inf_sha_beh_04 ~~ t3_inf_sha_beh_04 + t4_inf_sha_beh_04
+t3_inf_sha_beh_04 ~~ t4_inf_sha_beh_04
+t5_inf_sha_beh_05 ~~ t1_inf_sha_beh_05 + t3_inf_sha_beh_05 + t4_inf_sha_beh_05
+t1_inf_sha_beh_05 ~~ t3_inf_sha_beh_05 + t4_inf_sha_beh_05
+t3_inf_sha_beh_05 ~~ t4_inf_sha_beh_05
+t5_inf_sha_beh_06 ~~ t1_inf_sha_beh_06 + t3_inf_sha_beh_06 + t4_inf_sha_beh_06
+t1_inf_sha_beh_06 ~~ t3_inf_sha_beh_06 + t4_inf_sha_beh_06
+t3_inf_sha_beh_06 ~~ t4_inf_sha_beh_06
+t5_inf_sha_beh_07 ~~ t1_inf_sha_beh_07 + t3_inf_sha_beh_07 + t4_inf_sha_beh_07
+t1_inf_sha_beh_07 ~~ t3_inf_sha_beh_07 + t4_inf_sha_beh_07
+t3_inf_sha_beh_07 ~~ t4_inf_sha_beh_07
+t5_inf_sha_beh_08 ~~ t1_inf_sha_beh_08 + t3_inf_sha_beh_08 + t4_inf_sha_beh_08
+t1_inf_sha_beh_08 ~~ t3_inf_sha_beh_08 + t4_inf_sha_beh_08
+t3_inf_sha_beh_08 ~~ t4_inf_sha_beh_08
+t5_inf_sha_beh_10 ~~ t1_inf_sha_beh_10 + t3_inf_sha_beh_10 + t4_inf_sha_beh_10
+t1_inf_sha_beh_10 ~~ t3_inf_sha_beh_10 + t4_inf_sha_beh_10
+t3_inf_sha_beh_10 ~~ t4_inf_sha_beh_10
+t5_inf_sha_beh_11 ~~ t1_inf_sha_beh_11 + t3_inf_sha_beh_11 + t4_inf_sha_beh_11
+t1_inf_sha_beh_11 ~~ t3_inf_sha_beh_11 + t4_inf_sha_beh_11
+t3_inf_sha_beh_11 ~~ t4_inf_sha_beh_11
+
+## Correlations Attitude and Behavior-Items
+t1_inf_sha_beh_01 ~~ t1_inf_sha_att_01
+t1_inf_sha_beh_02 ~~ t1_inf_sha_att_02
+t1_inf_sha_beh_03 ~~ t1_inf_sha_att_03
+t1_inf_sha_beh_04 ~~ t1_inf_sha_att_04
+t1_inf_sha_beh_05 ~~ t1_inf_sha_att_05
+t1_inf_sha_beh_06 ~~ t1_inf_sha_att_06
+t1_inf_sha_beh_07 ~~ t1_inf_sha_att_07
+t1_inf_sha_beh_08 ~~ t1_inf_sha_att_08
+t1_inf_sha_beh_10 ~~ t1_inf_sha_att_10
+t1_inf_sha_beh_11 ~~ t1_inf_sha_att_11
+t3_inf_sha_beh_01 ~~ t3_inf_sha_att_01
+t3_inf_sha_beh_02 ~~ t3_inf_sha_att_02
+t3_inf_sha_beh_03 ~~ t3_inf_sha_att_03
+t3_inf_sha_beh_04 ~~ t3_inf_sha_att_04
+t3_inf_sha_beh_05 ~~ t3_inf_sha_att_05
+t3_inf_sha_beh_06 ~~ t3_inf_sha_att_06
+t3_inf_sha_beh_07 ~~ t3_inf_sha_att_07
+t3_inf_sha_beh_08 ~~ t3_inf_sha_att_08
+t3_inf_sha_beh_10 ~~ t3_inf_sha_att_10
+t3_inf_sha_beh_11 ~~ t3_inf_sha_att_11
+t4_inf_sha_beh_01 ~~ t4_inf_sha_att_01
+t4_inf_sha_beh_02 ~~ t4_inf_sha_att_02
+t4_inf_sha_beh_03 ~~ t4_inf_sha_att_03
+t4_inf_sha_beh_04 ~~ t4_inf_sha_att_04
+t4_inf_sha_beh_05 ~~ t4_inf_sha_att_05
+t4_inf_sha_beh_06 ~~ t4_inf_sha_att_06
+t4_inf_sha_beh_07 ~~ t4_inf_sha_att_07
+t4_inf_sha_beh_08 ~~ t4_inf_sha_att_08
+t4_inf_sha_beh_10 ~~ t4_inf_sha_att_10
+t4_inf_sha_beh_11 ~~ t4_inf_sha_att_11
+t5_inf_sha_beh_01 ~~ t5_inf_sha_att_01
+t5_inf_sha_beh_02 ~~ t5_inf_sha_att_02
+t5_inf_sha_beh_03 ~~ t5_inf_sha_att_03
+t5_inf_sha_beh_04 ~~ t5_inf_sha_att_04
+t5_inf_sha_beh_05 ~~ t5_inf_sha_att_05
+t5_inf_sha_beh_06 ~~ t5_inf_sha_att_06
+t5_inf_sha_beh_07 ~~ t5_inf_sha_att_07
+t5_inf_sha_beh_08 ~~ t5_inf_sha_att_08
+t5_inf_sha_beh_10 ~~ t5_inf_sha_att_10
+t5_inf_sha_beh_11 ~~ t5_inf_sha_att_11
+'
+assign(paste("fit", name, sep = "_"), cfa(model, d_wide_all, missing = "ML"))
+summary(get(paste("fit", name, sep = "_")), standardized = TRUE, fit.measures = TRUE)
+```
+
+Extract factor scores.
+
+```{r}
+d_fs_all <- lavPredict(get(paste("fit", name, sep = "_")), type = "ov") %>% 
+  as.data.frame() %>% 
+  mutate(t1_pri_con_fs = rowMeans(select(., starts_with("t1_pri"))),
+         t3_pri_con_fs = rowMeans(select(., starts_with("t3_pri"))),
+         t4_pri_con_fs = rowMeans(select(., starts_with("t4_pri"))),
+         t5_pri_con_fs = rowMeans(select(., starts_with("t5_pri"))),
+         t1_inf_sha_att_fs = rowMeans(select(., starts_with("t1_inf_sha_att"))),
+         t3_inf_sha_att_fs = rowMeans(select(., starts_with("t3_inf_sha_att"))),
+         t4_inf_sha_att_fs = rowMeans(select(., starts_with("t4_inf_sha_att"))),
+         t5_inf_sha_att_fs = rowMeans(select(., starts_with("t5_inf_sha_att"))),
+         t1_inf_sha_beh_fs = rowMeans(select(., starts_with("t1_inf_sha_beh"))),
+         t3_inf_sha_beh_fs = rowMeans(select(., starts_with("t3_inf_sha_beh"))),
+         t4_inf_sha_beh_fs = rowMeans(select(., starts_with("t4_inf_sha_beh"))),
+         t5_inf_sha_beh_fs = rowMeans(select(., starts_with("t5_inf_sha_beh")))
+         ) %>% 
+  select(contains("_fs"))
+d_wide_all <- cbind(d_fs_all, d_wide_all)
+```
+
+Run new model.
+
+```{r}
+model <- '
+# between relations
+pri_con_b =~ 1*t1_pri_con_fs + 1*t3_pri_con_fs + 1*t4_pri_con_fs + 1*t5_pri_con_fs
+inf_sha_beh_b =~ 1*t1_inf_sha_beh_fs + 1*t3_inf_sha_beh_fs + 1*t4_inf_sha_beh_fs  + 1*t5_inf_sha_beh_fs
+inf_sha_att_b =~ 1*t1_inf_sha_att_fs + 1*t3_inf_sha_att_fs + 1*t4_inf_sha_att_fs + 1*t5_inf_sha_att_fs
+
+# within person changes
+t1_pri_con_w =~ 1*t1_pri_con_fs
+t3_pri_con_w =~ 1*t3_pri_con_fs
+t4_pri_con_w =~ 1*t4_pri_con_fs
+t5_pri_con_w =~ 1*t5_pri_con_fs
+t1_inf_sha_beh_w =~ 1*t1_inf_sha_beh_fs
+t3_inf_sha_beh_w =~ 1*t3_inf_sha_beh_fs
+t4_inf_sha_beh_w =~ 1*t4_inf_sha_beh_fs
+t5_inf_sha_beh_w =~ 1*t5_inf_sha_beh_fs
+t1_inf_sha_att_w =~ 1*t1_inf_sha_att_fs
+t3_inf_sha_att_w =~ 1*t3_inf_sha_att_fs
+t4_inf_sha_att_w =~ 1*t4_inf_sha_att_fs
+t5_inf_sha_att_w =~ 1*t5_inf_sha_att_fs
+
+# within person effects
+t3_pri_con_w ~ a1*t1_pri_con_w + a2*t1_inf_sha_att_w + a3*t1_inf_sha_beh_w
+t3_inf_sha_att_w ~ b1*t1_pri_con_w + b2*t1_inf_sha_att_w + b3*t1_inf_sha_beh_w
+t3_inf_sha_beh_w ~ c1*t1_pri_con_w + c2*t1_inf_sha_att_w + c3*t1_inf_sha_beh_w
+t4_pri_con_w ~ a1*t3_pri_con_w + a2*t3_inf_sha_att_w + a3*t3_inf_sha_beh_w
+t4_inf_sha_att_w ~ b1*t3_pri_con_w + b2*t3_inf_sha_att_w + b3*t3_inf_sha_beh_w
+t4_inf_sha_beh_w ~ c1*t3_pri_con_w + c2*t3_inf_sha_att_w + c3*t3_inf_sha_beh_w
+t5_pri_con_w ~ a1*t4_pri_con_w + a2*t4_inf_sha_att_w + a3*t4_inf_sha_beh_w
+t5_inf_sha_att_w ~ b1*t4_pri_con_w + b2*t4_inf_sha_att_w + b3*t4_inf_sha_beh_w
+t5_inf_sha_beh_w ~ c1*t4_pri_con_w + c2*t4_inf_sha_att_w + c3*t4_inf_sha_beh_w
+
+# covariances
+pri_con_b ~~ cor_b_1*inf_sha_att_b + cor_b_2*inf_sha_beh_b
+inf_sha_att_b ~~ cor_b_3*inf_sha_beh_b
+t1_pri_con_w ~~ cor_w_1*t1_inf_sha_att_w + cor_w_2*t1_inf_sha_beh_w
+t1_inf_sha_att_w ~~ cor_w_3*t1_inf_sha_beh_w
+t3_pri_con_w ~~ a*t3_inf_sha_att_w + b*t3_inf_sha_beh_w
+t3_inf_sha_att_w ~~ c*t3_inf_sha_beh_w
+t4_pri_con_w ~~ a*t4_inf_sha_att_w + b*t4_inf_sha_beh_w
+t4_inf_sha_att_w ~~ c*t4_inf_sha_beh_w
+t5_pri_con_w ~~ a*t5_inf_sha_att_w + b*t5_inf_sha_beh_w
+t5_inf_sha_att_w ~~ c*t5_inf_sha_beh_w
+
+# setting variances of observed variables to zero
+t1_pri_con_fs ~~ 0*t1_pri_con_fs
+t3_pri_con_fs ~~ 0*t3_pri_con_fs
+t4_pri_con_fs ~~ 0*t4_pri_con_fs
+t5_pri_con_fs ~~ 0*t5_pri_con_fs
+t1_inf_sha_att_fs ~~ 0*t1_inf_sha_att_fs
+t3_inf_sha_att_fs ~~ 0*t3_inf_sha_att_fs
+t4_inf_sha_att_fs ~~ 0*t4_inf_sha_att_fs
+t5_inf_sha_att_fs ~~ 0*t5_inf_sha_att_fs
+t1_inf_sha_beh_fs ~~ 0*t1_inf_sha_beh_fs
+t3_inf_sha_beh_fs ~~ 0*t3_inf_sha_beh_fs
+t4_inf_sha_beh_fs ~~ 0*t4_inf_sha_beh_fs
+t5_inf_sha_beh_fs ~~ 0*t5_inf_sha_beh_fs
+
+# control variables
+t1_pri_con_fs ~ age + edu_num + male
+t3_pri_con_fs ~ age + edu_num + male
+t4_pri_con_fs ~ age + edu_num + male
+t5_pri_con_fs ~ age + edu_num + male
+t1_inf_sha_beh_fs ~ age + edu_num + male
+t3_inf_sha_beh_fs ~ age + edu_num + male
+t4_inf_sha_beh_fs ~ age + edu_num + male
+t5_inf_sha_beh_fs ~ age + edu_num + male
+t1_inf_sha_att_fs ~ age + edu_num + male
+t3_inf_sha_att_fs ~ age + edu_num + male
+t4_inf_sha_att_fs ~ age + edu_num + male
+t5_inf_sha_att_fs ~ age + edu_num + male
+'
+fit <- sem(model, data = d_wide_all, orthogonal = TRUE, missing = "ML")
+summary(fit, standardized = TRUE, fit.measures = TRUE, ci = TRUE)
+fit_riclpm_5w <- fit
+```
+
+The results show the same between person effects. Within-person effects disappear, which is understandable given the longer interval. Effects hence remain stable also across longer time intervals and until 2018.
 
 ## Mixed Models
 

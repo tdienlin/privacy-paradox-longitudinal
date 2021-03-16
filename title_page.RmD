@@ -1,0 +1,53 @@
+---
+title             : "Analyzing the Privacy Paradox Using a Nationally Representative Three-Wave Panel Study" 
+shorttitle        : "Analyzing the Privacy Paradox"
+author:            
+  - name          : "Tobias Dienlin"
+    email         : "tobias.dienlin@univie.ac.at"
+    affiliation   : "1"
+    address       : "University of Vienna, Department of Communication, 1090 Vienna, Austria"
+    corresponding : yes
+  - name          : "Philipp K. Masur"
+    affiliation   : "2"
+  - name          : "Sabine Trepte"
+    affiliation   : "3"
+affiliation:
+  - id            : "1"
+    institution   : "University of Vienna"
+  - id            : "2"
+    institution   : "VU Amsterdam"
+  - id            : "3"
+    institution   : "University of Hohenheim"
+authornote: |
+  All authors contributed extensively to the work presented in this paper. TD, PM, & ST designed the study; PM supervised the data collection; PM administered the data importation; TD & PM wrote the code, ran the models, and analyzed the output data; TD wrote most parts of manuscript, and PM & ST contributed individual sections and comments; ST supervised the project and wrote the grant application (in 2012). 
+  The authors declare no competing interests.
+  This research was funded by the German Federal Ministry of Education and Research (BMBF) Grant 16KIS0094, awarded to Sabine Trepte.
+  
+  
+  This manuscript features a companion website that includes detailed summaries of the statistical results, the code, additional analyses, and a reproducible version of the manuscript (https://xmtra.github.io/privacy-paradox/). The data can be downloaded from http://dx.doi.org/10.7802/1937. 
+keywords          : "privacy paradox, privacy concerns, information sharing, longitudinal analysis, structural equation modeling"
+wordcount         : "`r wordcountaddin::word_count('manuscript.Rmd')`"
+figsintext        : yes
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+lineno            : yes
+lang              : "english"
+class             : "man"
+mask              : no
+output            : papaja::apa6_pdf
+# output            : papaja::apa6_word
+header-includes:
+  - \setlength{\parskip}{0em}
+  - \raggedbottom
+editor_options: 
+  chunk_output_type: inline
+---
+```{r knitr-set-up, include=F}
+knitr::opts_chunk$set(echo=F, error=F, message=F, tidy=T, warning=F)
+```
+
+```{r load-data, include=F, cache=T}
+# Load Workspace
+load("data/workspace.RData")
+```

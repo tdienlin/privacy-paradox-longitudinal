@@ -13,6 +13,7 @@
 
 <title>List of Items</title>
 
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -27,6 +28,15 @@
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -72,6 +82,7 @@ h6 {
   text-align: left;
 }
 </style>
+
 
 
 
@@ -371,21 +382,14 @@ div.tocify {
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="manuscript.pdf">
-    <span class="fa fa-file"></span>
+    <span class="fas fa-file"></span>
      
     PDF
   </a>
 </li>
 <li>
-  <a href="http://dx.doi.org/10.7802/1937">
-    <span class="fa fa-file"></span>
-     
-    Data
-  </a>
-</li>
-<li>
   <a href="https://github.com/tdienlin/privacy-paradox-longitudinal">
-    <span class="fa fa-lg fa-github"></span>
+    <span class="fas fa-lg fa-github"></span>
      
     Source Code
   </a>
@@ -409,23 +413,20 @@ div.tocify {
 <div id="privacy-concern" class="section level2">
 <h2>Privacy Concern</h2>
 <p>The following deals with things that can happen on the Internet.</p>
-<ol style="list-style-type: decimal">
-<li>In general, how concerned are you about your privacy while using the Internet?</li>
-<li>Are you concerned about online organizations not being who they claim they are?</li>
-<li>Are you concerned about online identity theft?</li>
+<ul>
 <li>Are you concerned about people you do not know obtaining personal information about you from your online activities?</li>
 <li>Are you concerned that if you use your credit card to buy something on the Internet your credit card number will be obtained/intercepted by someone else?</li>
 <li>Are you concerned that an email you sent may be read by someone else besides the person you sent it to?</li>
 <li>Are you concerned that institutions or secret services could collect and analyze the data that you are disclosing on the Internet?</li>
 <li>Are you concerned that website providers are tracking your online activities?</li>
 <li>Are you concerned that you don’t know what other organizations or website providers are doing with you data?</li>
-</ol>
+</ul>
 <p>(NA = “no Internet user / no reply”, 1 = “Not concerned at all” : 5 = “very concerned”)</p>
 </div>
 <div id="attitude-toward-online-sharing-of-personal-information" class="section level2">
 <h2>Attitude Toward Online Sharing of Personal Information</h2>
 <p>Now we will deal with information sharing on the Internet. Do you think that it is sensible to disclose the following pieces of information online, i.e., via the Internet?</p>
-<ol style="list-style-type: decimal">
+<ul>
 <li>Financial information (bank data, account balances…)</li>
 <li>Medical information (health, medical records…)</li>
 <li>Second name</li>
@@ -434,16 +435,15 @@ div.tocify {
 <li>Street and house number</li>
 <li>Email address</li>
 <li>Phone number</li>
-<li>Photos (of you)</li>
 <li>Job (past and present)</li>
 <li>Education</li>
-</ol>
+</ul>
 <p>(NA = “no Internet user / no reply”, 1 = “not sensible at all”, 2 = “somewhat not sensible”, 3 = “in part”, 4 = “somewhat sensible”, 5 = “very sensible”)</p>
 </div>
 <div id="online-sharing-of-personal-information" class="section level2">
 <h2>Online Sharing of Personal Information</h2>
 <p>In the following, please indicate how often you disclose the following information on the Internet. How often do you disclose the following pieces of information online, i.e., on the Internet?</p>
-<ol style="list-style-type: decimal">
+<ul>
 <li>Financial information (bank data, account balances…)</li>
 <li>Medical information (health, medical records…)</li>
 <li>Second name</li>
@@ -452,10 +452,9 @@ div.tocify {
 <li>Street and house number</li>
 <li>Email address</li>
 <li>Phone number</li>
-<li>Photos (of you)</li>
 <li>Job (past and present)</li>
 <li>Education</li>
-</ol>
+</ul>
 <p>(NA = “no Internet user / no reply”, 1 = “every day”, 2 = “weekly”, 3 = “monthly”, 4 = “less than that”, 5 = “never”)</p>
 </div>
 </div>
@@ -471,7 +470,7 @@ div.tocify {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -510,7 +509,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0

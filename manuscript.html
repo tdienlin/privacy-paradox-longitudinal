@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="english" xml:lang="english">
+<html>
 
 <head>
 
@@ -11,22 +11,29 @@
 
 
 
-<title>A Longitudinal Analysis of the Privacy Paradox</title>
+<title>A longitudinal analysis of the privacy paradox</title>
 
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -80,6 +87,29 @@ h6 {
 }
 .table th:not([align]) {
   text-align: left;
+}
+</style>
+
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
 }
 </style>
 
@@ -263,75 +293,6 @@ $(document).ready(function () {
 
 
 
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-@media print {
-.toc-content {
-  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
-  float: right;
-}
-}
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-.tocify-subheader {
-  display: inline;
-}
-.tocify-subheader .tocify-item {
-  font-size: 0.95em;
-}
-
-</style>
-
-
 
 </head>
 
@@ -339,16 +300,6 @@ div.tocify {
 
 
 <div class="container-fluid main-container">
-
-
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
-</div>
-</div>
-
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -381,21 +332,14 @@ div.tocify {
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="manuscript.pdf">
-    <span class="fa fa-file"></span>
+    <span class="fas fa-file"></span>
      
     PDF
   </a>
 </li>
 <li>
-  <a href="http://dx.doi.org/10.7802/1937">
-    <span class="fa fa-file"></span>
-     
-    Data
-  </a>
-</li>
-<li>
   <a href="https://github.com/tdienlin/privacy-paradox-longitudinal">
-    <span class="fa fa-lg fa-github"></span>
+    <span class="fas fa-lg fa-github"></span>
      
     Source Code
   </a>
@@ -409,66 +353,67 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">A Longitudinal Analysis of the Privacy Paradox</h1>
+<h1 class="title toc-ignore">A longitudinal analysis of the privacy paradox</h1>
 <h4 class="author">Tobias Dienlin</h4>
 <address class="author_afil">
-1<br><a class="author_email" href="mailto:#"><a href="mailto:tobias.dienlin@uni-hohenheim.de" class="email">tobias.dienlin@uni-hohenheim.de</a></a>
+1<br><a class="author_email" href="mailto:#"><a href="mailto:tobias.dienlin@univie.ac.at" class="email">tobias.dienlin@univie.ac.at</a></a>
 </address>
 <h4 class="author">Philipp K. Masur</h4>
 <address class="author_afil">
-2<br><a class="author_email" href="mailto:#"><a href="mailto:philipp.masur@uni-mainz.de" class="email">philipp.masur@uni-mainz.de</a></a>
+2<br><a class="author_email" href="mailto:#"><a href="mailto:p.k.masur@vu.nl" class="email">p.k.masur@vu.nl</a></a>
 </address>
 <h4 class="author">Sabine Trepte</h4>
 <address class="author_afil">
-1<br><a class="author_email" href="mailto:#"><a href="mailto:sabine.trepte@uni-hohenheim.de" class="email">sabine.trepte@uni-hohenheim.de</a></a>
+3<br><a class="author_email" href="mailto:#"><a href="mailto:sabine.trepte@uni-hohenheim.de" class="email">sabine.trepte@uni-hohenheim.de</a></a>
 </address>
 <div class="abstract">
 <p class="abstract">Abstract</p>
-<p>The privacy paradox states that people’s concerns about online privacy are unrelated to their online sharing of personal information. On the basis of a representative sample of the German population, which includes 1403 respondents who were interviewed at three waves separated by 6 months, we investigate the privacy paradox from a longitudinal perspective. Using a cross-lagged panel model with random intercepts, we differentiate between-person relations from within-person effects. Results revealed that people who were more concerned about their online privacy than others also shared slightly less personal information and had substantially more negative attitudes toward information sharing (between-person level). People who were more concerned than usual also shared slightly less information than usual (within-person level). We found no long-term effects of privacy concerns on information sharing or attitudes 6 months later. The results provide further evidence against the privacy paradox, but more research is needed to better understand the variables’ potential causal relations.</p>
+<p>The privacy paradox states that people’s concerns about online privacy are unrelated to their online sharing of personal information. On the basis of a representative sample of the German population, which includes 1403 respondents interviewed at three waves separated by 6 months, we investigate the privacy paradox from a longitudinal perspective. Using a cross-lagged panel model with random intercepts, we differentiate between-person relations from within-person effects. Results revealed that people who were more concerned about their online privacy than others also shared slightly less personal information and had substantially more negative attitudes toward information sharing (between-person level). People who were more concerned than usual also shared slightly less information than usual (within-person level). We found no long-term effects of privacy concerns on information sharing or attitudes 6 months later. The results provide further evidence against the privacy paradox, but more research is needed to better understand potential causal relations.</p>
 </div>
 
 </div>
 
 
-<div id="introduction" class="section level1">
-<h1>Introduction</h1>
-<p>The privacy paradox states that the information disclosure of Internet users is problematic: Although many people are concerned about their privacy online, they still share plenty of personal information on the web <span class="citation">(e.g., Acquisti and Grossklags 2003)</span>. The privacy paradox is of considerable interest to society—it is discussed in newspapers <span class="citation">(Frean 2017)</span>, Wikipedia entries <span class="citation">(Wikipedia 2018)</span>, designated websites <span class="citation">(New York Public Radio 2018)</span>, books <span class="citation">(Trepte and Reinecke 2011)</span>, and top-tier academic journals <span class="citation">(Acquisti, Brandimarte, and Loewenstein 2015)</span>. If the privacy paradox really exists, it should inspire worry: It would suggest that online behavior is irrational and that people are revealing too much of their personal information, which can cause various problems <span class="citation">(e.g., Sevignani 2016)</span>. Understanding why people disclose information online and whether or not this is paradoxical therefore represents an important challenge.</p>
-<p>However, current research on the privacy paradox has one major limitation. To the best of our knowledge, most empirical studies conducted so far have investigated the privacy paradox from a between-person perspective. By employing empirical tests of relations between people (e.g., cross-sectional questionnaires analyzed with multiple regression or Pearson correlations), studies have analyzed whether people who are more concerned than <em>others</em> also share less personal information than <em>others</em>. Although such a perspective is interesting and represents a viable first step, it cannot make informed claims regarding causality. The privacy paradox, however, implies a causal perspective: Does a person, if <em>he or she</em> becomes more concerned about online privacy, then also share less personal information? This mismatch is problematic because although between-person relations are, except for some special cases, a <em>necessary</em> condition for causal within-person effects, they are by no means a <em>sufficient</em> one. For example, it could be that the between-person relation is determined other third variables. Hence, as the next step in investigating the privacy paradox and to better understand the causal relation between privacy concerns and information sharing, it is necessary to conduct studies with within-person designs.</p>
-<p>With this study we aim to answer four major questions. First, on a between-person level, how are concerns about online privacy related to the online sharing of personal information? Second, on a within-person level, does information sharing decrease when concerns increase? Third, what are the potential long-term effects? Are changes in concerns related to changes in information sharing 6 months later and/or vice versa? Fourth, what is the role of privacy attitudes, do they mediate the relation between privacy concerns and information sharing? To best answer and contextualize these questions, we first provide an in-depth theoretical analysis of the privacy paradox, after which we present the empirical results of a longitudinal panel study, which is representative of the German population.</p>
+<!-- # Introduction -->
+<p>The privacy paradox states that the information disclosure of Internet users is problematic: Although many people are concerned about their privacy online, they still share plenty of personal information on the web <span class="citation">(e.g., Acquisti and Grossklags, 2003)</span>. The privacy paradox is of considerable interest to society—it is discussed in newspapers <span class="citation">(Frean, 2017)</span>, Wikipedia entries <span class="citation">(Wikipedia, 2018)</span>, designated websites <span class="citation">(New York Public Radio, 2018)</span>, books <span class="citation">(Trepte and Reinecke, 2011)</span>, and top-tier academic journals <span class="citation">(Acquisti et al., 2015)</span>. If the privacy paradox really exists, it should inspire worry: It would suggest that online behavior is irrational and that people are revealing too much of their personal information, which can cause various problems <span class="citation">(e.g., Sevignani, 2016)</span>. Understanding why people disclose information online and whether or not this is paradoxical therefore represents an important challenge.</p>
+<p>However, current research on the privacy paradox has one major limitation. To the best of our knowledge, most empirical studies conducted so far have investigated the privacy paradox from a between-person perspective. By employing empirical tests of relations between people (e.g., cross-sectional questionnaires analyzed with multiple regression or Pearson correlations), studies have analyzed whether people who are more concerned than <em>others</em> also share less personal information than <em>others</em>. Although such a perspective is interesting and represents a viable first step, it cannot make informed claims regarding causality. The privacy paradox, however, implies a causal perspective: Does a person, if <em>he or she</em> becomes more concerned about online privacy, then also share less personal information? This mismatch is problematic because although between-person relations are, except for some special cases, a <em>necessary</em> condition for causal within-person effects, they are by no means a <em>sufficient</em> one. For example, it could be that the between-person relation is determined by other third variables. Hence, as the next step in investigating the privacy paradox and to better understand the causal relation between privacy concerns and information sharing, it is necessary to conduct studies with within-person designs.</p>
+<p>With this study we aim to answer four major questions. First, on a between-person level, how are concerns about online privacy related to the online sharing of personal information? Second, on a within-person level, is information sharing lower than usual when concerns are higher than usual? Third, what are the potential long-term effects? Are changes in concerns related to changes in information sharing 6 months later and/or vice versa? Fourth, what is the role of privacy attitudes, do they mediate the relation between privacy concerns and information sharing? To best answer and contextualize these questions, we first provide an in-depth theoretical analysis of the privacy paradox, after which we present the empirical results of a longitudinal panel study, which is representative of the German population.</p>
 <div id="a-brief-history-of-the-privacy-paradox" class="section level2">
 <h2>A Brief History of the Privacy Paradox</h2>
-<p><span class="citation">Acquisti and Grossklags (2003)</span> were among the first to argue that the online disclosure of personal information is paradoxical. “Experiments reveal that very few individuals actually take any action to protect their personal information, even when doing so involves limited costs” (p.1). Three years later, <span class="citation">Barnes (2006)</span> discussed the behavior of young people on SNSs, popularizing the term <em>privacy paradox</em>. Barnes listed six aspects of online behavior that she considered to be particularly paradoxical: (a) illusion of privacy, (b) high quantity of information sharing, (c) attitude behavior discrepancy, (d) lack of privacy concerns, (e) lack of privacy literacy, and (f) fabrication of false information. <span class="citation">Norberg, Horne, and Horne (2007)</span> were one of the first to empirically analyze the privacy paradox explicitly. The study found a mismatch between concerns and behavior, which is aligned with several other experimental studies conducted at the time <span class="citation">(Beresford, Kübler, and Preibusch 2012; Hann et al. 2007; Huberman, Adar, and Fine 2005)</span>.</p>
-<p>While there are various understandings and operationalizations of the privacy paradox <span class="citation">(Kokolakis 2017)</span>, subsequent research focused on Barnes’s third tenet, the attitude-behavior discrepancy. Whereas some studies reported that privacy concerns were not significantly related to the disclosure of personal information <span class="citation">(e.g., Gross and Acquisti 2005; Taddicken 2014; Tufekci 2008)</span>, which lends credence to the privacy paradox, a different set of studies showed significant relations <span class="citation">(e.g., Dienlin and Trepte 2015; Heirman, Walrave, and Ponnet 2013; Walrave, Vanwesenbeeck, and Heirman 2012)</span>, which refutes the privacy paradox.</p>
-<p>Notably, in a parallel line of research other studies have also analyzed the relation between privacy concerns and information sharing. However, the term privacy paradox was often not used explicitly. Instead, studies have referred to the so-called <em>privacy calculus</em>, which states that the sharing of personal information online is affected by both the respective costs and the anticipated benefits <span class="citation">(Culnan and Armstrong 1999)</span>. By now, several studies have found empirical support for the privacy calculus in various online contexts <span class="citation">(e.g., Bol et al. 2018; Dienlin and Metzger 2016; Krasnova et al. 2010)</span>.</p>
-<p><span class="citation">Baruh, Secinti, and Cemalcilar (2017)</span> published the first empirical meta-analysis on the relations between privacy concerns and various forms of social media use (e.g., information sharing or SNS usage). On the basis of 37 studies, <span class="citation">Baruh, Secinti, and Cemalcilar (2017)</span> found a small and significant statistical relation between concerns about online privacy and online information sharing (<em>r</em> = -.13, 95% CI [-.07, -.18]). Another more recent meta analysis by <span class="citation">Yu et al. (2020)</span> also finds a significant bivariate relation between privacy concerns and information sharing, albeit smaller (<em>r</em> = -.06, 95% CI [-.01, -.12]]). There also exist several systematic literature reviews on the privacy paradox <span class="citation">(Barth and Jong 2017; Gerber, Gerber, and Volkamer 2018; Kokolakis 2017)</span>. <span class="citation">Kokolakis (2017)</span> come to the conclusion that “the dichotomy between privacy attitude and behaviour should not be considered a paradox anymore.” (p. 130) However, the authors also note that the privacy paradox is a “complex phenomenon that has not been fully explained yet”. <span class="citation">Barth and Jong (2017)</span> are more skeptical, and argue that “attempts to theoretically explain and practically solve the problem of the privacy paradox are still scarce and we feel the subject deserves far more research attention” (p. 1052).</p>
-<!-- In conclusion, large parts of the current literature suggests that a significant relation between concerns about online privacy and the online sharing of personal information exists and that it is small---which speaks against the privacy paradox. -->
+<p><span class="citation">Acquisti and Grossklags (2003)</span> were among the first to argue that the online disclosure of personal information is paradoxical. “Experiments reveal that very few individuals actually take any action to protect their personal information, even when doing so involves limited costs” (p.1). Three years later, <span class="citation">Barnes (2006)</span> discussed the behavior of young people on SNSs, popularizing the term <em>privacy paradox</em>. Barnes listed six aspects of online behavior that she considered to be particularly paradoxical: (a) illusion of privacy, (b) high quantity of information sharing, (c) attitude behavior discrepancy, (d) lack of privacy concerns, (e) lack of privacy literacy, and (f) fabrication of false information. <span class="citation">Norberg et al. (2007)</span> were one of the first to empirically analyze the privacy paradox explicitly. The study found a mismatch between concerns and behavior, which is aligned with several other experimental studies conducted at the time <span class="citation">(Beresford et al., 2012; Hann et al., 2007; Huberman et al., 2005)</span>.</p>
+<p>While there are various understandings and operationalizations of the privacy paradox <span class="citation">(Kokolakis, 2017)</span>, subsequent research focused on Barnes’s third tenet, the attitude-behavior discrepancy. Whereas some studies reported that privacy concerns were not significantly related to the disclosure of personal information <span class="citation">(e.g., Gross and Acquisti, 2005; Taddicken, 2014; Tufekci, 2008)</span>, which lends credence to the privacy paradox, a different set of studies showed significant relations <span class="citation">(e.g., Dienlin and Trepte, 2015; Heirman et al., 2013; Walrave et al., 2012)</span>, which refutes the privacy paradox.</p>
+<p>Notably, in a parallel line of research other studies have also analyzed the relation between privacy concerns and information sharing. However, the term privacy paradox was often not used explicitly. Instead, studies have referred to the so-called <em>privacy calculus</em>, which states that the sharing of personal information online is affected by both the respective costs and the anticipated benefits <span class="citation">(Culnan and Armstrong, 1999)</span>. By now, several studies have found empirical support for the privacy calculus in various online contexts <span class="citation">(e.g., Bol et al., 2018; Dienlin and Metzger, 2016; Krasnova et al., 2010)</span>.</p>
+<p><span class="citation">Baruh et al. (2017)</span> published the first empirical meta-analysis on the relations between privacy concerns and various forms of social media use (e.g., information sharing or SNS usage). On the basis of 37 studies, <span class="citation">Baruh et al. (2017)</span> found a small and significant statistical relation between concerns about online privacy and online information sharing (<em>r</em> = -.13, 95% CI [-.07, -.18]). Another more recent meta analysis by <span class="citation">Yu et al. (2020)</span> also finds a significant bivariate relation between privacy concerns and information sharing, albeit smaller (<em>r</em> = -.06, 95% CI [-.01, -.12]). There also exist several systematic literature reviews on the privacy paradox <span class="citation">(Barth and Jong, 2017; Gerber et al., 2018; Kokolakis, 2017)</span>. <span class="citation">Kokolakis (2017)</span> come to the conclusion that “the dichotomy between privacy attitude and behaviour should not be considered a paradox anymore.” (p. 130) However, the authors also note that the privacy paradox is a “complex phenomenon that has not been fully explained yet”. <span class="citation">Barth and Jong (2017)</span> are more skeptical, and argue that “attempts to theoretically explain and practically solve the problem of the privacy paradox are still scarce and we feel the subject deserves far more research attention” (p. 1052).</p>
 </div>
 <div id="defining-privacy-concerns-and-information-sharing" class="section level2">
 <h2>Defining Privacy Concerns and Information Sharing</h2>
-<p>Privacy is defined as the “[…] voluntary and temporary withdrawal of a person from the general society through physical or psychological means […]” <span class="citation">(Westin 1967, 7)</span>. Privacy captures aspects of both volitional <em>control</em> and social <em>separateness</em> <span class="citation">(Bräunlich et al. 2020; Marwick and boyd 2014)</span>. Several dimensions of privacy have been proposed. For example, it is possible to distinguish a vertical and a horizontal level <span class="citation">(Masur 2018)</span>. Whereas the vertical level captures privacy from authorities, institutions, or companies, horizontal privacy addresses privacy from peers, colleagues, or other people. When it comes to concerns in general, interestingly they do not seem to be established as a stand-alone theoretical concept in psychology <span class="citation">(Colman 2015)</span>. Lexically, concerns are defined as a “marked interest or regard usually arising through a personal tie or relationship” that also reflect an “uneasy state of blended interest, uncertainty, and apprehension” <span class="citation">(Merriam-Webster 2018)</span>. Concerns therefore represent both a latent <em>motivation</em> (or increased attention), a negatively valenced <em>emotion</em> (or affective condition), and are mostly implicit. As a theoretical construct, privacy concerns can hence be categorized as an affective motivational disposition. As such, there are many similarities with other concepts, including emotions (e.g., fear, anxiety), moods (e.g., dismay, fatigue), attitudes (risk perception, approval), values (e.g., autonomy, freedom), personality traits (e.g., introversion, risk avoidance), and even physiological activation (e.g., attention, arousal). Taken together, concerns about online privacy represent how much an individual is motivated to focus on his or her control over a voluntary withdrawal from other people or societal institutions on the Internet, accompanied by an uneasy feeling that his or her privacy might be threatened.</p>
-<p>The online sharing of personal information, on the other hand, captures how much person-related information people share when they use the Internet, including information about their age, sex, name, address, health, and finances. Information sharing can be differentiated from communication and self-disclosure. Communication is broad, because it comprises all verbal and nonverbal information that is emitted <span class="citation">(e.g., Watzlawick et al. 2011)</span>. Self-disclosure is narrow, because it focuses on deliberate revelations about the true self to others <span class="citation">(e.g., Jourard 1964)</span>. Information sharing is even more specific, because it addresses only person-related information but ignores other types of self-disclosure such as personal fears, values, or plans.</p>
+<p>Privacy is defined as the “[…] voluntary and temporary withdrawal of a person from the general society through physical or psychological means […]” <span class="citation">(Westin, 1967: 7)</span>. Privacy captures aspects of both volitional <em>control</em> and social <em>separateness</em> <span class="citation">(Bräunlich et al., 2020; Marwick and boyd, 2014)</span>. People from all cultural backgrounds require privacy to fulfill fundamental needs including personal care, protected communication, intimacy, or sexuality <span class="citation">(Altman, 1977; Westin, 1967)</span>. Being a universal human right <span class="citation">(UN General Assembly, 1948, Art. 12)</span>, privacy is essential for safety, psychosocial flourishing, and dignity. It is driven by both individual needs and interpersonal negotiations thereof <span class="citation">(Trepte, 2020)</span>.</p>
+<p>Several dimensions of privacy have been proposed. For example, it is possible to distinguish a vertical and a horizontal level <span class="citation">(Masur, 2018)</span>. Whereas the vertical level captures privacy from authorities, institutions, or companies, horizontal privacy addresses privacy from peers, colleagues, or other people. When it comes to concerns in general, interestingly they do not seem to be established as a stand-alone theoretical concept in psychology <span class="citation">(Colman, 2015)</span>. Concerns are usually understood as an uneasy mix of “interest, uncertainty, and apprehension” <span class="citation">(Merriam-Webster, 2018)</span>. As a theoretical construct, privacy concerns can hence be categorized as an affective motivational disposition. Taken together, concerns about online privacy represent how much an individual is motivated to focus on his or her control over a voluntary withdrawal from other people or societal institutions on the Internet, accompanied by an uneasy feeling that his or her privacy might be threatened.</p>
+<p>The online sharing of personal information, on the other hand, captures how much person-related information people share when they use the Internet. Information sharing can be differentiated from communication and self-disclosure. Communication is broad, because it comprises all verbal and nonverbal information that is emitted <span class="citation">(e.g., Watzlawick et al., 2011)</span>. Self-disclosure is more narrow, because it focuses on deliberate revelations about the true self to others, which including aspects such as personal fears, values, or plans <span class="citation">(e.g., Jourard, 1964)</span>. Information sharing is even more specific, because it addresses only person-related information, including information about their age, sex, name, address, health, and finances.</p>
+<p>In what follows we hence investigate the two concepts of (a) concerns about online privacy and (b) online information sharing, aiming to investigate how they relate conceptually. In doing so, we adopt and focus on the perspective of individual people.</p>
 </div>
 <div id="the-relation-between-privacy-concerns-and-information-sharing" class="section level2">
 <h2>The Relation Between Privacy Concerns and Information Sharing</h2>
-<p>Currently, there is a lack of studies that explicitly analyze how behavior is affected by <em>concerns</em> in general. Fortunately, however, we know much about the behavioral effects of related concepts such as attitudes or fears, which all can affect behavior, sometimes profoundly <span class="citation">(Fishbein and Ajzen 2010; Rogers 1983)</span>. Emotions, perhaps the concept most closely related to concerns, have a particularly strong effect on behavior. By causing fight, flight, or freeze reactions, they are a primordial trigger of behavior and are considered to be an adaptive mechanism of evolved species <span class="citation">(Dolan 2002)</span>. <!-- With their direct link to the amygdala, emotions can trigger reactions already subcortically [i.e., without activation of the more recently evolved cortical structures; @dolanEmotionCognitionBehavior2002]. --></p>
-<p>Also empirically, concerns have been shown to affect behavior. People more concerned about the environment show more environment-related behaviors <span class="citation">(Bamberg 2003)</span>. People more concerned about their appearance consume fewer calories <span class="citation">(Hayes and Ross 1987)</span>. People more concerned about their bodies engage in more physical exercise <span class="citation">(Reel et al. 2007)</span>. Taken together, it is reasonable to expect that also concerns about online privacy should somehow reflect in the online sharing of personal information.</p>
-<p>At the same time, there are some factors that likely diminish the relation. Most prominently, there is the so-called <em>attitude behavior gap</em> <span class="citation">(Fishbein and Ajzen 2010)</span>, which states that people sometimes act against their own attitudes. Evidently, not everyone concerned about their physical health exercises regularly. The explanation is simple: Other factors such as subjective norms and perceived behavioral control also determine behavior <span class="citation">(Ajzen 1985)</span>, which automatically reduces the impact of attitudes or concerns. Specifically, two of the most influential factors that affect online information sharing are (a) strong subjective norms <span class="citation">(Heirman, Walrave, and Ponnet 2013)</span> and (b) expected benefits <span class="citation">(Krasnova et al. 2010)</span>. In other words, users often prioritize social support, special offers, or improved services, accepting that their privacy will be diminished. <span class="citation">Trepte, Dienlin, and Reinecke (2014)</span> listed several factors that can additionally attenuate the relation: lack of strength of concerns, absence of negative personal experiences, or situational constraints due to social desirability. In conclusion, also in the context of the privacy paradox it <em>not</em> reasonable to expect a <em>perfect</em> relation between attitudes and behaviors. However, we should still expect to find a relation that is <em>small</em> or <em>moderate</em>.</p>
-<p>There are also some methodological explanations as to why some studies did not detect statistically significant relations. Researchers are always confronted with the so-called <em>Duhem-Quine problem</em>, according to which it is impossible to test theories in isolation, because empirical tests always rely on auxiliary assumptions <span class="citation">(Dienes 2008)</span>. In other words, if a psychological experiment fails, we do not know whether the theory is wrong or the questionnaire subpar. This tenet is particularly relevant for the privacy paradox: Detecting statistical significance for small effects—and, again, we should expect to find small effects—is more challenging because it means that large samples are necessary to guarantee sufficient statistical power.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Precisely, in order to be capable of detecting a correlation between privacy concerns and information sharing in 95% of all cases, which <span class="citation">Baruh, Secinti, and Cemalcilar (2017)</span> estimated to be <em>r</em> = -.13, we need a sample of <em>N</em> = 762 people. The reality, however, looks different: In their meta-analysis, <span class="citation">Baruh, Secinti, and Cemalcilar (2017)</span> reported a median sample size of <em>N</em> = 300, which can explain why several studies did not find significant effects.</p>
-<p>In conclusion, in line with prior research and the within-person rationales presented above, we expect to find a small significant relation between privacy concerns and information sharing, both on the between-person level and the within-person level.</p>
+<p>Currently, there is a lack of studies that explicitly analyze how behavior is affected by <em>concerns</em> in general. Fortunately, however, we know much about the behavioral effects of related concepts such as attitudes or fears, which all can affect behavior, sometimes profoundly <span class="citation">(Fishbein and Ajzen, 2010; Rogers, 1983)</span>. Emotions, perhaps the concept most closely related to concerns, have a particularly strong effect on behavior. By causing fight, flight, or freeze reactions, they are a primordial trigger of behavior and are considered to be an adaptive mechanism of evolved species <span class="citation">(Dolan, 2002)</span>.</p>
+<p>Also empirically, concerns have been shown to affect behavior <span class="citation">(Hayes and Ross, 1987; Reel et al., 2007)</span>. For example, people more concerned about the environment show more environment-related behaviors <span class="citation">(Bamberg, 2003)</span>. Taken together, it is reasonable to expect that also concerns about online privacy should somehow reflect in the online sharing of personal information.</p>
+<p>At the same time, there are some factors that likely diminish the relation. Most prominently, there is the so-called <em>attitude behavior gap</em> <span class="citation">(Fishbein and Ajzen, 2010)</span>, which states that people sometimes act against their own attitudes. Evidently, not everyone concerned about their physical health exercises regularly. The explanation is simple: Other factors such as subjective norms and perceived behavioral control also determine behavior <span class="citation">(Ajzen, 1985)</span>, which automatically reduces the impact of attitudes or concerns.</p>
+<p>Specifically, two of the most influential factors that affect online information sharing are (a) strong subjective norms <span class="citation">(Heirman et al., 2013)</span> and (b) expected benefits <span class="citation">(Krasnova et al., 2010)</span>. In other words, users often prioritize social support, special offers, or improved services, accepting that their privacy will be diminished. Sometimes, privacy concerns do not relate information sharing, because users lack the skills, knowledge, or literacy to change their online behavior, creating feelings of apathy or cynicism <span class="citation">(Hargittai and Marwick, 2016; Hoffmann et al., 2016)</span>. Likewise, personal information is also often shared by others, a phenomenon described as “networked privacy” <span class="citation">(Marwick and boyd, 2014)</span>, which further reduces the power of individuals to determine how much personal information can be found online. <span class="citation">Trepte et al. (2014)</span> listed several factors that can additionally attenuate the relation: lack of strength of concerns, absence of negative personal experiences, or situational constraints due to social desirability. In conclusion, also in the context of the privacy paradox it is <em>not</em> reasonable to expect a <em>perfect</em> relation between attitudes and behaviors. However, we should still expect to find a relation that is <em>small</em> or <em>moderate</em>.</p>
+<p>There are also some methodological explanations as to why some studies did not detect statistically significant relations. Researchers are always confronted with the so-called <em>Duhem-Quine problem</em>, according to which it is impossible to test theories in isolation, because empirical tests always rely on auxiliary assumptions <span class="citation">(Dienes, 2008)</span>. In other words, if a psychological experiment fails, we do not know whether the theory is wrong or the questionnaire subpar. This tenet is particularly relevant for the privacy paradox: Detecting statistical significance for small effects—and, again, we should expect to find small effects—is more challenging because it means that large samples are necessary to guarantee sufficient statistical power.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Precisely, in order to be capable of detecting a correlation between privacy concerns and information sharing in 95% of all cases, which <span class="citation">Baruh et al. (2017)</span> estimated to be <em>r</em> = -.13, we need a sample of <em>N</em> = 762 people. The reality, however, looks different: In their meta-analysis, <span class="citation">Baruh et al. (2017)</span> reported a median sample size of <em>N</em> = 300, which can explain why several studies did not find significant effects.</p>
+<p>In conclusion, we expect to find a small significant relation between privacy concerns and information sharing, both on the between-person level (Hypothesis 1) and the within-person level (Hypothesis 2).<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
 <p>Hypothesis 1: People who are more concerned about their online privacy than others will also be less likely to share personal information online than others.</p>
 <p>Hypothesis 2: People who are more concerned about their online privacy than they usually are will also share less personal information online than they usually do.</p>
 </div>
 <div id="long-term-perspective" class="section level2">
 <h2>Long-Term Perspective</h2>
-<p>Although short-term effects are likely, it is still unclear whether long-term effects exist as well. First, when analyzing potential long-term effects, it is important to choose an interval that is both plausible and relevant. (It makes a large difference whether the effects of alcohol consumption on driving performance are tested after say 1 minute, 1 hour, or 1 day.) One factor that determines an interval’s optimal length is the stability of the variables <span class="citation">(Dormann and Griffin 2015)</span>. Privacy concerns and privacy attitudes are predominantly trait-like constructs with high stabilities, which is why they necessitate longer intervals. Other studies with comparable research questions have therefore used an interval of 6 months <span class="citation">(e.g., Valkenburg and Peter 2009)</span>, which we adopt also in this study.</p>
-<p>In general, we believe that it should be possible to find long-term effects. It has been argued that privacy concerns affect privacy behavior in the long run <span class="citation">(e.g., Heirman, Walrave, and Ponnet 2013)</span>. The underlying theoretical mechanism could be that the emotional part of privacy concerns causes (a) motivated information selection and (b) motivated information processing, which is likely to change actual behavior <span class="citation">(Nabi 1999)</span>. Specifically, when privacy concerns increase (e.g., because of experienced or witnessed privacy infringements), people might begin reading more media articles on privacy issues and might also consume these articles more carefully, which could prompt information sharing practices that are more cautious. Also empirically, a study with 290 participants found small negative longitudinal (between-person) relations between privacy concerns and self-disclosure <span class="citation">(Koohikamali, French, and Kim 2019)</span>.</p>
-<p>At the same time, the adverse effect seems plausible as well, with two potential outcomes. On the one hand, the long-term relation could be positive: If people start to share more information online, they might become increasingly aware that their privacy is at risk, thereby stirring concern <span class="citation">(Tsay-Vogel, Shanahan, and Signorielli 2018)</span>. On the other hand, the long-term relation might also be negative: When people share more personal information online they might become accustomed to doing so, which potentially reduces concern <span class="citation">(for example, due to the mere exposure effect; Zajonc 1968)</span>. Finally, there could also be no long-term relation at all: People might have already become used to sharing information online, which stifles further cognitive or emotional processing. This rationale is central to so-called <em>privacy cynicism</em> <span class="citation">(e.g., Hoffmann, Lutz, and Ranzini 2016)</span>.</p>
+<p>Although short-term effects are likely, it is still unclear whether long-term effects exist as well. First, when analyzing potential long-term effects, it is important to choose an interval that is both plausible and relevant. (It makes a large difference whether the effects of alcohol consumption on driving performance are tested after say 1 minute, 1 hour, or 1 day.) One factor that determines an interval’s optimal length is the stability of the variables <span class="citation">(Dormann and Griffin, 2015)</span>. Privacy concerns and privacy attitudes are predominantly trait-like constructs with high stabilities, which is why they necessitate longer intervals. Other studies with comparable research questions have therefore used an interval of 6 months <span class="citation">(e.g., Valkenburg and Peter, 2009)</span>, which we adopt also in this study.</p>
+<p>In general, we believe that it should be possible to find long-term effects. It has been argued that privacy concerns affect privacy behavior in the long run <span class="citation">(e.g., Heirman et al., 2013)</span>. The underlying theoretical mechanism could be that the emotional part of privacy concerns causes (a) motivated information selection and (b) motivated information processing, which is likely to change actual behavior <span class="citation">(Nabi, 1999)</span>. Specifically, when privacy concerns are higher than usual (e.g., because of experienced or witnessed privacy infringements), people might begin reading more media articles on privacy issues and might also consume these articles more carefully, which could prompt information sharing practices that are more cautious. Also empirically, a study with 290 participants found small negative longitudinal (between-person) relations between privacy concerns and self-disclosure <span class="citation">(Koohikamali et al., 2019)</span>.</p>
+<p>At the same time, the adverse effect seems plausible as well, with two potential outcomes. On the one hand, the long-term relation could be positive: If people start to share more information online, they might become increasingly aware that their privacy is at risk, thereby stirring concern <span class="citation">(Tsay-Vogel et al., 2018)</span>. On the other hand, the long-term relation might also be negative: When people share more personal information online they might become accustomed to doing so, which potentially reduces concern [for example, due to the mere exposure effect; <span class="citation">Zajonc (1968)</span>]. Finally, there could also be no long-term relation at all: People might have already become used to sharing information online, which stifles further cognitive or emotional processing. This rationale is central to <em>privacy cynicism</em> <span class="citation">(e.g., Hoffmann et al., 2016)</span>.</p>
 <p>Research Question 1.1: Do changes in concerns about online privacy affect the online sharing of personal information 6 months later?</p>
 <p>Research Question 1.2: Do changes in the online sharing of personal information affect concerns about online privacy 6 months later?</p>
 </div>
 <div id="the-role-of-attitudes" class="section level2">
 <h2>The Role of Attitudes</h2>
-<p>It has been argued that privacy attitudes could bridge the gap between concerns and information sharing <span class="citation">(e.g., Dienlin and Trepte 2015)</span>. In contrast to privacy concerns, privacy attitudes capture a more explicit, fluctuating cognitive appraisal <span class="citation">(Tsay-Vogel, Shanahan, and Signorielli 2018)</span>. Although both variables are related to information disclosure, attitudes are likely the better predictor. This reasoning follows the rational choice paradigm <span class="citation">(Simon 1955)</span>, which maintains that behavior is always at least partially influenced by convictions, attitudes, and cost-benefit analyses. Also empirically, a study of 1,042 youths from Belgium found that the relation between privacy attitudes and disclosure of personal information was strong (<em>r</em> = .56), whereas the relation between privacy concerns and disclosure was only moderate <span class="citation">(<em>r</em> = -.29; Heirman, Walrave, and Ponnet 2013)</span>.</p>
+<p>It has been argued that privacy attitudes could bridge the gap between concerns and information sharing <span class="citation">(e.g., Dienlin and Trepte, 2015)</span>. In contrast to general and implicit privacy concerns, privacy attitudes capture a more explicit, specific cognitive appraisal <span class="citation">(Tsay-Vogel et al., 2018)</span>. Because general dispositions oftentimes affect more specific appraisals <span class="citation">(Fishbein and Ajzen, 2010)</span>, general concerns about privacy may similarly affect more specific privacy attitudes <span class="citation">(Dienlin and Trepte, 2015)</span>. This reasoning follows the rational choice paradigm <span class="citation">(Simon, 1955)</span>, which maintains that behavior is always at least partially influenced by specific convictions, attitudes, and cost-benefit analyses. Therefore, although both variables are related to information disclosure, attitudes are likely the better predictor. Also empirically, a study of 1,042 youths from Belgium found that the relation between privacy attitudes and disclosure intentions of personal information was strong (<em>r</em> = .56), whereas the relation between privacy concerns and disclosure intentions was only moderate [<em>r</em> = -.29; <span class="citation">Heirman et al. (2013)</span>].</p>
 <p>Hypothesis 3.1: People who are more concerned about their online privacy than others will also hold a less positive attitude toward the online sharing of personal information than others.</p>
 <p>Hypothesis 3.2: People with a more positive attitude toward the online sharing of personal information than others will also share more information online than others.</p>
 <p>Hypothesis 4.1: People who are more concerned about their online privacy than they usually are will also hold a less positive attitude toward the online sharing of personal information than they usually do.</p>
@@ -479,42 +424,41 @@ div.tocify {
 <p>Research Question 3.1: Do changes in attitudes toward the online sharing of personal information affect the online sharing of personal information 6 months later?</p>
 <p>Research Question 3.2: Do changes in the online sharing of personal information affect attitudes toward the online sharing of personal information 6 months later?</p>
 </div>
-</div>
 <div id="method" class="section level1">
 <h1>Method</h1>
-<div id="statistics" class="section level2">
-<h2>Statistics</h2>
-<p>We follow the recommendation by <span class="citation">Lakens et al. (2018)</span> and first justify the choice of our alpha level. We determined adequate error margins by considering the potential implications of both false positive and false negative findings (i.e., alpha and beta errors): On the one hand, if we committed an alpha error, we would wrongfully conclude that people’s concerns and behaviors are consistent. Communicating such a false result to the public might unjustly reassure people when they should be more alert. On the other hand, if we committed a beta error, we would wrongfully conclude that individuals behave paradoxically. Communicating such a false result would unjustly accuse people of implausible behavior, potentially causing unnecessary distress or reactance. We consider both errors to be equally detrimental. Hence, we chose balanced error rates, setting a maximum error rate of 5% for both alpha and beta. As the smallest effect size of interest <span class="citation">(SESOI; Lakens, Scheel, and Isager 2018)</span>, we chose to consider effects that are at least small <span class="citation">(i.e., standardized coefficients above <span class="math inline">\(\beta\)</span> = .10; Cohen 1992)</span> as able to offer empirical support for our theoretical hypotheses. Significantly smaller effects were not considered able to offer support. The six hypotheses were tested with a one-tailed approach and the six research questions with a two-tailed approach. On the basis of the balanced alpha-beta approach with a maximum error probability of 5%, a desired power of 95%, and an SESOI of <span class="math inline">\(\beta\)</span> = .10, we calculated a minimum sample size of 1,293 respondents. Given the final sample size of 1,403 respondents (see below), alpha and beta errors were balanced for our hypotheses (research questions) when we used a critical alpha of 3% (4.2%), resulting in a power of 97% (95.8%) to detect small effects.</p>
-<div class="figure" style="text-align: center">
-<img src="figures/model_7.png" alt="Visual representation of the estimated random-intercept cross-lagged panel model (RI-CLPM)." width="640" />
-<p class="caption">
-Visual representation of the estimated random-intercept cross-lagged panel model (RI-CLPM).
-</p>
-</div>
-<p>The data were analyzed using of a random-intercept cross-lagged panel model <span class="citation">(RI-CLPM, Hamaker, Kuiper, and Grasman 2015)</span>. For a visualization, see Figure @ref(fig:RICLPM). Note that in contrast to regular cross-lagged panel models (CLPMs), RI-CLPMs can separate between-person variance from within-person variance. We used factor scores as observed variables to represent the variables’ latent structure more closely. We tested H1, H3.1, and H3.2 by correlating the random intercepts, which represent the respondents’ individual mean scores across all three waves. We tested H2, H4.1, and H4.2 by correlating the respondents’ within-person variance at T1, which captures their specific deviation at T1 from their overall score. We tested all research questions by regressing variables on all other measures obtained 6 months earlier. Given that we had three points of measurement, this resulted in two estimates for each research question. As we did not assume longitudinal effects to differ across time, they were constrained to be equal across all waves, which produces one single general measure of each effect instead of two time-specific ones. (We later tested this assumption empirically. As expected, the model with constrained effects did not show significantly reduced model fit, <span class="math inline">\(\chi\)</span><sup>2</sup>(9) = .114, <em>p</em> = 14.25, which supports that effects did not change over time.) Fit was assessed according to the common criteria as described by <span class="citation">Kline (2016)</span>. The final model fit the data well, <span class="math inline">\(\chi^2\)</span>(15) = 25.18,  = .048, cfi = 1.00, rmsea = .02, 90% CI [&lt; .01, .04], srmr = .01.</p>
-<p>For the analyses, we used R <span class="citation">(Version 3.6.1; R Core Team 2018)</span> and the R-packages <em>GGally</em> <span class="citation">(Version 1.4.0; Schloerke et al. 2018)</span>, <em>ggplot2</em> <span class="citation">(Version 3.2.1; Wickham 2016)</span>, <em>lavaan</em> <span class="citation">(Version 0.6.5; Rosseel 2012)</span>, <em>MissMech</em> <span class="citation">(Version 1.0.2; Jamshidian, Jalal, and Jansen 2014)</span>, <em>MVN</em> <span class="citation">(Version 5.8; Korkmaz, Goksuluk, and Zararsiz 2014)</span>, <em>psych</em> <span class="citation">(Version 1.9.12.31; Revelle 2018)</span>, <em>pwr</em> <span class="citation">(Version 1.2.2; Champely 2018)</span>, <em>semTools</em> <span class="citation">(Version 0.5.2; Jorgensen et al. 2018)</span>, and <em>sjstats</em> <span class="citation">(Version 0.17.9; Lüdecke 2019)</span>. The code, additional analyses, and a reproducible version of this manuscript can be found on the manuscript’s companion website at <a href="https://tdienlin.github.io/privacy-paradox-longitudinal" class="uri">https://tdienlin.github.io/privacy-paradox-longitudinal</a>.</p>
-</div>
 <div id="procedure-and-respondents" class="section level2">
 <h2>Procedure and Respondents</h2>
-<p>This study is part of a large-scale project which investigates the development of privacy and self-disclosure, including several other variables. Other publications linked to the project can be accessed at <a href="https://osf.io/y35as/" class="uri">https://osf.io/y35as/</a>. The data come from a longitudinal paper-and-pencil questionnaire study, in which a representative sample of the German population (16 years and older) was surveyed on overall five occasions. The data can be downloaded from <a href="http://dx.doi.org/10.7802/1937" class="uri">http://dx.doi.org/10.7802/1937</a>.</p>
+<p>This study is part of a large-scale project which investigates the development of privacy and self-disclosure, including several other variables. Other publications linked to the project can be accessed at [link blinded during review]. The data come from a longitudinal paper-and-pencil questionnaire study, in which a representative sample of the German population (16 years and older) was surveyed on overall five occasions. The data can be downloaded from [link blinded during review].</p>
 <p>The first three waves were collected from May 2014 to May 2015, with intervals of 6 months each. The last two waves were collected on May 2016 and May 2017, and had an interval of one year. Because we hypothesized the effects to take place across half a year, the last two waves were not included in the analyses presented here. First, a sample of 14,714 potential respondents was drawn from a representative omnibus survey in Germany (ADM master sample), using a random last-two-digit dialing procedure. In this CATI screening, 5,286 respondents agreed to participate in all following waves. Wave 1 was completed by 3,278 respondents (response rate: 38%), Wave 2 by 2,448 respondents (attrition rate: 25%), and Wave 3 by 2,021 respondents (attrition rate: 17%). We filtered respondents who never used the Internet at all waves, answered fewer than 50% of the items in each scale for at least one wave, provided inconsistent birth-dates across measurements, or did not report sociodemographic variables. The final sample consisted of <em>n</em> = 1,403 respondents.</p>
-<p>In the final sample, the rate of missing data was 5.4%. Visual inspection of the missing value patterns as well as the non-parametric test by <span class="citation">Jamshidian, Jalal, and Jansen (2014)</span> suggested that all missing values could be considered missing at random (<em>p</em> = .514). Therefore, Full Information Maximum Likelihood estimation was conducted using all available data. The average age was 54 years (<em>SD</em> = 15 years), and 49% were male. About 39% reported that they had graduated from college.</p>
+<p>In the final sample, the rate of missing data was 5.4%. Visual inspection of the missing value patterns as well as the non-parametric test by <span class="citation">Jamshidian et al. (2014)</span> suggested that all missing values could be considered missing at random (<em>p</em> = .514). Therefore, Full Information Maximum Likelihood estimation was conducted using all available data. The average age was 54 years (<em>SD</em> = 15 years), and 49% were male. About 39% reported that they had graduated from college.</p>
 </div>
 <div id="measures" class="section level2">
 <h2>Measures</h2>
 <p>We tested the factorial validity of all measures using confirmatory factor analysis (CFA). Each CFA included the items from all three waves. For each item, factor loadings were constrained to be equal across waves. Constrained and unconstrained models were compared using <span class="math inline">\(\chi^2\)</span> differences tests. All results were nonsignificant, suggesting longitudinal factorial invariance. The measures showed good composite reliability in all three waves. Graphical displays of the variables’ distributions showed that privacy concerns were skewed to the left, privacy attitudes were normally distributed, and information sharing was skewed to the right (Figure @ref(fig:Distributions), diagonal). We calculated intra-class correlation coefficients to quantify how much variance in the variables’ factor scores could be attributed to between-person differences. An English translation of the original German items can be found in the OSM.</p>
 <div id="concerns-about-online-privacy" class="section level3">
 <h3>Concerns about online privacy</h3>
-<p>Privacy concerns were measured as a second-order factor. Three items captured the vertical dimension (e.g., “How concerned are you that institutions or intelligence services collect and analyze data that you disclosed on the Internet?”), and three items captured the horizontal dimension (e.g., “How concerned are you that people that you do not know might obtain information about you because of you online activities?”). Respondents rated all items on a 5-point scale ranging from 1 (<em>not at all concerned</em>) to 5 (<em>very concerned</em>). The means were <em>M</em><sub>t1</sub> = 3.67, <em>M</em><sub>t2</sub> = 3.62, <em>M</em><sub>t3</sub> = 3.59, and the standard deviations <em>SD</em><sub>t1</sub> = 0.88, <em>SD</em><sub>t2</sub> = 0.89, and <em>SD</em><sub>t3</sub> = 0.90. The two-dimensional model fit the data well, <span class="math inline">\(\chi^2\)</span>(118) = 661.17,  &lt; .001, cfi = .97, rmsea = .06, 90% CI [.05, .06], srmr = .04. The reliability was high (<span class="math inline">\(\omega\)</span><sub>t1</sub> = .95, <span class="math inline">\(\omega\)</span><sub>t2</sub> = .96, <span class="math inline">\(\omega\)</span><sub>t3</sub> = .97). Overall, 73.8534006% of the measure’s variance was explained by differences between persons.</p>
+<p>Privacy concerns were measured as a second-order factor. Three self-developed items captured the vertical dimension (e.g., “How concerned are you that institutions or intelligence services collect and analyze data that you disclosed on the Internet?”), and three items by <span class="citation">Buchanan et al. (2007)</span> captured the horizontal dimension (e.g., “How concerned are you that people that you do not know might obtain information about you because of you online activities?”). Respondents rated all items on a 5-point scale ranging from 1 (<em>not at all concerned</em>) to 5 (<em>very concerned</em>). The means were <em>M</em><sub>t1</sub> = 3.67, <em>M</em><sub>t2</sub> = 3.62, <em>M</em><sub>t3</sub> = 3.59, and the standard deviations <em>SD</em><sub>t1</sub> = 0.88, <em>SD</em><sub>t2</sub> = 0.89, and <em>SD</em><sub>t3</sub> = 0.90. The two-dimensional model fit the data well, <span class="math inline">\(\chi^2\)</span>(118) = 661.17,  &lt; .001, cfi = .97, rmsea = .06, 90% CI [.05, .06], srmr = .04. The reliability was high (<span class="math inline">\(\omega\)</span><sub>t1</sub> = .95, <span class="math inline">\(\omega\)</span><sub>t2</sub> = .96, <span class="math inline">\(\omega\)</span><sub>t3</sub> = .97). Overall, 73.8534006% of the measure’s variance was explained by differences between persons.</p>
 </div>
 <div id="the-online-sharing-of-personal-information" class="section level3">
 <h3>The online sharing of personal information</h3>
-<p>To measure respondent’s level of information disclosure, they were asked how often they disclosed 10 different pieces of information on the Internet. The exact question was: “How often do you disclose the following pieces of information online (i.e., on the Internet)?” Each item was answered on a 5-point scale ranging from 1 (<em>never</em>) to 5 (<em>daily</em>). Factor analyses suggested a second-order factor structure with five first-order factors of two items each. The first first-order factor subsumed financial and medical information, the second first and last name, the third place of residence and street (including house number), the fourth email address and phone number, and the fifth information about education and current job. The means were <em>M</em><sub>t1</sub> = 2.12, <em>M</em><sub>t2</sub> = 2.13, <em>M</em><sub>t3</sub> = 2.10, and the standard deviations <em>SD</em><sub>t1</sub> = 0.66, <em>SD</em><sub>t2</sub> = 0.64, and <em>SD</em><sub>t3</sub> = 0.61. The model fit the data adequately, <span class="math inline">\(\chi^2\)</span>(375) = 2527.69,  &lt; .001, cfi = .95, rmsea = .06, 90% CI [.06, .07], srmr = .06. The reliability was high (<span class="math inline">\(\omega\)</span><sub>t1</sub> = .91, <span class="math inline">\(\omega\)</span><sub>t2</sub> = .92, <span class="math inline">\(\omega\)</span><sub>t3</sub> = .91). Overall, 64.2916969% of the measure’s variance was explained by differences between persons.</p>
+<p>To measure respondent’s level of information disclosure, they were asked how often they disclosed 10 different pieces of information on the Internet <span class="citation">(European Commission, 2011)</span>. The exact question was: “How often do you disclose the following pieces of information online (i.e., on the Internet)?” Each item was answered on a 5-point scale ranging from 1 (<em>never</em>) to 5 (<em>daily</em>). Factor analyses suggested a second-order factor structure with five first-order factors of two items each. The first first-order factor subsumed financial and medical information, the second first and last name, the third place of residence and street (including house number), the fourth email address and phone number, and the fifth information about education and current job. The means were <em>M</em><sub>t1</sub> = 2.12, <em>M</em><sub>t2</sub> = 2.13, <em>M</em><sub>t3</sub> = 2.10, and the standard deviations <em>SD</em><sub>t1</sub> = 0.66, <em>SD</em><sub>t2</sub> = 0.64, and <em>SD</em><sub>t3</sub> = 0.61. The model fit the data adequately, <span class="math inline">\(\chi^2\)</span>(375) = 2527.69,  &lt; .001, cfi = .95, rmsea = .06, 90% CI [.06, .07], srmr = .06. The reliability was high (<span class="math inline">\(\omega\)</span><sub>t1</sub> = .91, <span class="math inline">\(\omega\)</span><sub>t2</sub> = .92, <span class="math inline">\(\omega\)</span><sub>t3</sub> = .91). Overall, 64.2916969% of the measure’s variance was explained by differences between persons.</p>
 </div>
 <div id="attitudes-toward-the-online-sharing-of-personal-information" class="section level3">
 <h3>Attitudes toward the online sharing of personal information</h3>
-<p>Respondents’ attitudes toward disclosing personal information online were captured with 10 items that measured the general appraisal of disclosing the same 10 pieces of information. Adhering to the principle of compatibility <span class="citation">(Fishbein and Ajzen 2010)</span>, the items were parallel to those of the actual disclosure scale. Specifically, we asked: “Do you think that it is sensible to disclose the following pieces of information online (i.e., on the Internet)?” The scale ranged from 1 (<em>not at all sensible</em>) to 5 (<em>very sensible</em>). The means were <em>M</em><sub>t1</sub> = 3.67, <em>M</em><sub>t2</sub> = 3.62, <em>M</em><sub>t3</sub> = 3.59, and the standard deviations <em>SD</em><sub>t1</sub> = 0.88, <em>SD</em><sub>t2</sub> = 0.89, and <em>SD</em><sub>t3</sub> = 0.90. The second-order model with five first-order factors showed an adequate model fit, <span class="math inline">\(\chi^2\)</span>(375) = 2683.43,  &lt; .001, cfi = .93, rmsea = .07, 90% CI [.06, .07], srmr = .08. The reliability was high (<span class="math inline">\(\omega\)</span><sub>t1</sub> = .88, <span class="math inline">\(\omega\)</span><sub>t2</sub> = .89, <span class="math inline">\(\omega\)</span><sub>t3</sub> = .87). Overall, 59.1868702% of the measure’s variance was explained by differences between persons.</p>
+<p>Respondents’ attitudes toward disclosing personal information online were captured with 10 items that measured the general appraisal of disclosing the same 10 pieces of information <span class="citation">(European Commission, 2011)</span>. Adhering to the principle of compatibility <span class="citation">(Fishbein and Ajzen, 2010)</span>, the items were parallel to those of the actual disclosure scale. Specifically, we asked: “Do you think that it is sensible to disclose the following pieces of information online (i.e., on the Internet)?” The scale ranged from 1 (<em>not at all sensible</em>) to 5 (<em>very sensible</em>). The means were <em>M</em><sub>t1</sub> = 3.67, <em>M</em><sub>t2</sub> = 3.62, <em>M</em><sub>t3</sub> = 3.59, and the standard deviations <em>SD</em><sub>t1</sub> = 0.88, <em>SD</em><sub>t2</sub> = 0.89, and <em>SD</em><sub>t3</sub> = 0.90. The second-order model with five first-order factors showed an adequate model fit, <span class="math inline">\(\chi^2\)</span>(375) = 2683.43,  &lt; .001, cfi = .93, rmsea = .07, 90% CI [.06, .07], srmr = .08. The reliability was high (<span class="math inline">\(\omega\)</span><sub>t1</sub> = .88, <span class="math inline">\(\omega\)</span><sub>t2</sub> = .89, <span class="math inline">\(\omega\)</span><sub>t3</sub> = .87). Overall, 59.1868702% of the measure’s variance was explained by differences between persons.</p>
 </div>
+</div>
+<div id="data-analysis" class="section level2">
+<h2>Data Analysis</h2>
+<p>We follow the recommendation by <span class="citation">Lakens, Adolfi, et al. (2018)</span> and first justify the choice of our alpha level. We determined adequate error margins by considering the potential implications of both false positive and false negative findings (i.e., alpha and beta errors): On the one hand, if we committed an alpha error, we would wrongfully conclude that people’s concerns and behaviors are consistent. Communicating such a false result to the public might unjustly reassure people when they should be more alert. On the other hand, if we committed a beta error, we would wrongfully conclude that individuals behave paradoxically. Communicating such a false result would unjustly accuse people of implausible behavior, potentially causing unnecessary distress or reactance. We consider both errors to be equally detrimental. Hence, we chose balanced error rates, setting a maximum error rate of 5% for both alpha and beta. As the smallest effect size of interest [SESOI; <span class="citation">Lakens, Scheel, et al. (2018)</span>], we chose to consider effects that are at least small [i.e., standardized coefficients above <span class="math inline">\(\beta\)</span> = .10; <span class="citation">Cohen (1992)</span>] as able to offer empirical support for our theoretical hypotheses. Significantly smaller effects were not considered able to offer support. The six hypotheses were tested with a one-tailed approach and the six research questions with a two-tailed approach. On the basis of the balanced alpha-beta approach with a maximum error probability of 5%, a desired power of 95%, and an SESOI of <span class="math inline">\(\beta\)</span> = .10, we calculated a minimum sample size of 1,293 respondents. Given the final sample size of 1,403 respondents, alpha and beta errors were balanced for our hypotheses (research questions) when we used a critical alpha of 3% (4.2%), resulting in a power of 97% (95.8%) to detect small effects.</p>
+<div class="figure" style="text-align: center">
+<img src="figures/model_7.png" alt="Visual representation of the estimated random-intercept cross-lagged panel model (RI-CLPM)." width="640" />
+<p class="caption">
+Visual representation of the estimated random-intercept cross-lagged panel model (RI-CLPM).
+</p>
+</div>
+<p>The data were analyzed using of a random-intercept cross-lagged panel model <span class="citation">(RI-CLPM, Hamaker et al., 2015)</span>. For a visualization, see Figure @ref(fig:RICLPM). Note that in contrast to regular cross-lagged panel models (CLPMs), RI-CLPMs can separate between-person variance from within-person variance. We used factor scores as observed variables to represent the variables’ latent structure more closely. We tested H1, H3.1, and H3.2 by correlating the random intercepts, which represent the respondents’ individual mean scores across all three waves. We tested H2, H4.1, and H4.2 by correlating the respondents’ within-person variance at T1, which captures their specific deviation at T1 from their overall score. We tested all research questions by regressing variables on all other measures obtained 6 months earlier. Given that we had three points of measurement, this resulted in two estimates for each research question. As we did not assume longitudinal effects to differ across time, they were constrained to be equal across all waves, which produces one single general measure of each effect instead of two time-specific ones. (We later tested this assumption empirically. As expected, the model with constrained effects did not show significantly reduced model fit, <span class="math inline">\(\chi\)</span><sup>2</sup>(9) = .114, <em>p</em> = 14.25, which supports that effects did not change over time.) Fit was assessed according to the common criteria as described by <span class="citation">Kline (2016)</span>. The final model fit the data well, <span class="math inline">\(\chi^2\)</span>(15) = 25.18,  = .048, cfi = 1.00, rmsea = .02, 90% CI [&lt; .01, .04], srmr = .01.</p>
+<p>For the analyses, we used R [Version 4.0.3; <span class="citation">R Core Team (2018)</span>] and the R-packages <em>GGally</em> [Version 2.1.0; <span class="citation">Schloerke et al. (2018)</span>], <em>ggplot2</em> [Version 3.3.3; <span class="citation">Wickham (2016)</span>], <em>lavaan</em> [Version 0.6.7; <span class="citation">Rosseel (2012)</span>], <em>MissMech</em> [Version 1.0.2; <span class="citation">Jamshidian et al. (2014)</span>], <em>MVN</em> [Version 5.8; <span class="citation">Korkmaz et al. (2014)</span>], <em>psych</em> [Version 2.0.12; <span class="citation">Revelle (2018)</span>], <em>pwr</em> [Version 1.3.0; <span class="citation">Champely (2018)</span>], <em>semTools</em> [Version 0.5.4; <span class="citation">Jorgensen et al. (2018)</span>], and <em>sjstats</em> [Version 0.18.1; <span class="citation">Lüdecke (2019)</span>]. The code, additional analyses (e.g., ICCs or analyses of invariance), and a reproducible version of this manuscript can be found on the manuscript’s companion website at <a href="https://xmtra.github.io/privacy-paradox" class="uri">https://xmtra.github.io/privacy-paradox</a>.</p>
 </div>
 </div>
 <div id="results" class="section level1">
@@ -678,24 +622,28 @@ Results of the bivariate relations. Above the diagonal: zero-order correlation m
 <p><em>Note.</em> The between-person correlations represent interpersonal relations. For example, results showed that people who were more concerned than others, averaged across all three waves, also shared less information than others. The within-person parameters reflect how intrapersonal changes in one variable are related to intra-personal changes in another. For example, results showed that if a person was more concerned at T1 than usual, they also shared less information than usual.</p>
 </div>
 <p> </p>
+<p>In an additional analysis, we also tested the same model with a 1 year interval, which allowed to include data spanning until winter 2016 and 2017. Most effects remained the same. For example, we again found that people more concerned than others were less positive regarding information sharing (<em>r</em> = -.36, <em>p</em> &lt; .001 ) and shared less information (<em>r</em> = -.15, <em>p</em> = .002). Likewise, people more positive toward data sharing than others also shared substantially more data (<em>r</em> = .66, <em>p</em> &lt; .001). Because including these two additional waves significantly reduces sample size, and because we consider it more likely that effects take place more immediately, these results should be considered exploratory. For an overview of the results, see the additional analyses on our companion website (Section 2.1.2.7).</p>
 </div>
 <div id="discussion" class="section level1">
 <h1>Discussion</h1>
-<p>Most research on the privacy paradox suggests a significant small effect of privacy concerns on the online sharing of personal information <span class="citation">(e.g., Baruh, Secinti, and Cemalcilar 2017)</span>. However, whereas the theoretical premise of the privacy paradox addresses a within-person <em>effect</em>, most empirical studies have analyzed only between-person <em>relations</em>. On the basis of a representative sample of the German population, from which three waves of data separated by 6 months were collected, we hence analyzed the privacy paradox by differentiating general between-person relations, short-term within-person relations, as well as long-term within-person effects. Together, this approach allows for informed inferences about the variables’ causal relationship.</p>
-<p>The results of the between-person analyses showed that people who were more concerned about their privacy than others were slightly less likely to share personal information. In addition, people who were more concerned about their privacy than others also held substantially more negative attitudes toward disclosing personal information online. Notably, we found a very strong between-person correlation between attitudes toward information sharing and actual information sharing, which shows that typical online disclosure can be predicted precisely by a person’s attitude. Taken together, the cross-sectional results are in line with the extant literature: The between-person correlation of privacy concerns and information sharing found in this study (i.e., <span class="math inline">\(\beta\)</span> = -.08) fall within the 95% confidence interval of the effect reported by <span class="citation">Baruh, Secinti, and Cemalcilar (2017)</span> (i.e., <em>r</em> = -.13, 95% CI [-.07, -.18]). Note that the between-person correlations reported here represent averaged measurements across three waves, which makes the findings more robust than typical one-shot measures.</p>
-<p>In conclusion, this study suggests that the privacy paradox does not exist on a between-person level. The differences between people with regard to their online information sharing behavior can be explained by differences in their privacy concerns to a small extent, and by differences in their privacy attitudes to a large extent. The more specific we become, the better we can explain online behavior: Whereas privacy concerns are related only weakly to online information sharing <span class="citation">(e.g., Baruh, Secinti, and Cemalcilar 2017)</span>, more specific risks perceptions are related to behavior more closely <span class="citation">(e.g., Bol et al. 2018; Yu et al. 2020)</span>, whereas behavioral attitudes are the best predictors <span class="citation">(Dienlin and Trepte 2015)</span>.</p>
-<p>The within-person results showed that when a person’s privacy concerns increased, the same person also shared slightly less information online than usual. Moreover, people who developed more positive attitudes toward the online sharing of personal information than usual, also shared substantially more personal information online. Together, changes in concerns and attitudes are therefore related to changes in behavior, which speaks against the privacy paradox also on the within-person level.</p>
-<p>We did not find any long-term effects, however. Changes in both privacy concerns and attitudes toward the online sharing of personal information were not related to any meaningful changes in the online sharing of personal information 6 months later (and vice versa). As an explanation, it might be the case that changes in privacy concern affect information sharing more immediately. To test this assumption, we would need studies with shorter intervals <span class="citation">(Keijsers 2016)</span>. Moreover, given that the directions of most longitudinal relations were in line with the between-person and within-person relations, longitudinal effects might indeed take place, but only that they are very small. Of course, it could also be that longterm longitudinal effects do not exist.</p>
+<p>Most research on the privacy paradox suggests a significant small effect of privacy concerns on the online sharing of personal information <span class="citation">(e.g., Baruh et al., 2017)</span>. However, whereas the theoretical premise of the privacy paradox addresses a within-person <em>effect</em>, most empirical studies have analyzed only between-person <em>relations</em>. On the basis of a representative sample of the German population, from which three waves of data separated by 6 months were collected, we hence analyzed the privacy paradox by differentiating general between-person relations, short-term within-person relations, as well as long-term within-person effects. Together, this approach allows for informed inferences about the variables’ causal relationship.</p>
+<p>The results of the between-person analyses showed that people who were more concerned about their privacy than others were slightly less likely to share personal information. In addition, people who were more concerned about their privacy than others also held substantially more negative attitudes toward disclosing personal information online. Notably, we found a very strong between-person correlation between attitudes toward information sharing and actual information sharing, which shows that typical online disclosure can be predicted precisely by a person’s attitude. Taken together, the cross-sectional results are in line with the extant literature: The between-person correlation of privacy concerns and information sharing found in this study (i.e., <span class="math inline">\(\beta\)</span> = -.09) fall within the 95% confidence interval of the effect reported by <span class="citation">Baruh et al. (2017)</span> (i.e., <em>r</em> = -.13, 95% CI [-.07, -.18]). Notably, the between-person correlations reported here represent averaged measurements across three waves, which makes the findings more robust than typical one-shot measures.</p>
+<p>In conclusion, this study suggests that the privacy paradox does not exist on a between-person level. The differences between people with regard to their online information sharing behavior can be explained by differences in their privacy concerns to a small extent, and by differences in their privacy attitudes to a large extent. The more specific we become, the better we can explain online behavior: Whereas privacy concerns are related only weakly to online information sharing <span class="citation">(e.g., Baruh et al., 2017)</span>, more specific risks perceptions are related to behavior more closely <span class="citation">(e.g., Bol et al., 2018; Yu et al., 2020)</span>, whereas behavioral attitudes are the best predictors <span class="citation">(Dienlin and Trepte, 2015)</span>.</p>
+<p>The within-person results showed that when a person’s privacy concerns are higher than usual, the same person also shared slightly less information online than usual. Moreover, people who developed more positive attitudes toward the online sharing of personal information than usual, also shared substantially more personal information online. Together, changes in concerns and attitudes are therefore related to changes in behavior, which speaks against the privacy paradox also on the within-person level.</p>
+<p>We did not find any long-term effects, however. Changes in both privacy concerns and attitudes toward the online sharing of personal information were not related to any meaningful changes in the online sharing of personal information 6 months later (and vice versa). As an explanation, it might be the case that changes in privacy concern affect information sharing more immediately. To test this assumption, we would need studies with shorter intervals <span class="citation">(Keijsers, 2016)</span>. Moreover, given that the directions of most longitudinal relations were in line with the between-person and within-person relations, longitudinal effects might indeed take place, but only that they are very small. Of course, it could also be that longterm longitudinal effects do not exist.</p>
 <div id="limitations" class="section level2">
 <h2>Limitations</h2>
-<p>Some of the effect sizes reported in this study are potentially not large enough to refute the privacy paradox completely. On the one hand, they could be a manifestation of the so-called “crud factor” <span class="citation">(Meehl 1990, 204)</span>, which states that all psychosocial measures are related to one another to some extent. On the other hand, other factors such as expected benefits might play a more important role <span class="citation">(Dienlin and Metzger 2016)</span>. In conclusion, although our results suggest that privacy concerns and privacy attitudes are correlated with information sharing, the importance of privacy concerns should not be exaggerated. The effects could be larger, and other variables play a role as well.</p>
-<p>In this study we measured information sharing using self-reports. However, self-reports of frequent and routine behaviors are often imprecise and unreliable <span class="citation">(Scharkow 2016)</span>. This represents a profound limitation of our study. Whenever possible, future studies should aim to collect objective observations of behavior.</p>
+<p>The data were collected between May 2014 and May 2015—hence, after the Snowden revelations in 2013, but before the Equifax data breach in 2017, the Cambridge Analytica data breach in 2018, or the implementation of the General Data Protection Regulation in 2018. Such sweeping events, however, could affect privacy concerns, online behavior, or their mutual relation, which would limit the generalizability of our results. Although this is an important caveat, we have reason to believe that our findings are largely robust. First, additional analyses showed that the within-person relationships were stable across waves (a period of 1 year). Second, another set of additional analyses showed that most effects remained stable until winter 2017. Third, records of online search terms revealed that although interest in privacy-related topics and privacy-enhancing technologies increased after the Snowden revelations, it returned to prior levels after only two weeks <span class="citation">(Preibusch, 2015)</span>. It thus seems that levels of privacy concerns and information sharing, as well as their mutual relationship, are largely robust.</p>
+<p>In asking how much information respondents share when using the Internet in general, we automatically aggregated different platforms, contexts, and situations. However, privacy mechanisms can differ largely across contexts <span class="citation">(Nissenbaum, 2010)</span> and situations <span class="citation">(Masur, 2018)</span>. Our broad perspective, therefore, is somewhat problematic and limits our capacity to understand and predict the behavior of individual people in specific situations. At the same time, aiming to maximize generalizability, we were able to extract some general underlying patterns, which can serve as a starting point for more contextualized analyses (see below).</p>
+<p>Some of the effect sizes reported in this study are potentially not large enough to refute the privacy paradox completely. On the one hand, they could be a manifestation of the so-called “crud factor” <span class="citation">(Meehl, 1990: 204)</span>, which states that all psychosocial measures are related to one another to some extent. On the other hand, additional factors such as expected benefits might play a more important role <span class="citation">(Dienlin and Metzger, 2016)</span>. In conclusion, although our results suggest that privacy concerns and privacy attitudes are correlated with information sharing, the importance of privacy concerns should not be exaggerated. The effects could be larger, and other variables play a role as well.</p>
+<p>In this study we measured information sharing using self-reports. However, self-reports of frequent and routine behaviors are often imprecise and unreliable <span class="citation">(Scharkow, 2016)</span>. This represents a profound limitation of our study; whenever possible, future studies should aim to collect objective observations of specific types of behavior.</p>
 <p>Finally, please note that the hypotheses presented in this study were not formally preregistered. At the time when the study was conceived in 2014, we were not yet aware of the importance of preregistration.</p>
 </div>
 <div id="future-research" class="section level2">
 <h2>Future Research</h2>
-<p>Evidence of within-person longitudinal effects is still missing. Although we found significant within-person correlations at T1, they were absent across the 6-month intervals. Together, this suggests that longitudinal effects might exist, but that they take place on a different time interval. Future research could hence probe different intervals. For theoretical reasons (e.g., due to availability heuristics), it is plausible to use short intervals; for statistical reasons (e.g., because of the high stability of privacy concerns), it would also make sense to test longer intervals <span class="citation">(Dormann and Griffin 2015)</span>.</p>
-<p>Although we argue that in most circumstances privacy concerns and behavior should correlate modestly, the exact extent depends on a many boundary conditions. Future research should hence explicitly analyze different contexts and situations. Building on <span class="citation">Kokolakis (2017)</span>, we suggest to analyze the following boundary conditions:</p>
+<p>We emphasize that when analyzing the privacy paradox we are likely dealing with small effects <span class="citation">(Baruh et al., 2017)</span>. Hence, to detect these small effects reliably we need large samples. This is often not the case <span class="citation">(Baruh et al., 2017)</span>. In conclusion, it is crucial to use statistical designs that allow for sufficient statistical power.</p>
+<p>Next, evidence of within-person longitudinal effects is still missing. Although we found significant within-person correlations at T1, they were absent across the 6-month intervals. Together, this suggests that longitudinal effects might exist, but that they take place on a different time interval. Future research could hence probe different intervals. For theoretical reasons (e.g., due to availability heuristics), it is plausible to use short intervals; for statistical reasons (e.g., because of the high stability of privacy concerns), it would also make sense to test longer intervals <span class="citation">(Dormann and Griffin, 2015)</span>.</p>
+<p>In general, we emphasize that our findings should not be overgeneralized. They are conditional on the data we collected, the methods we applied, and the theoretical perspectives we adopted. We stress that analyzing the privacy paradox in other contexts using alternative approaches will likely lead to different results. Although we argue that in most circumstances privacy concerns and behavior should correlate modestly, the exact extent depends on a many boundary conditions. Future research should hence explicitly analyze different contexts <span class="citation">(Nissenbaum, 2010)</span> and situations <span class="citation">(Masur, 2018)</span>. Building on <span class="citation">Kokolakis (2017)</span>, we suggest to analyze the following boundary conditions:</p>
 <ul>
 <li>Context (e.g., professional, social, commercial, or health-related);</li>
 <li>Situation (e.g., new, habitualized, or unexpected);</li>
@@ -704,265 +652,287 @@ Results of the bivariate relations. Above the diagonal: zero-order correlation m
 <li>Type of information processing applied (implicit, heuristic, or peripheral vs. explicit, analytic, or central);</li>
 <li>Existence of bias (e.g., overconfidence, optimism, comparative optimism, or hyperbolic discounting);</li>
 <li>Type of information (e.g., sensitive vs. superficial, biographic, or person-related);</li>
-<li>Benefit immediacy and risk diffusion (high vs. low).</li>
+<li>Benefit immediacy and risk diffusion (high vs. low);</li>
+<li>Object of investigation (e.g., individual people, interactions between people, developmental perspectives, critical incidents, societal structures, or historical developments).</li>
 </ul>
-<p>Specifically, we encourage analyzing privacy behaviors also from a situational perspective, accounting for temporal needs, interpersonal perceptions, contextual cues, or characteristics of communication channels <span class="citation">(Masur 2018)</span>. For example, whereas general levels of information sharing are likely best explained by using privacy <em>concerns</em>, situational information sharing might be best explained by using privacy <em>heuristics</em> <span class="citation">(Sundar et al. 2013)</span>.</p>
+<p>Specifically, we encourage analyzing privacy behaviors also from a situational perspective, accounting for temporal needs, interpersonal perceptions, contextual cues, or characteristics of communication channels <span class="citation">(Masur, 2018)</span>. For example, whereas general levels of information sharing are likely best explained using privacy <em>concerns</em>, situational information sharing might be best explained using privacy <em>heuristics</em> <span class="citation">(Sundar et al., 2013)</span>.</p>
 <p>Next to these theory-related boundary conditions there are also methodological ones:</p>
 <ul>
-<li>Analysis design (e.g., theoretical, experimental, questionnaire-based, interview-based, or anecdotal);</li>
+<li>Analysis design and perspective (e.g., theoretical, experimental, questionnaire-based, interview-based, ethnographic, or computational);</li>
 <li>Quality of measurement (high vs. low; low quality less likely to detect statistical significance);</li>
 <li>Sample size (small vs. large; small samples less likely to detect statistical significance);</li>
 <li>Statistical analysis (e.g., SEM vs. Regression; analyses without error control less likely to find statistical significance);</li>
 <li>Operationalization (e.g., concerns vs. risk perceptions vs. behavioral attitudes; the more specific, the stronger the relation).</li>
 </ul>
-<p>We emphasize that when analyzing the privacy paradox we are likely dealing with small effects <span class="citation">(Baruh, Secinti, and Cemalcilar 2017)</span>. Hence, to detect these small effects reliably we need large samples. This is often not the case <span class="citation">(Baruh, Secinti, and Cemalcilar 2017)</span>. In conclusion, it is crucial to use statistical designs that allow for sufficient statistical power.</p>
 </div>
 <div id="conclusion" class="section level2">
 <h2>Conclusion</h2>
-<p>Being able to show that online behaviors are not paradoxical can be socially relevant. Consider the similar case of fear appeals and protective behavior, where there is also only a small correlation <span class="citation">(Witte and Allen 2000)</span>. However, fear appeals are used in public campaigns nonetheless, oftentimes to much success <span class="citation">(Wakefield, Loken, and Hornik 2010)</span>. Likewise, proclaiming that the online sharing of personal information is not paradoxical and that concerns about online privacy matter, could lead to more cautious and reflective behavior. It is probably no coincidence that the General Data Protection Regulation, which strengthens the privacy rights of consumers, was passed in Europe, where privacy concerns are particularly pronounced <span class="citation">(European Commission 2015)</span>.</p>
+<p>Being able to show that online behaviors are not paradoxical can be socially relevant. Consider the similar case of fear appeals and protective behavior, where there is also only a small correlation <span class="citation">(Witte and Allen, 2000)</span>. However, fear appeals are used in public campaigns nonetheless, oftentimes to much success <span class="citation">(Wakefield et al., 2010)</span>. Likewise, proclaiming that the online sharing of personal information is not paradoxical and that concerns about online privacy matter, could lead to more cautious and reflective behavior. It is probably no coincidence that the General Data Protection Regulation, which strengthens the privacy rights of consumers, was passed in Europe, where privacy concerns are particularly pronounced <span class="citation">(European Commission, 2015)</span>.</p>
 <p>In sum, this study showed that when people were more concerned about their privacy, they also shared a little less personal information about themselves online. If respondents considered sharing personal information to be insensible, they disclosed substantially less information. Together, these findings do not support the existence of a privacy paradox, at least in this particular context and operationalization. No evidence of long-term effects was found, however. Further research is needed to understand the potential causal interplay of concerns, attitudes, and behavior.</p>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
 <div id="references" class="section level1">
 <h1>References</h1>
-
-<div id="refs">
-<div id="ref-acquistiPrivacyHumanBehavior2015">
-<p>Acquisti, Alessandro, Laura Brandimarte, and George Loewenstein. 2015. “Privacy and Human Behavior in the Age of Information.” <em>Science</em> 347 (6221): 509–14. <a href="https://doi.org/10.1126/science.aaa1465">https://doi.org/10.1126/science.aaa1465</a>.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-acquistiLossesGainsHyperbolic2003" class="csl-entry">
+Acquisti A and Grossklags J (2003) Losses, gains, and hyperbolic discounting: <span>An</span> experimental approach to information security attitudes and behavior. Lecture. <span>Berkeley, CA</span>.
 </div>
-<div id="ref-acquistiLossesGainsHyperbolic2003">
-<p>Acquisti, Alessandro, and Jens Grossklags. 2003. “Losses, Gains, and Hyperbolic Discounting: An Experimental Approach to Information Security Attitudes and Behavior.” Lecture. Berkeley, CA.</p>
+<div id="ref-acquistiPrivacyHumanBehavior2015" class="csl-entry">
+Acquisti A, Brandimarte L and Loewenstein G (2015) Privacy and human behavior in the age of information. <em>Science</em> 347(6221): 509–14. DOI: <a href="https://doi.org/10.1126/science.aaa1465">10.1126/science.aaa1465</a>.
 </div>
-<div id="ref-ajzenIntentionsActionsTheory1985">
-<p>Ajzen, I. 1985. “From Intentions to Actions: A Theory of Planned Behavior.” In <em>Action Control</em>, edited by Julius Kuhl and Jürgen Beckmann, 11–39. Berlin, Germany: Springer. <a href="https://doi.org/10.1007/978-3-642-69746-3_2">https://doi.org/10.1007/978-3-642-69746-3_2</a>.</p>
+<div id="ref-ajzenIntentionsActionsTheory1985" class="csl-entry">
+Ajzen I (1985) From intentions to actions: <span>A</span> theory of planned behavior. In: Kuhl J and Beckmann J (eds) <em>Action Control</em>. <span>Berlin, Germany</span>: <span>Springer</span>, pp. 11–39. DOI: <a href="https://doi.org/10.1007/978-3-642-69746-3_2">10.1007/978-3-642-69746-3_2</a>.
 </div>
-<div id="ref-bambergHowDoesEnvironmental2003">
-<p>Bamberg, Sebastian. 2003. “How Does Environmental Concern Influence Specific Environmentally Related Behaviors?: A New Answer to an Old Question.” <em>Journal of Environmental Psychology</em> 23 (1): 21–32. <a href="https://doi.org/10.1016/S0272-4944(02)00078-6">https://doi.org/10.1016/S0272-4944(02)00078-6</a>.</p>
+<div id="ref-altmanPrivacyRegulationCulturally1977" class="csl-entry">
+Altman I (1977) Privacy regulation: <span>Culturally</span> universal or culturally specific? <em>Journal of Social Issues</em> 33(3): 66–84. DOI: <a href="https://doi.org/10.1111/j.1540-4560.1977.tb01883.x">10.1111/j.1540-4560.1977.tb01883.x</a>.
 </div>
-<div id="ref-barnesPrivacyParadoxSocial2006">
-<p>Barnes, Susan B. 2006. “A Privacy Paradox: Social Networking in the United States.” <em>First Monday</em> 11 (9).</p>
+<div id="ref-bambergHowDoesEnvironmental2003" class="csl-entry">
+Bamberg S (2003) How does environmental concern influence specific environmentally related behaviors?: <span>A</span> new answer to an old question. <em>Journal of Environmental Psychology</em> 23(1): 21–32. DOI: <a href="https://doi.org/10.1016/S0272-4944(02)00078-6">10.1016/S0272-4944(02)00078-6</a>.
 </div>
-<div id="ref-barthPrivacyParadoxInvestigating2017">
-<p>Barth, Susanne, and Menno D. T. Jong. 2017. “The Privacy Paradox Investigating Discrepancies Between Expressed Privacy Concerns and Actual Online Behavior A Systematic Literature Review.” <em>Telematics and Informatics</em> 34 (7): 1038–58. <a href="https://doi.org/10.1016/j.tele.2017.04.013">https://doi.org/10.1016/j.tele.2017.04.013</a>.</p>
+<div id="ref-barnesPrivacyParadoxSocial2006" class="csl-entry">
+Barnes SB (2006) A privacy paradox: <span>Social</span> networking in the <span>United States</span>. <em>First Monday</em> 11(9).
 </div>
-<div id="ref-baruhOnlinePrivacyConcerns2017">
-<p>Baruh, Lemi, Ekin Secinti, and Zeynep Cemalcilar. 2017. “Online Privacy Concerns and Privacy Management: A Meta-Analytical Review.” <em>Journal of Communication</em> 67 (1): 26–53. <a href="https://doi.org/10.1111/jcom.12276">https://doi.org/10.1111/jcom.12276</a>.</p>
+<div id="ref-barthPrivacyParadoxInvestigating2017" class="csl-entry">
+Barth S and Jong MDT (2017) The privacy paradox <span></span> <span>Investigating</span> discrepancies between expressed privacy concerns and actual online behavior <span></span> <span>A</span> systematic literature review. <em>Telematics and Informatics</em> 34(7): 1038–1058. DOI: <a href="https://doi.org/10.1016/j.tele.2017.04.013">10.1016/j.tele.2017.04.013</a>.
 </div>
-<div id="ref-beresfordUnwillingnessPayPrivacy2012">
-<p>Beresford, Alastair R., Dorothea Kübler, and Sören Preibusch. 2012. “Unwillingness to Pay for Privacy: A Field Experiment.” <em>Economics Letters</em> 117 (1): 25–27. <a href="https://doi.org/10.1016/j.econlet.2012.04.077">https://doi.org/10.1016/j.econlet.2012.04.077</a>.</p>
+<div id="ref-baruhOnlinePrivacyConcerns2017" class="csl-entry">
+Baruh L, Secinti E and Cemalcilar Z (2017) Online privacy concerns and privacy management: <span>A</span> meta-analytical review. <em>Journal of Communication</em> 67(1): 26–53. DOI: <a href="https://doi.org/10.1111/jcom.12276">10.1111/jcom.12276</a>.
 </div>
-<div id="ref-bolUnderstandingEffectsPersonalization2018">
-<p>Bol, Nadine, Tobias Dienlin, Sanne Kruikemeier, Marijn Sax, Sophie C. Boerman, Joanna Strycharz, Natali Helberger, and Claes H. Vreese. 2018. “Understanding the Effects of Personalization as a Privacy Calculus: Analyzing Self-Disclosure Across Health, News, and Commerce Contexts.” <em>Journal of Computer-Mediated Communication</em> 23 (6): 370–88. <a href="https://doi.org/10.1093/jcmc/zmy020">https://doi.org/10.1093/jcmc/zmy020</a>.</p>
+<div id="ref-beresfordUnwillingnessPayPrivacy2012" class="csl-entry">
+Beresford AR, Kübler D and Preibusch S (2012) Unwillingness to pay for privacy: <span>A</span> field experiment. <em>Economics Letters</em> 117(1): 25–27. DOI: <a href="https://doi.org/10.1016/j.econlet.2012.04.077">10.1016/j.econlet.2012.04.077</a>.
 </div>
-<div id="ref-braunlichLinkingLooseEnds2020">
-<p>Bräunlich, Katharina, Tobias Dienlin, Johannes Eichenhofer, Paula Helm, Sabine Trepte, Rüdiger Grimm, Sandra Seubert, and Christoph Gusy. 2020. “Linking Loose Ends: An Interdisciplinary Privacy and Communication Model.” <em>New Media &amp; Society</em>, February, 1461444820905045. <a href="https://doi.org/10.1177/1461444820905045">https://doi.org/10.1177/1461444820905045</a>.</p>
+<div id="ref-bolUnderstandingEffectsPersonalization2018" class="csl-entry">
+Bol N, Dienlin T, Kruikemeier S, et al. (2018) Understanding the effects of personalization as a privacy calculus: <span>Analyzing</span> self-disclosure across health, news, and commerce contexts. <em>Journal of Computer-Mediated Communication</em> 23(6): 370–388. DOI: <a href="https://doi.org/10.1093/jcmc/zmy020">10.1093/jcmc/zmy020</a>.
 </div>
-<div id="ref-R-pwr">
-<p>Champely, Stephane. 2018. <em>Pwr: Basic Functions for Power Analysis</em>. <a href="https://CRAN.R-project.org/package=pwr">https://CRAN.R-project.org/package=pwr</a>.</p>
+<div id="ref-braunlichLinkingLooseEnds2020" class="csl-entry">
+Bräunlich K, Dienlin T, Eichenhofer J, et al. (2020) Linking loose ends: <span>An</span> interdisciplinary privacy and communication model. <em>New Media &amp; Society</em>. <span>SAGE Publications</span>: 1461444820905045. DOI: <a href="https://doi.org/10.1177/1461444820905045">10.1177/1461444820905045</a>.
 </div>
-<div id="ref-cohenPowerPrimer1992">
-<p>Cohen, Jacob. 1992. “A Power Primer.” <em>Psychological Bulletin</em> 112 (1): 155–59. <a href="https://doi.org/10.1037/0033-2909.112.1.155">https://doi.org/10.1037/0033-2909.112.1.155</a>.</p>
+<div id="ref-buchananDevelopmentMeasuresOnline2007" class="csl-entry">
+Buchanan T, Paine C, Joinson AN, et al. (2007) Development of measures of online privacy concern and protection for use on the <span>Internet</span>. <em>Journal of the American Society for Information Science and Technology</em> 58(2): 157–165. DOI: <a href="https://doi.org/10.1002/asi.20459">10.1002/asi.20459</a>.
 </div>
-<div id="ref-colmanDictionaryPsychology2015">
-<p>Colman, Andrew M. 2015. <em>A Dictionary of Psychology</em>. Fourth. Oxford, UK: Oxford University Press. <a href="https://doi.org/10.1093/acref/9780199657681.001.0001">https://doi.org/10.1093/acref/9780199657681.001.0001</a>.</p>
+<div id="ref-R-pwr" class="csl-entry">
+Champely S (2018) <em>Pwr: Basic Functions for Power Analysis</em>. Available at: <a href="https://CRAN.R-project.org/package=pwr">https://CRAN.R-project.org/package=pwr</a>.
 </div>
-<div id="ref-culnanInformationPrivacyConcerns1999">
-<p>Culnan, Mary J., and Pamela K. Armstrong. 1999. “Information Privacy Concerns, Procedural Fairness, and Impersonal Trust: An Empirical Investigation.” <em>Organization Science</em> 10 (1): 104–15. <a href="https://doi.org/10.1287/orsc.10.1.104">https://doi.org/10.1287/orsc.10.1.104</a>.</p>
+<div id="ref-cohenPowerPrimer1992" class="csl-entry">
+Cohen J (1992) A power primer. <em>Psychological Bulletin</em> 112(1): 155–159. DOI: <a href="https://doi.org/10.1037/0033-2909.112.1.155">10.1037/0033-2909.112.1.155</a>.
 </div>
-<div id="ref-dienesUnderstandingPsychologyScience2008">
-<p>Dienes, Zoltán. 2008. <em>Understanding Psychology as a Science: An Introduction to Scientific and Statistical Inference</em>. New York, N.Y.: Palgrave Macmillan.</p>
+<div id="ref-colmanDictionaryPsychology2015" class="csl-entry">
+Colman AM (2015) <em>A Dictionary of Psychology</em>. Fourth. <span>Oxford, UK</span>: <span>Oxford University Press</span>. DOI: <a href="https://doi.org/10.1093/acref/9780199657681.001.0001">10.1093/acref/9780199657681.001.0001</a>.
 </div>
-<div id="ref-dienlinExtendedPrivacyCalculus2016">
-<p>Dienlin, Tobias, and Miriam J. Metzger. 2016. “An Extended Privacy Calculus Model for SNSsAnalyzing Self-Disclosure and Self-Withdrawal in a Representative U.S. Sample.” <em>Journal of Computer-Mediated Communication</em> 21 (5): 368–83. <a href="https://doi.org/10.1111/jcc4.12163">https://doi.org/10.1111/jcc4.12163</a>.</p>
+<div id="ref-culnanInformationPrivacyConcerns1999" class="csl-entry">
+Culnan MJ and Armstrong PK (1999) Information privacy concerns, procedural fairness, and impersonal trust: <span>An</span> empirical investigation. <em>Organization Science</em> 10(1): 104–115. DOI: <a href="https://doi.org/10.1287/orsc.10.1.104">10.1287/orsc.10.1.104</a>.
 </div>
-<div id="ref-dienlinPrivacyParadoxRelic2015">
-<p>Dienlin, Tobias, and Sabine Trepte. 2015. “Is the Privacy Paradox a Relic of the Past? An in-Depth Analysis of Privacy Attitudes and Privacy Behaviors.” <em>European Journal of Social Psychology</em> 45 (3): 285–97. <a href="https://doi.org/10.1002/ejsp.2049">https://doi.org/10.1002/ejsp.2049</a>.</p>
+<div id="ref-dienesUnderstandingPsychologyScience2008" class="csl-entry">
+Dienes Z (2008) <em>Understanding Psychology as a Science: <span>An</span> Introduction to Scientific and Statistical Inference</em>. <span>New York, N.Y.</span>: <span>Palgrave Macmillan</span>.
 </div>
-<div id="ref-dolanEmotionCognitionBehavior2002">
-<p>Dolan, R. J. 2002. “Emotion, Cognition, and Behavior.” <em>Science</em> 298 (5596): 1191–4. <a href="https://doi.org/10.1126/science.1076358">https://doi.org/10.1126/science.1076358</a>.</p>
+<div id="ref-dienlinExtendedPrivacyCalculus2016" class="csl-entry">
+Dienlin T and Metzger MJ (2016) An extended privacy calculus model for <span>SNSs</span><span><span>Analyzing</span></span> self-disclosure and self-withdrawal in a representative <span>U</span>.<span>S</span>. sample. <em>Journal of Computer-Mediated Communication</em> 21(5): 368–383. DOI: <a href="https://doi.org/10.1111/jcc4.12163">10.1111/jcc4.12163</a>.
 </div>
-<div id="ref-dormannOptimalTimeLags2015">
-<p>Dormann, Christian, and Mark A. Griffin. 2015. “Optimal Time Lags in Panel Studies.” <em>Psychological Methods</em> 20 (4): 489–505. <a href="https://doi.org/10.1037/met0000041">https://doi.org/10.1037/met0000041</a>.</p>
+<div id="ref-dienlinPrivacyParadoxRelic2015" class="csl-entry">
+Dienlin T and Trepte S (2015) Is the privacy paradox a relic of the past? <span>An</span> in-depth analysis of privacy attitudes and privacy behaviors. <em>European Journal of Social Psychology</em> 45(3): 285–297. DOI: <a href="https://doi.org/10.1002/ejsp.2049">10.1002/ejsp.2049</a>.
 </div>
-<div id="ref-europeancommissionDataProtectionSpecial2015">
-<p>European Commission. 2015. “Data Protection: Special Eurobarometer 431.” UnpublishedWork.</p>
+<div id="ref-dolanEmotionCognitionBehavior2002" class="csl-entry">
+Dolan RJ (2002) Emotion, cognition, and behavior. <em>Science</em> 298(5596): 1191–4. DOI: <a href="https://doi.org/10.1126/science.1076358">10.1126/science.1076358</a>.
 </div>
-<div id="ref-fishbeinPredictingChangingBehavior2010">
-<p>Fishbein, M., and I. Ajzen. 2010. <em>Predicting and Changing Behavior: The Reasoned Action Approach</em>. New York, NY: Psychology Press.</p>
+<div id="ref-dormannOptimalTimeLags2015" class="csl-entry">
+Dormann C and Griffin MA (2015) Optimal time lags in panel studies. <em>Psychological methods</em> 20(4): 489–505. DOI: <a href="https://doi.org/10.1037/met0000041">10.1037/met0000041</a>.
 </div>
-<div id="ref-freanFindingSolutionsPrivacy2017">
-<p>Frean, Alexandra. 2017. “Finding Solutions for the Privacy Paradox Deserves a Very Public Debate.” <em>The Times</em>, November.</p>
+<div id="ref-europeancommissionAttitudesDataProtection2011" class="csl-entry">
+European Commission (2011) <em>Attitudes on data protection and electronic identity in the <span>European Union</span></em>.
 </div>
-<div id="ref-gerberExplainingPrivacyParadox2018">
-<p>Gerber, Nina, Paul Gerber, and Melanie Volkamer. 2018. “Explaining the Privacy Paradox: A Systematic Review of Literature Investigating Privacy Attitude and Behavior.” <em>Computers &amp; Security</em> 77 (August): 226–61. <a href="https://doi.org/10.1016/j.cose.2018.04.002">https://doi.org/10.1016/j.cose.2018.04.002</a>.</p>
+<div id="ref-europeancommissionDataProtectionSpecial2015" class="csl-entry">
+European Commission (2015) <em>Data protection: <span>Special Eurobarometer</span> 431</em>.
 </div>
-<div id="ref-grossInformationRevelationPrivacy2005">
-<p>Gross, Ralph, and Alessandro Acquisti. 2005. “Information Revelation and Privacy in Online Social Networks.” Lecture. Alexandria, VA.</p>
+<div id="ref-fishbeinPredictingChangingBehavior2010" class="csl-entry">
+Fishbein M and Ajzen I (2010) <em>Predicting and Changing Behavior: <span>The</span> Reasoned Action Approach</em>. <span>New York, NY</span>: <span>Psychology Press</span>.
 </div>
-<div id="ref-hamakerCritiqueCrosslaggedPanel2015">
-<p>Hamaker, Ellen L., Rebecca M. Kuiper, and Raoul P. P. P. Grasman. 2015. “A Critique of the Cross-Lagged Panel Model.” <em>Psychological Methods</em> 20 (1): 102–16. <a href="https://doi.org/10.1037/a0038889">https://doi.org/10.1037/a0038889</a>.</p>
+<div id="ref-freanFindingSolutionsPrivacy2017" class="csl-entry">
+Frean A (2017) Finding solutions for the privacy paradox deserves a very public debate. <em>The Times</em>.
 </div>
-<div id="ref-hannOvercomingOnlineInformation2007">
-<p>Hann, I.-H., K.-L. Hui, S.-Y.T. Lee, and I. P. L. Png. 2007. “Overcoming Online Information Privacy Concerns: An Information-Processing Theory Approach.” <em>Journal of Management Information Systems</em> 24 (2): 13–42. <a href="https://doi.org/10.2753/MIS0742-1222240202">https://doi.org/10.2753/MIS0742-1222240202</a>.</p>
+<div id="ref-gerberExplainingPrivacyParadox2018" class="csl-entry">
+Gerber N, Gerber P and Volkamer M (2018) Explaining the privacy paradox: <span>A</span> systematic review of literature investigating privacy attitude and behavior. <em>Computers &amp; Security</em> 77: 226–261. DOI: <a href="https://doi.org/10.1016/j.cose.2018.04.002">10.1016/j.cose.2018.04.002</a>.
 </div>
-<div id="ref-hayesConcernAppearanceHealth1987">
-<p>Hayes, Diane, and Catherine E. Ross. 1987. “Concern with Appearance, Health Beliefs, and Eating Habits.” <em>Journal of Health and Social Behavior</em> 28 (2): 120. <a href="https://doi.org/10.2307/2137126">https://doi.org/10.2307/2137126</a>.</p>
+<div id="ref-grossInformationRevelationPrivacy2005" class="csl-entry">
+Gross R and Acquisti A (2005) Information revelation and privacy in online social networks. Lecture. <span>Alexandria, VA</span>.
 </div>
-<div id="ref-heirmanPredictingAdolescentsDisclosure2013">
-<p>Heirman, Wannes, Michel Walrave, and K. Ponnet. 2013. “Predicting Adolescents’ Disclosure of Personal Information in Exchange for Commercial Incentives: An Application of an Extended Theory of Planned Behavior.” <em>Cyberpsychology, Behavior, and Social Networking</em> 16 (2): 81–87. <a href="https://doi.org/10.1089/cyber.2012.0041">https://doi.org/10.1089/cyber.2012.0041</a>.</p>
+<div id="ref-hamakerCritiqueCrosslaggedPanel2015" class="csl-entry">
+Hamaker EL, Kuiper RM and Grasman RPPP (2015) A critique of the cross-lagged panel model. <em>Psychological methods</em> 20(1): 102–16. DOI: <a href="https://doi.org/10.1037/a0038889">10.1037/a0038889</a>.
 </div>
-<div id="ref-hoffmannPrivacyCynicismNew2016">
-<p>Hoffmann, Christian Pieter, Christoph Lutz, and Giulia Ranzini. 2016. “Privacy Cynicism: A New Approach to the Privacy Paradox.” <em>Cyberpsychology: Journal of Psychosocial Research on Cyberspace</em> 10 (4). <a href="https://doi.org/10.5817/CP2016-4-7">https://doi.org/10.5817/CP2016-4-7</a>.</p>
+<div id="ref-hannOvercomingOnlineInformation2007" class="csl-entry">
+Hann I-H, Hui K-L, Lee S-YT, et al. (2007) Overcoming online information privacy concerns: <span>An</span> information-processing theory approach. <em>Journal of Management Information Systems</em> 24(2): 13–42. DOI: <a href="https://doi.org/10.2753/MIS0742-1222240202">10.2753/MIS0742-1222240202</a>.
 </div>
-<div id="ref-hubermanValuatingPrivacy2005">
-<p>Huberman, B. A., E. Adar, and L. R. Fine. 2005. “Valuating Privacy.” <em>IEEE Security Privacy</em> 3 (5): 22–25. <a href="https://doi.org/10.1109/MSP.2005.137">https://doi.org/10.1109/MSP.2005.137</a>.</p>
+<div id="ref-hargittaiWhatCanReally2016" class="csl-entry">
+Hargittai E and Marwick A (2016) <span>‘<span>What Can I Really Do</span>?’</span> <span>Explaining</span> the <span>Privacy Paradox</span> with <span>Online Apathy</span>. <em>International Journal of Communication</em> 10(0): 21.
 </div>
-<div id="ref-R-MissMech">
-<p>Jamshidian, Mortaza, Siavash Jalal, and Camden Jansen. 2014. “MissMech: An R Package for Testing Homoscedasticity, Multivariate Normality, and Missing Completely at Random (Mcar).” <em>Journal of Statistical Software</em> 56 (6): 1–31. <a href="http://www.jstatsoft.org/v56/i06/">http://www.jstatsoft.org/v56/i06/</a>.</p>
+<div id="ref-hayesConcernAppearanceHealth1987" class="csl-entry">
+Hayes D and Ross CE (1987) Concern with appearance, health beliefs, and eating habits. <em>Journal of Health and Social Behavior</em> 28(2): 120. DOI: <a href="https://doi.org/10.2307/2137126">10.2307/2137126</a>.
 </div>
-<div id="ref-R-semTools">
-<p>Jorgensen, T. D., Pornprasertmanit, S., Schoemann, A. M., Rosseel, and Y. 2018. <em>semTools: Useful Tools for Structural Equation Modeling</em>. <a href="https://CRAN.R-project.org/package=semTools">https://CRAN.R-project.org/package=semTools</a>.</p>
+<div id="ref-heirmanPredictingAdolescentsDisclosure2013" class="csl-entry">
+Heirman W, Walrave M and Ponnet K (2013) Predicting adolescents’ disclosure of personal information in exchange for commercial incentives: <span>An</span> application of an extended theory of planned behavior. <em>Cyberpsychology, Behavior, and Social Networking</em> 16(2): 81–87. DOI: <a href="https://doi.org/10.1089/cyber.2012.0041">10.1089/cyber.2012.0041</a>.
 </div>
-<div id="ref-jourardTransparentSelf1964">
-<p>Jourard, S. M. 1964. <em>The Transparent Self</em>. New York, NY: Van Nostrand.</p>
+<div id="ref-hoffmannPrivacyCynicismNew2016" class="csl-entry">
+Hoffmann CP, Lutz C and Ranzini G (2016) Privacy cynicism: <span>A</span> new approach to the privacy paradox. <em>Cyberpsychology: Journal of Psychosocial Research on Cyberspace</em> 10(4). DOI: <a href="https://doi.org/10.5817/CP2016-4-7">10.5817/CP2016-4-7</a>.
 </div>
-<div id="ref-keijsersParentalMonitoringAdolescent2016">
-<p>Keijsers, Loes. 2016. “Parental Monitoring and Adolescent Problem Behaviors.” <em>International Journal of Behavioral Development</em> 40 (3): 271–81. <a href="https://doi.org/10.1177/0165025415592515">https://doi.org/10.1177/0165025415592515</a>.</p>
+<div id="ref-hubermanValuatingPrivacy2005" class="csl-entry">
+Huberman BA, Adar E and Fine LR (2005) Valuating privacy. <em>IEEE Security Privacy</em> 3(5): 22–25. DOI: <a href="https://doi.org/10.1109/MSP.2005.137">10.1109/MSP.2005.137</a>.
 </div>
-<div id="ref-klinePrinciplesPracticeStructural2016">
-<p>Kline, Rex B. 2016. <em>Principles and Practice of Structural Equation Modeling</em>. Fourth. Methodology in the Social Sciences. New York, NY: The Guilford Press.</p>
+<div id="ref-R-MissMech" class="csl-entry">
+Jamshidian M, Jalal S and Jansen C (2014) <span>MissMech</span>: An <span>R</span> package for testing homoscedasticity, multivariate normality, and missing completely at random (MCAR). <em>Journal of Statistical Software</em> 56(6): 1–31. Available at: <a href="http://www.jstatsoft.org/v56/i06/">http://www.jstatsoft.org/v56/i06/</a>.
 </div>
-<div id="ref-kokolakisPrivacyAttitudesPrivacy2017">
-<p>Kokolakis, Spyros. 2017. “Privacy Attitudes and Privacy Behaviour: A Review of Current Research on the Privacy Paradox Phenomenon.” <em>Computers &amp; Security</em> 64 (January): 122–34. <a href="https://doi.org/10.1016/j.cose.2015.07.002">https://doi.org/10.1016/j.cose.2015.07.002</a>.</p>
+<div id="ref-R-semTools" class="csl-entry">
+Jorgensen, D. T, Pornprasertmanit, et al. (2018) <em><span class="nocase">semTools</span>: Useful Tools for Structural Equation Modeling</em>. Available at: <a href="https://CRAN.R-project.org/package=semTools">https://CRAN.R-project.org/package=semTools</a>.
 </div>
-<div id="ref-koohikamaliInvestigationDynamicModel2019">
-<p>Koohikamali, Mehrdad, Aaron M. French, and Dan J. Kim. 2019. “An Investigation of a Dynamic Model of Privacy Trade-Off in Use of Mobile Social Network Applications: A Longitudinal Perspective.” <em>Decision Support Systems</em> 119 (April): 46–59. <a href="https://doi.org/10.1016/j.dss.2019.02.007">https://doi.org/10.1016/j.dss.2019.02.007</a>.</p>
+<div id="ref-jourardTransparentSelf1964" class="csl-entry">
+Jourard SM (1964) <em>The Transparent Self</em>. <span>New York, NY</span>: <span>Van Nostrand</span>.
 </div>
-<div id="ref-R-MVN">
-<p>Korkmaz, Selcuk, Dincer Goksuluk, and Gokmen Zararsiz. 2014. “MVN: An R Package for Assessing Multivariate Normality.” <em>The R Journal</em> 6 (2): 151–62. <a href="https://journal.r-project.org/archive/2014-2/korkmaz-goksuluk-zararsiz.pdf">https://journal.r-project.org/archive/2014-2/korkmaz-goksuluk-zararsiz.pdf</a>.</p>
+<div id="ref-keijsersParentalMonitoringAdolescent2016" class="csl-entry">
+Keijsers L (2016) Parental monitoring and adolescent problem behaviors. <em>International Journal of Behavioral Development</em> 40(3): 271–281. DOI: <a href="https://doi.org/10.1177/0165025415592515">10.1177/0165025415592515</a>.
 </div>
-<div id="ref-krasnovaOnlineSocialNetworks2010">
-<p>Krasnova, Hanna, Sarah Spiekermann, Ksenia Koroleva, and Thomas Hildebrand. 2010. “Online Social Networks: Why We Disclose.” <em>Journal of Information Technology</em> 25 (2): 109–25. <a href="https://doi.org/10.1057/jit.2010.6">https://doi.org/10.1057/jit.2010.6</a>.</p>
+<div id="ref-klinePrinciplesPracticeStructural2016" class="csl-entry">
+Kline RB (2016) <em>Principles and Practice of Structural Equation Modeling</em>. Fourth. Methodology in the social sciences. <span>New York, NY</span>: <span>The Guilford Press</span>.
 </div>
-<div id="ref-lakensJustifyYourAlpha2018">
-<p>Lakens, Daniël, Federico G. Adolfi, Casper J. Albers, Farid Anvari, Matthew A. J. Apps, Shlomo E. Argamon, Thom Baguley, et al. 2018. “Justify Your Alpha.” <em>Nature Human Behaviour</em> 2 (3): 168–71. <a href="https://doi.org/10.1038/s41562-018-0311-x">https://doi.org/10.1038/s41562-018-0311-x</a>.</p>
+<div id="ref-kokolakisPrivacyAttitudesPrivacy2017" class="csl-entry">
+Kokolakis S (2017) Privacy attitudes and privacy behaviour: <span>A</span> review of current research on the privacy paradox phenomenon. <em>Computers &amp; Security</em> 64: 122–134. DOI: <a href="https://doi.org/10.1016/j.cose.2015.07.002">10.1016/j.cose.2015.07.002</a>.
 </div>
-<div id="ref-lakensEquivalenceTestingPsychological2018">
-<p>Lakens, Daniël, Anne M. Scheel, and Peder M. Isager. 2018. “Equivalence Testing for Psychological Research: A Tutorial.” <em>Advances in Methods and Practices in Psychological Science</em> 1 (2): 259–69. <a href="https://doi.org/10.1177/2515245918770963">https://doi.org/10.1177/2515245918770963</a>.</p>
+<div id="ref-koohikamaliInvestigationDynamicModel2019" class="csl-entry">
+Koohikamali M, French AM and Kim DJ (2019) An investigation of a dynamic model of privacy trade-off in use of mobile social network applications: <span>A</span> longitudinal perspective. <em>Decision Support Systems</em> 119: 46–59. DOI: <a href="https://doi.org/10.1016/j.dss.2019.02.007">10.1016/j.dss.2019.02.007</a>.
 </div>
-<div id="ref-R-sjstats">
-<p>Lüdecke, Daniel. 2019. <em>Sjstats: Statistical Functions for Regression Models (Version 0.17.5)</em>. <a href="https://doi.org/10.5281/zenodo.1284472">https://doi.org/10.5281/zenodo.1284472</a>.</p>
+<div id="ref-R-MVN" class="csl-entry">
+Korkmaz S, Goksuluk D and Zararsiz G (2014) MVN: An r package for assessing multivariate normality. <em>The R Journal</em> 6(2): 151–162. Available at: <a href="https://journal.r-project.org/archive/2014-2/korkmaz-goksuluk-zararsiz.pdf">https://journal.r-project.org/archive/2014-2/korkmaz-goksuluk-zararsiz.pdf</a>.
 </div>
-<div id="ref-marwickNetworkedPrivacyHow2014">
-<p>Marwick, A. E., and d. boyd. 2014. “Networked Privacy: How Teenagers Negotiate Context in Social Media.” <em>New Media &amp; Society</em> 16 (7): 1051–67. <a href="https://doi.org/10.1177/1461444814543995">https://doi.org/10.1177/1461444814543995</a>.</p>
+<div id="ref-krasnovaOnlineSocialNetworks2010" class="csl-entry">
+Krasnova H, Spiekermann S, Koroleva K, et al. (2010) Online social networks: <span>Why</span> we disclose. <em>Journal of Information Technology</em> 25(2): 109–125. DOI: <a href="https://doi.org/10.1057/jit.2010.6">10.1057/jit.2010.6</a>.
 </div>
-<div id="ref-masurSituationalPrivacySelfdisclosure2018">
-<p>Masur, Philipp K. 2018. <em>Situational Privacy and Self-Disclosure: Communication Processes in Online Environments</em>. Cham, Switzerland: Springer.</p>
+<div id="ref-lakensEquivalenceTestingPsychological2018" class="csl-entry">
+Lakens D, Scheel AM and Isager PM (2018) Equivalence testing for psychological research: <span>A</span> tutorial. <em>Advances in Methods and Practices in Psychological Science</em> 1(2): 259–269. DOI: <a href="https://doi.org/10.1177/2515245918770963">10.1177/2515245918770963</a>.
 </div>
-<div id="ref-meehlWhySummariesResearch1990">
-<p>Meehl, Paul E. 1990. “Why Summaries of Research on Psychological Theories Are Often Uninterpretable.” <em>Psychological Reports</em> 66 (1): 195–244. <a href="https://doi.org/10.2466/pr0.1990.66.1.195">https://doi.org/10.2466/pr0.1990.66.1.195</a>.</p>
+<div id="ref-lakensJustifyYourAlpha2018" class="csl-entry">
+Lakens D, Adolfi FG, Albers CJ, et al. (2018) Justify your alpha. <em>Nature Human Behaviour</em> 2(3): 168–171. DOI: <a href="https://doi.org/10.1038/s41562-018-0311-x">10.1038/s41562-018-0311-x</a>.
 </div>
-<div id="ref-merriam-websterDefinitionConcern2018">
-<p>Merriam-Webster. 2018. “Definition of Concern.” InternetDocument. https://www.merriam-webster.com/dictionary/concern.</p>
+<div id="ref-R-sjstats" class="csl-entry">
+Lüdecke D (2019) <em>Sjstats: Statistical Functions for Regression Models (Version 0.17.5)</em>. DOI: <a href="https://doi.org/10.5281/zenodo.1284472">10.5281/zenodo.1284472</a>.
 </div>
-<div id="ref-nabiCognitivefunctionalModelEffects1999">
-<p>Nabi, Robin L. 1999. “A Cognitive-Functional Model for the Effects of Discrete Negative Emotions on Information Processing, Attitude Change, and Recall.” <em>Communication Theory</em> 9 (3): 292–320. <a href="https://doi.org/10.1111/j.1468-2885.1999.tb00172.x">https://doi.org/10.1111/j.1468-2885.1999.tb00172.x</a>.</p>
+<div id="ref-marwickNetworkedPrivacyHow2014" class="csl-entry">
+Marwick AE and boyd d (2014) Networked privacy: <span>How</span> teenagers negotiate context in social media. <em>New Media &amp; Society</em> 16(7): 1051–1067. DOI: <a href="https://doi.org/10.1177/1461444814543995">10.1177/1461444814543995</a>.
 </div>
-<div id="ref-newyorkpublicradioPrivacyParadox2018">
-<p>New York Public Radio. 2018. “The Privacy Paradox.” InternetDocument. https://project.wnyc.org/privacy-paradox/.</p>
+<div id="ref-masurSituationalPrivacySelfdisclosure2018" class="csl-entry">
+Masur PK (2018) <em>Situational Privacy and Self-Disclosure: <span>Communication</span> Processes in Online Environments</em>. <span>Cham, Switzerland</span>: <span>Springer</span>.
 </div>
-<div id="ref-norbergPrivacyParadoxPersonal2007">
-<p>Norberg, P. A., D. R. Horne, and D. A. Horne. 2007. “The Privacy Paradox: Personal Information Disclosure Intentions Versus Behaviors.” <em>Journal of Consumer Affairs</em> 41 (1): 100–126. <a href="https://doi.org/10.1111/j.1745-6606.2006.00070.x">https://doi.org/10.1111/j.1745-6606.2006.00070.x</a>.</p>
+<div id="ref-meehlWhySummariesResearch1990" class="csl-entry">
+Meehl PE (1990) Why summaries of research on psychological theories are often uninterpretable. <em>Psychological Reports</em> 66(1): 195–244. DOI: <a href="https://doi.org/10.2466/pr0.1990.66.1.195">10.2466/pr0.1990.66.1.195</a>.
 </div>
-<div id="ref-R-base">
-<p>R Core Team. 2018. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</p>
+<div id="ref-merriam-websterDefinitionConcern2018" class="csl-entry">
+Merriam-Webster (2018) Definition of concern. {{InternetDocument}}. https://www.merriam-webster.com/dictionary/concern.
 </div>
-<div id="ref-reelRelationsBodyConcerns2007">
-<p>Reel, Justine J., Christy Greenleaf, Wanda K. Baker, Stephen Aragon, Dana Bishop, Cecile Cachaper, Philip Handwerk, et al. 2007. “Relations of Body Concerns and Exercise Behavior: A Meta-Analysis.” <em>Psychological Reports</em> 101 (3): 927–42. <a href="https://doi.org/10.2466/pr0.101.3.927-942">https://doi.org/10.2466/pr0.101.3.927-942</a>.</p>
+<div id="ref-nabiCognitivefunctionalModelEffects1999" class="csl-entry">
+Nabi RL (1999) A cognitive-functional model for the effects of discrete negative emotions on information processing, attitude change, and recall. <em>Communication Theory</em> 9(3): 292–320. DOI: <a href="https://doi.org/10.1111/j.1468-2885.1999.tb00172.x">10.1111/j.1468-2885.1999.tb00172.x</a>.
 </div>
-<div id="ref-R-psych">
-<p>Revelle, William. 2018. <em>Psych: Procedures for Psychological, Psychometric, and Personality Research</em>. Evanston, Illinois: Northwestern University. <a href="https://CRAN.R-project.org/package=psych">https://CRAN.R-project.org/package=psych</a>.</p>
+<div id="ref-newyorkpublicradioPrivacyParadox2018" class="csl-entry">
+New York Public Radio (2018) The privacy paradox. {{InternetDocument}}. https://project.wnyc.org/privacy-paradox/.
 </div>
-<div id="ref-rogersCognitivePhysiologicalProcesses1983">
-<p>Rogers, Ronald W. 1983. “Cognitive and Physiological Processes in Fear Appeals and Attitude Change: A Revised Theory of Protection Motivation.” In <em>Social Psychophysiology: A Sourcebook: A Sourcebook</em>, edited by John T. Cacioppo, R. E. Petty, and Richard E. Petty, 153–77. New York: Guilford Press.</p>
+<div id="ref-nissenbaumPrivacyContextTechnology2010" class="csl-entry">
+Nissenbaum H (2010) <em>Privacy in Context: <span>Technology</span>, Policy, and the Integrity of Social Life</em>. <span>Stanford, CA</span>: <span>Stanford University Press</span>.
 </div>
-<div id="ref-R-lavaan">
-<p>Rosseel, Yves. 2012. “lavaan: An R Package for Structural Equation Modeling.” <em>Journal of Statistical Software</em> 48 (2): 1–36. <a href="http://www.jstatsoft.org/v48/i02/">http://www.jstatsoft.org/v48/i02/</a>.</p>
+<div id="ref-norbergPrivacyParadoxPersonal2007" class="csl-entry">
+Norberg PA, Horne DR and Horne DA (2007) The privacy paradox: <span>Personal</span> information disclosure intentions versus behaviors. <em>Journal of Consumer Affairs</em> 41(1): 100–126. DOI: <a href="https://doi.org/10.1111/j.1745-6606.2006.00070.x">10.1111/j.1745-6606.2006.00070.x</a>.
 </div>
-<div id="ref-scharkowAccuracySelfreportedInternet2016">
-<p>Scharkow, Michael. 2016. “The Accuracy of Self-Reported Internet UseA Validation Study Using Client Log Data.” <em>Communication Methods and Measures</em> 10 (1): 13–27. <a href="https://doi.org/10.1080/19312458.2015.1118446">https://doi.org/10.1080/19312458.2015.1118446</a>.</p>
+<div id="ref-preibuschPrivacyBehaviorsSnowden2015" class="csl-entry">
+Preibusch S (2015) Privacy behaviors after <span>Snowden</span>. <em>Communications of the ACM</em> 58(5): 48–55. DOI: <a href="https://doi.org/10.1145/2663341">10.1145/2663341</a>.
 </div>
-<div id="ref-R-GGally">
-<p>Schloerke, Barret, Jason Crowley, Di Cook, Francois Briatte, Moritz Marbach, Edwin Thoen, Amos Elberg, and Joseph Larmarange. 2018. <em>GGally: Extension to ’Ggplot2’</em>. <a href="https://CRAN.R-project.org/package=GGally">https://CRAN.R-project.org/package=GGally</a>.</p>
+<div id="ref-R-base" class="csl-entry">
+R Core Team (2018) <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. Available at: <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
 </div>
-<div id="ref-sevignaniPrivacyCapitalismAge2016">
-<p>Sevignani, Sebastian. 2016. <em>Privacy and Capitalism in the Age of Social Media</em>. Routledge Research in Information Technology and Society. New York; London: Routledge Taylor &amp; Francis Group.</p>
+<div id="ref-reelRelationsBodyConcerns2007" class="csl-entry">
+Reel JJ, Greenleaf C, Baker WK, et al. (2007) Relations of body concerns and exercise behavior: <span>A</span> meta-analysis. <em>Psychological Reports</em> 101(3): 927–42. DOI: <a href="https://doi.org/10.2466/pr0.101.3.927-942">10.2466/pr0.101.3.927-942</a>.
 </div>
-<div id="ref-simonBehavioralModelRational1955">
-<p>Simon, Herbert A. 1955. “A Behavioral Model of Rational Choice.” <em>The Quarterly Journal of Economics</em> 69 (1): 99. <a href="https://doi.org/10.2307/1884852">https://doi.org/10.2307/1884852</a>.</p>
+<div id="ref-R-psych" class="csl-entry">
+Revelle W (2018) <em>Psych: Procedures for Psychological, Psychometric, and Personality Research</em>. Evanston, Illinois: Northwestern University. Available at: <a href="https://CRAN.R-project.org/package=psych">https://CRAN.R-project.org/package=psych</a>.
 </div>
-<div id="ref-sundarUnlockingPrivacyParadox2013">
-<p>Sundar, S. Shyam, Hyunjin Kang, Mu Wu, Eun Gu, and Bo Zhang. 2013. “Unlocking the Privacy Paradox: Do Cognitive Heuristics Hold the Key?” In <em>CHI 2013: Changing Perspectives</em>, 811–16. Paris, France.</p>
+<div id="ref-rogersCognitivePhysiologicalProcesses1983" class="csl-entry">
+Rogers RW (1983) Cognitive and physiological processes in fear appeals and attitude change: <span>A</span> revised theory of protection motivation. In: Cacioppo JT, Petty RE, and Petty RE (eds) <em>Social Psychophysiology: <span>A</span> Sourcebook: <span>A</span> Sourcebook</em>. <span>New York</span>: <span>Guilford Press</span>, pp. 153–177.
 </div>
-<div id="ref-taddickenPrivacyParadoxSocial2014">
-<p>Taddicken, Monika. 2014. “The ‘Privacy Paradox’ in the Social Web: The Impact of Privacy Concerns, Individual Characteristics, and the Perceived Social Relevance on Different Forms of Self-Disclosure.” <em>Journal of Computer-Mediated Communication</em> 19 (2): 248–73. <a href="https://doi.org/10.1111/jcc4.12052">https://doi.org/10.1111/jcc4.12052</a>.</p>
+<div id="ref-R-lavaan" class="csl-entry">
+Rosseel Y (2012) <span class="nocase">lavaan</span>: An <span>R</span> package for structural equation modeling. <em>Journal of Statistical Software</em> 48(2): 1–36. Available at: <a href="http://www.jstatsoft.org/v48/i02/">http://www.jstatsoft.org/v48/i02/</a>.
 </div>
-<div id="ref-trepteRiskyBehaviorsHow2014">
-<p>Trepte, Sabine, Tobias Dienlin, and Leonard Reinecke. 2014. “Risky Behaviors. How Online Experiences Influence Privacy Behaviors.” In <em>Von Der Gutenberg-Galaxis Zur Google-Galaxis: Alte Und Neue Grenzvermessungen Nach 50 Jahren DGPuK</em>, edited by B. Stark, O. Quiring, and N. Jackob, 41:225–44. Schriftenreihe Der Deutschen Gesellschaft Für Publizistik- Und Kommunikationswissenschaft. Konstanz, Germany: UVK.</p>
+<div id="ref-scharkowAccuracySelfreportedInternet2016" class="csl-entry">
+Scharkow M (2016) The accuracy of self-reported <span>Internet</span> use<span><span>A</span></span> validation study using client log data. <em>Communication Methods and Measures</em> 10(1): 13–27. DOI: <a href="https://doi.org/10.1080/19312458.2015.1118446">10.1080/19312458.2015.1118446</a>.
 </div>
-<div id="ref-treptePrivacyOnlinePerspectives2011">
-<p>Trepte, Sabine, and Leonard Reinecke, eds. 2011. <em>Privacy Online. Perspectives on Privacy and Self-Disclosure in the Social Web</em>. Berlin, Germany: Springer.</p>
+<div id="ref-R-GGally" class="csl-entry">
+Schloerke B, Crowley J, Cook D, et al. (2018) <em>GGally: Extension to ’Ggplot2’</em>. Available at: <a href="https://CRAN.R-project.org/package=GGally">https://CRAN.R-project.org/package=GGally</a>.
 </div>
-<div id="ref-tsay-vogelSocialMediaCultivating2018">
-<p>Tsay-Vogel, Mina, James Shanahan, and Nancy Signorielli. 2018. “Social Media Cultivating Perceptions of Privacy: A 5-Year Analysis of Privacy Attitudes and Self-Disclosure Behaviors Among Facebook Users.” <em>New Media &amp; Society</em> 20 (1): 141–61. <a href="https://doi.org/10.1177/1461444816660731">https://doi.org/10.1177/1461444816660731</a>.</p>
+<div id="ref-sevignaniPrivacyCapitalismAge2016" class="csl-entry">
+Sevignani S (2016) <em>Privacy and Capitalism in the Age of Social Media</em>. Routledge research in information technology and society. <span>New York; London</span>: <span>Routledge Taylor &amp; Francis Group</span>.
 </div>
-<div id="ref-tufekciCanYouSee2008">
-<p>Tufekci, Z. 2008. “Can You See Me Now? Audience and Disclosure Regulation in Online Social Network Sites.” <em>Bulletin of Science, Technology &amp; Society</em> 28 (1): 20–36. <a href="https://doi.org/10.1177/0270467607311484">https://doi.org/10.1177/0270467607311484</a>.</p>
+<div id="ref-simonBehavioralModelRational1955" class="csl-entry">
+Simon HA (1955) A behavioral model of rational choice. <em>The Quarterly Journal of Economics</em> 69(1): 99. DOI: <a href="https://doi.org/10.2307/1884852">10.2307/1884852</a>.
 </div>
-<div id="ref-valkenburgEffectsInstantMessaging2009">
-<p>Valkenburg, Patti M., and Jochen Peter. 2009. “The Effects of Instant Messaging on the Quality of Adolescents’ Existing Friendships: A Longitudinal Study.” <em>Journal of Communication</em> 59 (1): 79–97. <a href="https://doi.org/10.1111/j.1460-2466.2008.01405.x">https://doi.org/10.1111/j.1460-2466.2008.01405.x</a>.</p>
+<div id="ref-sundarUnlockingPrivacyParadox2013" class="csl-entry">
+Sundar SS, Kang H, Wu M, et al. (2013) Unlocking the privacy paradox: <span>Do</span> cognitive heuristics hold the key? In: <em><span>CHI</span> 2013: <span>Changing Perspectives</span></em>. <span>Paris, France</span>, pp. 811–816.
 </div>
-<div id="ref-wakefieldUseMassMedia2010">
-<p>Wakefield, Melanie A., Barbara Loken, and Robert C. Hornik. 2010. “Use of Mass Media Campaigns to Change Health Behaviour.” <em>Lancet</em> 376 (9748): 1261–71. <a href="https://doi.org/10.1016/S0140-6736(10)60809-4">https://doi.org/10.1016/S0140-6736(10)60809-4</a>.</p>
+<div id="ref-taddickenPrivacyParadoxSocial2014" class="csl-entry">
+Taddicken M (2014) The <span>“privacy paradox”</span> in the social web: <span>The</span> impact of privacy concerns, individual characteristics, and the perceived social relevance on different forms of self-disclosure. <em>Journal of Computer-Mediated Communication</em> 19(2): 248–273. DOI: <a href="https://doi.org/10.1111/jcc4.12052">10.1111/jcc4.12052</a>.
 </div>
-<div id="ref-walraveConnectingProtectingComparing2012">
-<p>Walrave, Michel, Ini Vanwesenbeeck, and Wannes Heirman. 2012. “Connecting and Protecting? Comparing Predictors of Self-Disclosure and Privacy Settings Use Between Adolescents and Adults.” <em>Cyberpsychology: Journal of Psychosocial Research on Cyberspace</em> 6 (1). <a href="https://doi.org/10.5817/CP2012-1-3">https://doi.org/10.5817/CP2012-1-3</a>.</p>
+<div id="ref-trepteSocialMediaPrivacy2020" class="csl-entry">
+Trepte S (2020) The <span>Social Media Privacy Model</span>: <span>Privacy</span> and <span>Communication</span> in the <span>Light</span> of <span>Social Media Affordances</span>. <em>Communication Theory</em>. DOI: <a href="https://doi.org/10.1093/ct/qtz035">10.1093/ct/qtz035</a>.
 </div>
-<div id="ref-watzlawickPragmaticsHumanCommunication2011">
-<p>Watzlawick, Paul, Janet Beavin Bavelas, Don D. Jackson, and Bill O’Hanlon. 2011. <em>Pragmatics of Human Communication: A Study of Interactional Patterns, Pathologies, and Paradoxes</em>. New York, NY: W.W. Norton &amp; Co.</p>
+<div id="ref-treptePrivacyOnlinePerspectives2011" class="csl-entry">
+Trepte S and Reinecke L (eds) (2011) <em>Privacy Online. <span>Perspectives</span> on Privacy and Self-Disclosure in the Social Web</em>. <span>Berlin, Germany</span>: <span>Springer</span>.
 </div>
-<div id="ref-westinPrivacyFreedom1967">
-<p>Westin, A. F. 1967. <em>Privacy and Freedom</em>. New York, NY: Atheneum.</p>
+<div id="ref-trepteRiskyBehaviorsHow2014" class="csl-entry">
+Trepte S, Dienlin T and Reinecke L (2014) Risky behaviors. <span>How</span> online experiences influence privacy behaviors. In: Stark B, Quiring O, and Jackob N (eds) <em>Von Der <span>Gutenberg</span>-<span>Galaxis</span> Zur <span>Google</span>-<span>Galaxis</span>: <span>Alte</span> Und Neue <span>Grenzvermessungen</span> Nach 50 <span>Jahren DGPuK</span></em>. Schriftenreihe der <span>Deutschen Gesellschaft</span> für <span>Publizistik</span>- und <span>Kommunikationswissenschaft</span>. <span>Konstanz, Germany</span>: <span>UVK</span>, pp. 225–244.
 </div>
-<div id="ref-R-ggplot2">
-<p>Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.</p>
+<div id="ref-tsay-vogelSocialMediaCultivating2018" class="csl-entry">
+Tsay-Vogel M, Shanahan J and Signorielli N (2018) Social media cultivating perceptions of privacy: <span>A</span> 5-year analysis of privacy attitudes and self-disclosure behaviors among <span>Facebook</span> users. <em>New Media &amp; Society</em> 20(1): 141–161. DOI: <a href="https://doi.org/10.1177/1461444816660731">10.1177/1461444816660731</a>.
 </div>
-<div id="ref-wikipediaPrivacyConcernsSocial2018">
-<p>Wikipedia. 2018. “Privacy Concerns with Social Networking Services.” InternetDocument. https://en.wikipedia.org/wiki/Privacy_concerns_with_social_networking_services.</p>
+<div id="ref-tufekciCanYouSee2008" class="csl-entry">
+Tufekci Z (2008) Can you see me now? <span>Audience</span> and disclosure regulation in online social network sites. <em>Bulletin of Science, Technology &amp; Society</em> 28(1): 20–36. DOI: <a href="https://doi.org/10.1177/0270467607311484">10.1177/0270467607311484</a>.
 </div>
-<div id="ref-witteMetaanalysisFearAppeals2000">
-<p>Witte, K., and M. Allen. 2000. “A Meta-Analysis of Fear Appeals: Implications for Effective Public Health Campaigns.” <em>Health Education &amp; Behavior</em> 27 (5): 591–615. <a href="https://doi.org/10.1177/109019810002700506">https://doi.org/10.1177/109019810002700506</a>.</p>
+<div id="ref-assembly1948universal" class="csl-entry">
+UN General Assembly (1948) Universal declaration of human rights. <span>New York, NY, USA:</span>
 </div>
-<div id="ref-yuMetaanalysisExplorePrivacy2020">
-<p>Yu, Lu, He Li, Wu He, Feng-Kwei Wang, and Shiqiao Jiao. 2020. “A Meta-Analysis to Explore Privacy Cognition and Information Disclosure of Internet Users.” <em>International Journal of Information Management</em> 51 (April): 102015. <a href="https://doi.org/10.1016/j.ijinfomgt.2019.09.011">https://doi.org/10.1016/j.ijinfomgt.2019.09.011</a>.</p>
+<div id="ref-valkenburgEffectsInstantMessaging2009" class="csl-entry">
+Valkenburg PM and Peter J (2009) The effects of instant messaging on the quality of adolescents’ existing friendships: <span>A</span> longitudinal study. <em>Journal of Communication</em> 59(1): 79–97. DOI: <a href="https://doi.org/10.1111/j.1460-2466.2008.01405.x">10.1111/j.1460-2466.2008.01405.x</a>.
 </div>
-<div id="ref-zajoncAttitudinalEffectsMere1968">
-<p>Zajonc, R. B. 1968. “Attitudinal Effects of Mere Exposure.” <em>Journal of Personality and Social Psychology</em> 9 (2, Pt.2): 1–27. <a href="https://doi.org/10.1037/h0025848">https://doi.org/10.1037/h0025848</a>.</p>
+<div id="ref-wakefieldUseMassMedia2010" class="csl-entry">
+Wakefield MA, Loken B and Hornik RC (2010) Use of mass media campaigns to change health behaviour. <em>Lancet</em> 376(9748): 1261–1271. DOI: <a href="https://doi.org/10.1016/S0140-6736(10)60809-4">10.1016/S0140-6736(10)60809-4</a>.
+</div>
+<div id="ref-walraveConnectingProtectingComparing2012" class="csl-entry">
+Walrave M, Vanwesenbeeck I and Heirman W (2012) Connecting and protecting? <span>Comparing</span> predictors of self-disclosure and privacy settings use between adolescents and adults. <em>Cyberpsychology: Journal of Psychosocial Research on Cyberspace</em> 6(1). DOI: <a href="https://doi.org/10.5817/CP2012-1-3">10.5817/CP2012-1-3</a>.
+</div>
+<div id="ref-watzlawickPragmaticsHumanCommunication2011" class="csl-entry">
+Watzlawick P, Bavelas JB, Jackson DD, et al. (2011) <em>Pragmatics of Human Communication: <span>A</span> Study of Interactional Patterns, Pathologies, and Paradoxes</em>. <span>New York, NY</span>: <span>W.W. Norton &amp; Co.</span>
+</div>
+<div id="ref-westinPrivacyFreedom1967" class="csl-entry">
+Westin AF (1967) <em>Privacy and Freedom</em>. <span>New York, NY</span>: <span>Atheneum</span>.
+</div>
+<div id="ref-R-ggplot2" class="csl-entry">
+Wickham H (2016) <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. Available at: <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
+</div>
+<div id="ref-wikipediaPrivacyConcernsSocial2018" class="csl-entry">
+Wikipedia (2018) Privacy concerns with social networking services. {{InternetDocument}}. https://en.wikipedia.org/wiki/Privacy_concerns_with_social_networking_services.
+</div>
+<div id="ref-witteMetaanalysisFearAppeals2000" class="csl-entry">
+Witte K and Allen M (2000) A meta-analysis of fear appeals: <span>Implications</span> for effective public health campaigns. <em>Health Education &amp; Behavior</em> 27(5): 591–615. DOI: <a href="https://doi.org/10.1177/109019810002700506">10.1177/109019810002700506</a>.
+</div>
+<div id="ref-yuMetaanalysisExplorePrivacy2020" class="csl-entry">
+Yu L, Li H, He W, et al. (2020) A meta-analysis to explore privacy cognition and information disclosure of internet users. <em>International Journal of Information Management</em> 51: 102015. DOI: <a href="https://doi.org/10.1016/j.ijinfomgt.2019.09.011">10.1016/j.ijinfomgt.2019.09.011</a>.
+</div>
+<div id="ref-zajoncAttitudinalEffectsMere1968" class="csl-entry">
+Zajonc RB (1968) Attitudinal effects of mere exposure. <em>Journal of Personality and Social Psychology</em> 9(2, Pt.2): 1–27. DOI: <a href="https://doi.org/10.1037/h0025848">10.1037/h0025848</a>.
 </div>
 </div>
 </div>
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>Statistical power describes the probability of statistically detecting an effect that exists empirically. Only with high statistical power is it possible to make valid claims about an effect’s existence <span class="citation">(Cohen 1992)</span>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>Statistical power describes the probability of statistically detecting an effect that exists empirically. Only with high statistical power is it possible to make valid claims about an effect’s existence <span class="citation">(Cohen, 1992)</span>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>To explain, with Hypothesis 1, we compare <em>different</em> people with one another by analyzing their <em>average</em> values across all measurements. In other words, does a person, who is generally more concerned than others, also generally share less information than others? With Hypothesis 2, we compare <em>specific</em> measurements within the <em>same</em> person. In other words, does a person, if he/she is more concerned on T1 than on average, share more or less information on T1 than on average?<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 
 
 
-</div>
-</div>
 
 </div>
 
@@ -970,7 +940,7 @@ Results of the bivariate relations. Above the diagonal: zero-order correlation m
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -995,32 +965,6 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = false;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

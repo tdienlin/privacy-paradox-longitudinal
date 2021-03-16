@@ -1,4 +1,4 @@
-name: "privacy-paradox-longitudinal"
+name: "privacy-paradox"
 output_dir: "."
 navbar:
   title: "Home"
@@ -16,9 +16,6 @@ navbar:
     - text: "PDF"
       icon: fa-file
       href: manuscript.pdf
-    - text: "Data"
-      icon: fa-file
-      href: http://dx.doi.org/10.7802/1937
     - text: "Source Code"
       icon: fa-lg fa-github
       href: https://github.com/tdienlin/privacy-paradox-longitudinal

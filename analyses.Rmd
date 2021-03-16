@@ -1,6 +1,5 @@
 ---
-title: "A Longitudinal Analysis of the Privacy Paradox"
-author: "Tobias Dienlin, Philipp K. Masur, Sabine Trepte"
+title: "A longitudinal analysis of the privacy paradox"
 output: 
   html_document:
     toc: true
@@ -19,7 +18,7 @@ knitr::opts_chunk$set(echo=T, error=F, message=F, tidy=T, warning=F, cache=T)
 
 ```{r Packages, cache=F, results='hide'}
 # relevant packages
-devtools::install_github("tdienlin/td@v.0.0.2.5")
+devtools::install_github("tdienlin/td@v0.0.2.6")
 required <- c("GGally", "ggplot2", "kableExtra", "knitr",
               "lavaan", "lme4","magrittr", "MissMech", 
               "papaja", "psych", "pwr", "MVN", "semTools", 
@@ -82,16 +81,17 @@ Visual inspection of the missing value patterns as well as the non-parametric te
 
 # Measures
 
-In what follows, we report the measures we collected, including their items, factorial validity, reliability, and ICC. For the measures' longitudinal invariance, see [additional analyses](analyses_additional.Rmd).
+In what follows, we report the measures we used for our analyses, including their items, factorial validity, reliability, and ICC. 
+
+We conducted confirmatory factor analyses to determine the underlying factor structure and to remove items that showed poor measurement properties (see [additional analyses](analyses_additional.Rmd)).
+
+For the measures' longitudinal invariance, see [additional analyses](analyses_additional.Rmd). 
 
 ## Concerns about online privacy
 ### Items
 
 The following deals with things that can happen on the Internet.
 
-1. In general, how concerned are you about your privacy while using the Internet?
-2. Are you concerned about online organizations not being who they claim they are?
-3. Are you concerned about online identity theft?
 4. Are you concerned about people you do not know obtaining personal information about you from your online activities?
 5. Are you concerned that if you use your credit card to buy something on the Internet your credit card number will be obtained/intercepted by someone else?
 6. Are you concerned that an email you sent may be read by someone else besides the person you sent it to?
@@ -163,17 +163,16 @@ summary(fit)
 
 Now we will deal with information sharing on the Internet. Do you think that it is sensible to disclose the following pieces of information online, i.e., via the Internet?
 
-1. Financial information (bank data, account balances…)
-2. Medical information (health, medical records…)
-3. Second name
-4. First name
-5. Residence
-6. Street and house number
-7. Email address
-8. Phone number
-9. Photos (of you)
-10. Job (past and present)
-11. Education
+&nbsp; 1. Financial information (bank data, account balances…)  
+&nbsp; 2. Medical information (health, medical records…)  
+&nbsp; 3. Second name  
+&nbsp; 4. First name  
+&nbsp; 5. Residence  
+&nbsp; 6. Street and house number  
+&nbsp; 7. Email address  
+&nbsp; 8. Phone number  
+&nbsp; 10. Job (past and present)  
+&nbsp; 11. Education  
 
 (NA = “no Internet user / no reply”, 1 = "not sensible at all", 2 = "somewhat not sensible", 3 = "in part", 4 = "somewhat sensible", 5 = "very sensible")
 
@@ -254,17 +253,16 @@ summary(fit)
 
 In the following, please indicate how often you disclose the following information on the Internet. How often do you disclose the following pieces of information online, i.e., on the Internet?
 
-1. Financial information (bank data, account balances…)
-2. Medical information (health, medical records…)
-3. Second name
-4. First name
-5. Residence
-6. Street and house number
-7. Email address
-8. Phone number
-9. Photos (of you)
-10. Job (past and present)
-11. Education
+&nbsp; 1. Financial information (bank data, account balances…)  
+&nbsp; 2. Medical information (health, medical records…)  
+&nbsp; 3. Second name  
+&nbsp; 4. First name  
+&nbsp; 5. Residence  
+&nbsp; 6. Street and house number  
+&nbsp; 7. Email address  
+&nbsp; 8. Phone number  
+&nbsp; 10. Job (past and present)  
+&nbsp; 11. Education  
 
 (NA = “no Internet user / no reply”, 1 = "every day", 2 = "weekly", 3 = "monthly", 4 = "less than that", 5 = "never")
 
@@ -558,6 +556,7 @@ colnames(d_fs) <- c("Privacy\nconcerns\nT1", "Privacy\nconcerns\nT2" , "Privacy\
                     "Information\nsharing\nT1", "Information\nsharing\nT2" , "Information\nsharing\nT3")
 
 corr_plot <- ggpairs(d_fs,
+                     upper = list(continuous = cor_plot),
                      lower = list(continuous = wrap(td::scat_plot, coords = c(1, 5, 1, 5)))) + 
   theme_bw()
 print(corr_plot)
