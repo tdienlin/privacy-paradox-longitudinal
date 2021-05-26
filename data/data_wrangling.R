@@ -3,9 +3,14 @@ library(DataCombine); library(magrittr); library(tidyverse)
 
 # load data
 # note: the actual data can be obtained from http://dx.doi.org/10.7802/1937
-# please download the most current file "privacy-longitudinal-study_data_YYYY-MM-DD.csv"
 # paste this file into folder "data"
 d_raw <- read_csv("data/privacy-longitudinal-study_data_2019-10-10.csv")
+
+# Please note that during the submission process of this article, 
+# a newer version of the data set was published (https://doi.org/10.7802/2117). 
+# The new dataset contains additional data of participants that initially 
+# were lost because of a transmission error. Using this newer version yields to 
+# the same inferences and comparable results, with changes only in decimals
 
 # select variables
 d_wide <- d_raw %>%

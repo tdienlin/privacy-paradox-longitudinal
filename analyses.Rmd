@@ -20,8 +20,8 @@ knitr::opts_chunk$set(echo=T, error=F, message=F, tidy=T, warning=F, cache=T)
 # relevant packages
 devtools::install_github("tdienlin/td@v0.0.2.6")
 required <- c("GGally", "ggplot2", "kableExtra", "knitr",
-              "lavaan", "lme4","magrittr", "MissMech", 
-              "papaja", "psych", "pwr", "MVN", "semTools", 
+              "lavaan", "lme4","magrittr", "MissMech",
+              "papaja", "psych", "pwr", "MVN", "semTools",
               "sjstats", "tidyverse", "td")
 
 # load required libraries
