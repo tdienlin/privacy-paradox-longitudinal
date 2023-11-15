@@ -46,12 +46,13 @@ mask              : no
 # header-includes:
 #   - \setlength{\parskip}{0em}
 #   - \raggedbottom
-output:
-  html_document:
-    toc: TRUE
-    toc_float:
-      collapsed: FALSE
-    toc_depth: 2
+output: html_document
+#  output:
+#  html_document:
+    # toc: TRUE
+    # toc_float:
+    #   collapsed: FALSE
+    # toc_depth: 2
 bibliography      : 
   - [bibliography/references.bib]
   - [bibliography/r-references.bib]
